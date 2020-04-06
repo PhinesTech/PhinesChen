@@ -1,13 +1,18 @@
-FROM node:12.16.1
+FROM node:12.16.1-alpine3.11 AS builder
 
-WORKDIR /usr/src/app
-
+WORKDIR /app
 COPY . .
 
-RUN yarn install
+RUN npm install react-scripts -g --silent
+RUN yarn install --silent
+RUN yarn build --silent
 
-RUN ls
+# Serve built react app
+FROM node:12.16.1-alpine3.11
 
-EXPOSE 3000
+RUN yarn global add serve
 
-CMD ["yarn", "start"]
+WORKDIR /app
+COPY --from=builder /app/build .
+
+CMD ["serve", "-p", "3000", "-s", "."]doc
