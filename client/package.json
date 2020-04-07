@@ -30,7 +30,8 @@
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "typeface-montserrat": "^0.0.75"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^5.3.14",
