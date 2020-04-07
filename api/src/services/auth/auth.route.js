@@ -15,21 +15,19 @@ const router = express.Router();
  * @apiGroup Auth
  * @apiPermission public
  *
- * @apiParam  {String}          email     member's email
- * @apiParam  {String{6..128}}  password  member's password
+ * @apiParam  {String}          email     Member's email
+ * @apiParam  {String{6..128}}  password  Member's password
  *
  * @apiSuccess (Created 201) {String}  token.tokenType     Access Token's type
  * @apiSuccess (Created 201) {String}  token.accessToken   Authorization Token
- * @apiSuccess (Created 201) {String}  token.refreshToken  Token to get a new accessToken
- *                                                   after expiration time
- * @apiSuccess (Created 201) {Number}  token.expiresIn     Access Token's expiration time
- *                                                   in miliseconds
+ * @apiSuccess (Created 201) {String}  token.refreshToken  Token to get a new accessToken after expiration time
+ * @apiSuccess (Created 201) {Number}  token.expiresIn     Access Token's expiration time in miliseconds
  * @apiSuccess (Created 201) {String}  token.timezone      The server's Timezone
  *
- * @apiSuccess (Created 201) {String}  member.id         member's id
- * @apiSuccess (Created 201) {String}  member.name       member's name
- * @apiSuccess (Created 201) {String}  member.email      member's email
- * @apiSuccess (Created 201) {String}  member.role       member's role
+ * @apiSuccess (Created 201) {String}  member.id         Member's id
+ * @apiSuccess (Created 201) {String}  member.name       Member's name
+ * @apiSuccess (Created 201) {String}  member.email      Member's email
+ * @apiSuccess (Created 201) {String}  member.role       Member's role
  * @apiSuccess (Created 201) {Date}    member.createdAt  Timestamp
  *
  * @apiError (Bad Request 400)  ValidationError  Some parameters may contain invalid values
@@ -44,23 +42,21 @@ router.route("/register").post(validate(register), controller.register);
  * @apiGroup Auth
  * @apiPermission public
  *
- * @apiParam  {String}         email     member's email
- * @apiParam  {String{..128}}  password  member's password
+ * @apiParam  {String}         email     Member's email
+ * @apiParam  {String{..128}}  password  Member's password
  *
  * @apiSuccess  {String}  token.tokenType     Access Token's type
  * @apiSuccess  {String}  token.accessToken   Authorization Token
- * @apiSuccess  {String}  token.refreshToken  Token to get a new accessToken
- *                                                   after expiration time
- * @apiSuccess  {Number}  token.expiresIn     Access Token's expiration time
- *                                                   in miliseconds
+ * @apiSuccess  {String}  token.refreshToken  Token to get a new accessToken after expiration time
+ * @apiSuccess  {Number}  token.expiresIn     Access Token's expiration time in miliseconds
  *
- * @apiSuccess  {String}  member.id             member's id
- * @apiSuccess  {String}  member.name           member's name
- * @apiSuccess  {String}  member.email          member's email
- * @apiSuccess  {String}  member.role           member's role
+ * @apiSuccess  {String}  member.id             Member's id
+ * @apiSuccess  {String}  member.name           Member's name
+ * @apiSuccess  {String}  member.email          Member's email
+ * @apiSuccess  {String}  member.role           Member's role
  * @apiSuccess  {Date}    member.createdAt      Timestamp
  *
- * @apiError (Bad Request 400)  ValidationError  Some parameters may contain invalid values
+ * @apiError (Bad Request 400)   ValidationError  Some parameters may contain invalid values
  * @apiError (Unauthorized 401)  Unauthorized     Incorrect email or password
  */
 router.route("/login").post(validate(login), controller.login);
@@ -73,7 +69,7 @@ router.route("/login").post(validate(login), controller.login);
  * @apiGroup Auth
  * @apiPermission public
  *
- * @apiParam  {String}  email         member's email
+ * @apiParam  {String}  email         Member's email
  * @apiParam  {String}  refreshToken  Refresh token aquired when member logged in
  *
  * @apiSuccess {String}  tokenType     Access Token's type
@@ -81,7 +77,7 @@ router.route("/login").post(validate(login), controller.login);
  * @apiSuccess {String}  refreshToken  Token to get a new accessToken after expiration time
  * @apiSuccess {Number}  expiresIn     Access Token's expiration time in miliseconds
  *
- * @apiError (Bad Request 400)  ValidationError  Some parameters may contain invalid values
+ * @apiError (Bad Request 400)   ValidationError  Some parameters may contain invalid values
  * @apiError (Unauthorized 401)  Unauthorized     Incorrect email or refreshToken
  */
 router.route("/refresh-token").post(validate(refresh), controller.refresh);
@@ -105,7 +101,7 @@ router.route("/refresh-token").post(validate(refresh), controller.refresh);
  * @apiSuccess {String}  refreshToken  Token to get a new accessToken after expiration time
  * @apiSuccess {Number}  expiresIn     Access Token's expiration time in miliseconds
  *
- * @apiError (Bad Request 400)  ValidationError  Some parameters may contain invalid values
+ * @apiError (Bad Request 400)   ValidationError  Some parameters may contain invalid values
  * @apiError (Unauthorized 401)  Unauthorized    Incorrect access_token
  */
 router
@@ -127,7 +123,7 @@ router
  * @apiSuccess {String}  refreshToken  Token to get a new accpessToken after expiration time
  * @apiSuccess {Number}  expiresIn     Access Token's expiration time in miliseconds
  *
- * @apiError (Bad Request 400)  ValidationError  Some parameters may contain invalid values
+ * @apiError (Bad Request 400)   ValidationError  Some parameters may contain invalid values
  * @apiError (Unauthorized 401)  Unauthorized    Incorrect access_token
  */
 router

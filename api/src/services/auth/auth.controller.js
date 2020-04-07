@@ -1,6 +1,6 @@
-const httpStatus = require("http-status");
+const httpStatus = require('http-status');
 
-const service = require("./auth.service");
+const service = require('./auth.service');
 
 /**
  * Returns jwt token if registration was successful

@@ -1,37 +1,35 @@
-const moment = require("moment-timezone");
+const moment = require('moment-timezone');
 
-const member = require("../member/member.model");
-const RefreshToken = require("./refreshToken.model");
-const { jwtExpirationInterval } = require("../../config/variables");
+const Member = require('../member/member.model');
+const RefreshToken = require('./refreshToken.model');
+const { jwtExpirationInterval } = require('../../config/variables');
 
 /**
  * Returns a formated object with tokens
  * @private
  */
 function generateTokenResponse(member, accessToken) {
-  const tokenType = "Bearer";
+  const tokenType = 'Bearer';
   const refreshToken = RefreshToken.generate(member).token;
-  const expiresIn = moment().add(jwtExpirationInterval, "minutes");
+  const expiresIn = moment().add(jwtExpirationInterval, 'minutes');
   return {
-    tokenType,
-    accessToken,
-    refreshToken,
-    expiresIn
+    tokenType, accessToken, refreshToken, expiresIn,
   };
 }
+
 
 /**
  * Returns jwt token if registration was successful
  * @public
  */
-exports.register = async memberData => {
+exports.register = async (memberData) => {
   try {
-    const member = await new member(memberData).save();
+    const member = await new Member(memberData).save();
     const memberTransformed = member.transform();
     const token = generateTokenResponse(member, member.token());
     return { token, member: memberTransformed };
   } catch (error) {
-    throw member.checkDuplicateEmail(error);
+    throw Member.checkDuplicateEmail(error);
   }
 };
 
@@ -39,11 +37,9 @@ exports.register = async memberData => {
  * Returns jwt token if valid membername and password is provided
  * @public
  */
-exports.login = async memberData => {
+exports.login = async (memberData) => {
   try {
-    const { member, accessToken } = await member.findAndGenerateToken(
-      memberData
-    );
+    const { member, accessToken } = await Member.findAndGenerateToken(memberData);
     const token = generateTokenResponse(member, accessToken);
     const memberTransformed = member.transform();
     return { token, member: memberTransformed };
@@ -57,7 +53,7 @@ exports.login = async memberData => {
  * Returns jwt token
  * @public
  */
-exports.oAuth = async member => {
+exports.oAuth = async (member) => {
   try {
     const accessToken = member.token();
     const token = generateTokenResponse(member, accessToken);
@@ -76,12 +72,9 @@ exports.refresh = async ({ email, refreshToken }) => {
   try {
     const refreshObject = await RefreshToken.findOneAndRemove({
       memberEmail: email,
-      token: refreshToken
+      token: refreshToken,
     });
-    const { member, accessToken } = await member.findAndGenerateToken({
-      email,
-      refreshObject
-    });
+    const { member, accessToken } = await Member.findAndGenerateToken({ email, refreshObject });
     return generateTokenResponse(member, accessToken);
   } catch (error) {
     throw error;

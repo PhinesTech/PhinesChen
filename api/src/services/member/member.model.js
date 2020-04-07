@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const httpStatus = require("http-status");
 const { omitBy, isNil } = require("lodash");
 const bcrypt = require("bcryptjs");
@@ -10,8 +10,8 @@ const APIError = require("../../utils/APIError");
 const {
   env,
   jwtSecret,
-  jwtExpirationInterval
-} = require("../../config/variables.js");
+  jwtExpirationInterval,
+} = require("../../config/variables");
 
 /**
  * Member Roles
@@ -30,36 +30,36 @@ const memberSchema = new mongoose.Schema(
       required: true,
       unique: true,
       trim: true,
-      lowercase: true
+      lowercase: true,
     },
     password: {
       type: String,
       required: true,
       minlength: 6,
-      maxlength: 128
+      maxlength: 128,
     },
     name: {
       type: String,
       maxlength: 128,
       index: true,
-      trim: true
+      trim: true,
     },
     services: {
       facebook: String,
-      google: String
+      google: String,
     },
     role: {
       type: String,
       enum: roles,
-      default: "member"
+      default: "member",
     },
     picture: {
       type: String,
-      trim: true
-    }
+      trim: true,
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 
@@ -92,7 +92,7 @@ memberSchema.method({
     const transformed = {};
     const fields = ["id", "name", "email", "picture", "role", "createdAt"];
 
-    fields.forEach(field => {
+    fields.forEach((field) => {
       transformed[field] = this[field];
     });
 
@@ -101,18 +101,16 @@ memberSchema.method({
 
   token() {
     const playload = {
-      exp: moment()
-        .add(jwtExpirationInterval, "minutes")
-        .unix(),
+      exp: moment().add(jwtExpirationInterval, "minutes").unix(),
       iat: moment().unix(),
-      sub: this._id
+      sub: this._id,
     };
     return jwt.encode(playload, jwtSecret);
   },
 
   async passwordMatches(password) {
     return bcrypt.compare(password, this.password);
-  }
+  },
 });
 
 /**
@@ -125,7 +123,7 @@ memberSchema.statics = {
    * Get member
    *
    * @param {ObjectId} id - The objectId of member.
-   * @returns {Promise<member, APIError>}
+   * @returns {Promise<Member, APIError>}
    */
   async get(id) {
     try {
@@ -134,14 +132,13 @@ memberSchema.statics = {
       if (mongoose.Types.ObjectId.isValid(id)) {
         member = await this.findById(id).exec();
       }
-
       if (member) {
         return member;
       }
 
       throw new APIError({
-        message: "member does not exist",
-        status: httpStatus.NOT_FOUND
+        message: "Member does not exist",
+        status: httpStatus.NOT_FOUND,
       });
     } catch (error) {
       throw error;
@@ -152,19 +149,19 @@ memberSchema.statics = {
    * Find member by email and tries to generate a JWT token
    *
    * @param {ObjectId} id - The objectId of member.
-   * @returns {Promise<member, APIError>}
+   * @returns {Promise<Member, APIError>}
    */
   async findAndGenerateToken(options) {
     const { email, password, refreshObject } = options;
     if (!email)
       throw new APIError({
-        message: "An email is required to generate a token"
+        message: "An email is required to generate a token",
       });
 
     const member = await this.findOne({ email }).exec();
     const err = {
       status: httpStatus.UNAUTHORIZED,
-      isPublic: true
+      isPublic: true,
     };
     if (password) {
       if (member && (await member.passwordMatches(password))) {
@@ -184,7 +181,7 @@ memberSchema.statics = {
    *
    * @param {number} skip - Number of members to be skipped.
    * @param {number} limit - Limit number of members to be returned.
-   * @returns {Promise<member[]>}
+   * @returns {Promise<Member[]>}
    */
   list({ page = 1, perPage = 30, name, email, role }) {
     const options = omitBy({ name, email, role }, isNil);
@@ -214,12 +211,12 @@ memberSchema.statics = {
           {
             field: "email",
             location: "body",
-            messages: ['"email" already exists']
-          }
+            messages: ['"email" already exists'],
+          },
         ],
         status: httpStatus.CONFLICT,
         isPublic: true,
-        stack: error.stack
+        stack: error.stack,
       });
     }
     return error;
@@ -227,7 +224,7 @@ memberSchema.statics = {
 
   async oAuthLogin({ service, id, email, name, picture }) {
     const member = await this.findOne({
-      $or: [{ [`services.${service}`]: id }, { email }]
+      $or: [{ [`services.${service}`]: id }, { email }],
     });
     if (member) {
       member.services[service] = id;
@@ -241,12 +238,12 @@ memberSchema.statics = {
       email,
       password,
       name,
-      picture
+      picture,
     });
-  }
+  },
 };
 
 /**
- * @typedef member
+ * @typedef Member
  */
-module.exports = mongoose.model("member", memberSchema, "members");
+module.exports = mongoose.model("Member", memberSchema, "members");

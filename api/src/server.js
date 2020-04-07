@@ -29,10 +29,10 @@ process.on("unhandledRejection", (error) => {
   console.log("unhandledRejection", error.message);
 });
 
-new Promise((_, reject) => reject(new Error("woops"))).catch((error) => {
-  // Will not execute
-  console.log("caught", error.message);
-});
+// new Promise((_, reject) => reject(new Error("woops"))).catch((error) => {
+//   // Will not execute
+//   console.log("caught", error.message);
+// });
 
 /**
  * Exports Express

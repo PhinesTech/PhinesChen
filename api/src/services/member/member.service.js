@@ -1,6 +1,6 @@
 const { omit } = require("lodash");
 
-const member = require("./member.model");
+const Member = require("./member.model");
 const { handler: errorHandler } = require("../../middlewares/error");
 
 /**
@@ -10,7 +10,7 @@ const { handler: errorHandler } = require("../../middlewares/error");
 exports.load = async (req, res, next, id) => {
   try {
     console.log(12);
-    const member = await member.get(id);
+    const member = await Member.get(id);
     req.locals = { member };
     return next();
   } catch (error) {
@@ -22,7 +22,7 @@ exports.load = async (req, res, next, id) => {
  * Get member
  * @public
  */
-exports.get = async (id) => member.get(id);
+exports.get = async (id) => Member.get(id);
 
 /**
  * Get logged in member info
@@ -36,11 +36,11 @@ exports.loggedIn = (req, res) => res.json(req.member.transform());
  */
 exports.create = async (memberData) => {
   try {
-    const member = new member(memberData);
-    const savedmember = await member.save();
-    return savedmember.transform();
+    const member = new Member(memberData);
+    const savedMember = await member.save();
+    return savedMember.transform();
   } catch (error) {
-    throw member.checkDuplicateEmail(error);
+    throw Member.checkDuplicateEmail(error);
   }
 };
 
@@ -48,18 +48,18 @@ exports.create = async (memberData) => {
  * Replace existing member
  * @public
  */
-exports.replace = async (member, newmemberData) => {
+exports.replace = async (member, newMemberData) => {
   try {
-    const newmember = new member(newmemberData);
+    const newMember = new Member(newMemberData);
     const ommitRole = member.role !== "admin" ? "role" : "";
-    const newmemberObject = omit(newmember.toObject(), "_id", ommitRole);
+    const newMemberObject = omit(newMember.toObject(), "_id", ommitRole);
 
-    await member.update(newmemberObject, { override: true, upsert: true });
-    const savedmember = await member.findById(member._id);
+    await member.update(newMemberObject, { override: true, upsert: true });
+    const savedMember = await Member.findById(member._id);
 
-    return savedmember.transform();
+    return savedMember.transform();
   } catch (error) {
-    throw member.checkDuplicateEmail(error);
+    throw Member.checkDuplicateEmail(error);
   }
 };
 
@@ -71,11 +71,11 @@ exports.update = async (member, updatedData) => {
   try {
     const ommitRole = member.role !== "admin" ? "role" : "";
     const memberTobeUpdated = omit(updatedData, ommitRole);
-    const updatedmember = Object.assign(member, memberTobeUpdated);
-    const savedmember = await updatedmember.save();
-    return savedmember.transform();
+    const updatedMember = Object.assign(member, memberTobeUpdated);
+    const savedMember = await updatedMember.save();
+    return savedMember.transform();
   } catch (error) {
-    throw member.checkDuplicateEmail(error);
+    throw Member.checkDuplicateEmail(error);
   }
 };
 
@@ -85,9 +85,9 @@ exports.update = async (member, updatedData) => {
  */
 exports.list = async (params) => {
   try {
-    const members = await member.list(params);
-    const transformedmembers = members.map((member) => member.transform());
-    return transformedmembers;
+    const members = await Member.list(params);
+    const transformedMembers = members.map((member) => member.transform());
+    return transformedMembers;
   } catch (error) {
     throw error;
   }

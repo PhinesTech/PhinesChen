@@ -1,70 +1,56 @@
-const Joi = require("joi");
+const Joi = require("@hapi/joi");
 
-const member = require("./member.model");
+const Member = require("./member.model");
 
 module.exports = {
   // GET /v1/members
-  listmembers: {
+  listMembers: {
     query: {
       page: Joi.number().min(1),
-      perPage: Joi.number()
-        .min(1)
-        .max(100),
+      perPage: Joi.number().min(1).max(100),
       name: Joi.string(),
       email: Joi.string(),
-      role: Joi.string().valid(member.roles)
-    }
+      role: Joi.string().valid(Member.roles),
+    },
   },
 
   // POST /v1/members
-  createmember: {
+  createMember: {
     body: {
-      email: Joi.string()
-        .email()
-        .required(),
-      password: Joi.string()
-        .min(6)
-        .max(128)
-        .required(),
+      email: Joi.string().email().required(),
+      password: Joi.string().min(6).max(128).required(),
       name: Joi.string().max(128),
-      role: Joi.string().valid(member.roles)
-    }
+      role: Joi.string().valid(Member.roles),
+    },
   },
 
   // PUT /v1/members/:memberId
-  replacemember: {
+  replaceMember: {
     body: {
-      email: Joi.string()
-        .email()
-        .required(),
-      password: Joi.string()
-        .min(6)
-        .max(128)
-        .required(),
+      email: Joi.string().email().required(),
+      password: Joi.string().min(6).max(128).required(),
       name: Joi.string().max(128),
-      role: Joi.string().valid(member.roles)
+      role: Joi.string().valid(Member.roles),
     },
     params: {
       memberId: Joi.string()
         .regex(/^[a-fA-F0-9]{24}$/)
-        .required()
-    }
+        .required(),
+    },
   },
 
   // PATCH /v1/members/:memberId
-  updatemember: {
+  updateMember: {
     body: {
       email: Joi.string().email(),
-      password: Joi.string()
-        .min(6)
-        .max(128),
+      password: Joi.string().min(6).max(128),
       name: Joi.string().max(128),
-      role: Joi.string().valid(member.roles)
+      role: Joi.string().valid(Member.roles),
     },
     params: {
       memberId: Joi.string()
         .regex(/^[a-fA-F0-9]{24}$/)
-        .required()
-    }
-  }
+        .required(),
+    },
+  },
 };
