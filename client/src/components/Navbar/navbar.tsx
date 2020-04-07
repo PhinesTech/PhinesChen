@@ -12,32 +12,32 @@ const Navbar: React.FC = () => {
         <nav>
             
            
-            <ul className="flex bg-gray-900 ">
+            <ul className="flex bg-black text-xs navbar">
             
             <div className="flex mcfb-logo relative flex-row justify-start">
                 <img src={MCFB} style={styles} alt="MCFB LOGO"/>
             </div>
 
             <li className="mr-3 ">
-                <a className="inline-block  text-white hover:bg-gray-500 py-2 px-3" href="#">About</a>
+                <a className="inline-block  text-gray-400 hover:bg-gray-500 py-2 px-3" href="#">ABOUT</a>
             </li>
             <li className="mr-3">
-                <a className="inline-block  text-white hover:bg-gray-500 py-2 px-3" href="#">Work</a>
+                <a className="inline-block  text-gray-400 hover:bg-gray-500 py-2 px-3" href="#">WORK</a>
             </li>
             <li className="mr-3">
-                <a className="inline-block text-white hover:bg-gray-500 py-2 px-3 text-gray-400 " href="#">Program</a>
+                <a className="inline-block text-gray-400 hover:bg-gray-500 py-2 px-3 text-gray-400 " href="#">PROGRAM</a>
             </li>
             <li className="mr-3">
-                <a className="inline-block text-white hover:bg-gray-500 py-2 px-3 text-gray-400 " href="#">Volunteer</a>
+                <a className="inline-block text-gray-400 hover:bg-gray-500 py-2 px-3 text-gray-400 " href="#">VOLUNTEER</a>
             </li>
             <li className="mr-3">
-                <a className="inline-block text-white hover:bg-gray-500 py-2 px-3 text-gray-400 " href="#">Contact Us</a>
+                <a className="inline-block text-gray-400 hover:bg-gray-500 py-2 px-3 text-gray-400 " href="#">CONTACT US</a>
             </li>
             <li className="mr-3 flex-row-reverse">
-                <a className=" inline-block text-white hover:bg-gray-500 py-2 px-3 text-gray-400 " href="#">DONATE</a>
+                <a className=" inline-block text-gray-400 hover:bg-gray-500 py-2 px-3 text-gray-400 " href="#">DONATE</a>
             </li>
             <li className="mr-3 flex-row-reverse">
-                <a className=" inline-block border border-black rounded hover:border-black text-white hover:bg-gray-500 py-2 px-3 text-gray-400 " href="#">Login</a>
+                <a className=" inline-block border border-white rounded hover:border-black text-gray-400 hover:bg-gray-500 py-2 px-3 text-gray-400 " href="#">Login</a>
             </li>
             </ul>
       
