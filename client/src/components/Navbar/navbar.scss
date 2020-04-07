@@ -1,14 +1,23 @@
 .navbar {
     background-color: rgb(31, 27, 27);
+    padding: .8% 0% .8% 0%;
 }
 .menu {
     background-color: transparent;
 }
 
 .mcfb-logo {
-    margin: 10%;
+    position: relative;
+    left: 5%;
     background-color: transparent;
 }
 .mcfb {
     width: 50%;
 }
+
+.login {
+    position: relative;
+    left: 10%;
+}
+
+
