@@ -41,6 +41,10 @@ const About: React.FC = () => {
                 MCFB programs. We also conduct hunger <br/> education and awareness campaings 
                 and advocate for public policies that alleviate hunger.
                 </p>
+                <br/>
+                <button className="bg-white aboutbutton">
+                    LEARN MORE
+                    </button>
             </div>
             <div className="WhatWeDo">
                 <br/>
@@ -62,6 +66,10 @@ const About: React.FC = () => {
                 16 senior <br/> citizen sites; and we make food available for over 100 other nonprofit 
                 organizations <br/> serving people in need.
                 </p>
+                <br/>
+                <button className="aboutbutton">
+                    LEARN MORE
+                    </button>
 
             </div>
 
