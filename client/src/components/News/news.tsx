@@ -12,7 +12,6 @@ const News: React.FC = () => {
                 News
             </h1>
             </div>
-            <br/>
             <div className="newsbox firstbox">
             <div className="newsheader ">
                 New Program Aims to Help Families in need find
@@ -32,7 +31,6 @@ const News: React.FC = () => {
                 </h3>
             </div>
             </div>
-            <br/>
             <div className="newsbox secondbox">
             <div className="newsheader ">
                 Food Insecurity a Growing Problem in Merced County
@@ -51,7 +49,6 @@ const News: React.FC = () => {
                 </h3>
             </div>
             </div>
-            <br/>
             <div className="newsbox thirdbox">
             <div className="newsheader ">
                 One story of need turned into help for hundreds of hungry seniors
@@ -68,9 +65,6 @@ const News: React.FC = () => {
                 </h3>
             </div>
             </div>
-            <br/>
-            <br/>
-            <br/>
             
         </section>
      );
