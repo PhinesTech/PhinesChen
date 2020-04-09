@@ -6,29 +6,28 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-color:  rgb(31, 27, 27);
+    overflow: hidden;
 }
 .TITLE-TEXT{
     font-size: 54px;
     line-height: 1em;
-    text-align: center;
-    position: relative;
-    top: 20%;
+    text-align: center; 
+    margin: 20% 0% 0% 0%;
     color: black;
     font-weight: bolder;
+    overflow: hidden;
 }
 .title-subtext {
     color: rgb(40, 44, 48);
     font-size: 20px;
     text-align: center;
-    position: relative;
-    top: 25%;
+    margin: 2% 0% 0% 0%;
     font-weight: bold;
 
 }
 .BUTTON{
-    position: relative;
-    top: 10em;
-    left: 43%;
+    display: block;
+    margin: 2% auto 0% auto;
     font-size: 14px;
     width: 12%;
 

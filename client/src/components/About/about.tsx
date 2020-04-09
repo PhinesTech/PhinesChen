@@ -29,6 +29,7 @@ const About: React.FC = () => {
                 <h1>
                     Who We Are
                 </h1>
+                <br/>
                 <span>
                     <img src={FOODBANK} alt="FoodBank">
 
@@ -54,6 +55,7 @@ const About: React.FC = () => {
                 <h1>
                     What We Do
                 </h1>
+                <br/>
                 <span>
                     <img src={BREAD} alt="FoodBank">
 
