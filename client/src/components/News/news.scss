@@ -1,14 +1,45 @@
 .NEWS{
     background-color: rgb(24, 23, 23);
+
 }
 .updates{
-    text-align: center;
     color: whitesmoke;
     font-size: small;
 }
-.newsheader{
-    text-align: center;
+.newsbox{
     color: whitesmoke;
     font-size: small;
-    
+    float: left;
+    width: 33.33%;
+    height: 60%;
+    padding: 2%;
+  
 }
+.newscontent{   
+    float: left; 
+}
+// .firstbox{
+//     padding: 7% 2.5% auto 0%;
+// }
+// .secondbox{
+//     padding: 3.5% 2.5% 0% 0%;
+// }
+// .thirdbox{
+//     padding: 0% 2% 0% 2.5%;
+// }
+h3{
+    color: rgb(165, 164, 164);
+}
+
+.NEWS:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  @media screen and (max-width: 600px) {
+    .newsbox {
+      width: 100%;
+    }
+  }
+  
