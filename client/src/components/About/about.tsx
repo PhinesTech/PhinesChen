@@ -43,13 +43,13 @@ const About: React.FC = () => {
                 and advocate for public policies that alleviate hunger.
                 </p>
                 <br/>
-                <button className="bg-white aboutbutton">
+                <button className="aboutbutton">
                     LEARN MORE
                     </button>
             </div>
             <div className="WhatWeDo">
-                <br/>
                 <h2>
+                    <br/>
                     TEAM
                     </h2>
                 <h1>
