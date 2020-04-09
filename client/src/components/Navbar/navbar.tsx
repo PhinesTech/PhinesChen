@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li className="login mr-3 relative inset-y-0 right-0 top-auto left-auto bottom-auto flex items-center pr-2 sm:ml-6 sm:pr-0">
                         <a
-                            className=" inline-block border border-white rounded hover:border-black text-gray-400 hover:bg-gray-500 py-2 px-3 text-gray-400 "
+                            className=" inline-block border border-white rounded hover:border-black text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-400 "
                             href="#"
                         >
                             Login
