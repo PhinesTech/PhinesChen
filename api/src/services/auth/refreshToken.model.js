@@ -12,14 +12,14 @@ const refreshTokenSchema = new mongoose.Schema({
     required: true,
     index: true,
   },
-  memberId: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Member",
+    ref: "User",
     required: true,
   },
-  memberEmail: {
+  userEmail: {
     type: "String",
-    ref: "Member",
+    ref: "User",
     required: true,
   },
   expires: { type: Date },
@@ -29,18 +29,18 @@ refreshTokenSchema.statics = {
   /**
    * Generate a refresh token object and saves it into the database
    *
-   * @param {Member} member
+   * @param {User} user
    * @returns {RefreshToken}
    */
-  generate(member) {
-    const memberId = member._id;
-    const memberEmail = member.email;
-    const token = `${memberId}.${crypto.randomBytes(40).toString("hex")}`;
+  generate(user) {
+    const userId = user._id;
+    const userEmail = user.email;
+    const token = `${userId}.${crypto.randomBytes(40).toString("hex")}`;
     const expires = moment().add(30, "days").toDate();
     const tokenObject = new RefreshToken({
       token,
-      memberId,
-      memberEmail,
+      userId,
+      userEmail,
       expires,
     });
     tokenObject.save();
@@ -51,9 +51,5 @@ refreshTokenSchema.statics = {
 /**
  * @typedef RefreshToken
  */
-const RefreshToken = mongoose.model(
-  "RefreshToken",
-  refreshTokenSchema,
-  "refresh"
-);
+const RefreshToken = mongoose.model("RefreshToken", refreshTokenSchema);
 module.exports = RefreshToken;

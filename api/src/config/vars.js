@@ -13,7 +13,7 @@ module.exports = {
   jwtExpirationInterval: process.env.JWT_EXPIRATION_MINUTES,
   mongo: {
     uri:
-      process.env.NODE_ENV === "development"
+      process.env.NODE_ENV === "test"
         ? process.env.MONGO_URI_TESTS
         : process.env.MONGO_URI,
   },

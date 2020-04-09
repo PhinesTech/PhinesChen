@@ -11,18 +11,18 @@ const {
   env,
   jwtSecret,
   jwtExpirationInterval,
-} = require("../../config/variables");
+} = require("../../config/vars");
 
 /**
- * Member Roles
+ * User Roles
  */
-const roles = ["member", "admin"];
+const roles = ["user", "admin"];
 
 /**
- * Member Schema
+ * User Schema
  * @private
  */
-const memberSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     email: {
       type: String,
@@ -51,7 +51,7 @@ const memberSchema = new mongoose.Schema(
     role: {
       type: String,
       enum: roles,
-      default: "member",
+      default: "user",
     },
     picture: {
       type: String,
@@ -69,7 +69,7 @@ const memberSchema = new mongoose.Schema(
  * - validations
  * - virtuals
  */
-memberSchema.pre("save", async function save(next) {
+userSchema.pre("save", async function save(next) {
   try {
     if (!this.isModified("password")) return next();
 
@@ -77,6 +77,8 @@ memberSchema.pre("save", async function save(next) {
 
     const hash = await bcrypt.hash(this.password, rounds);
     this.password = hash;
+
+    console.log("this: ", this.password);
 
     return next();
   } catch (error) {
@@ -87,7 +89,7 @@ memberSchema.pre("save", async function save(next) {
 /**
  * Methods
  */
-memberSchema.method({
+userSchema.method({
   transform() {
     const transformed = {};
     const fields = ["id", "name", "email", "picture", "role", "createdAt"];
@@ -95,6 +97,8 @@ memberSchema.method({
     fields.forEach((field) => {
       transformed[field] = this[field];
     });
+
+    console.log("transformed: ", transformed)
 
     return transformed;
   },
@@ -116,28 +120,28 @@ memberSchema.method({
 /**
  * Statics
  */
-memberSchema.statics = {
+userSchema.statics = {
   roles,
 
   /**
-   * Get member
+   * Get user
    *
-   * @param {ObjectId} id - The objectId of member.
-   * @returns {Promise<Member, APIError>}
+   * @param {ObjectId} id - The objectId of user.
+   * @returns {Promise<User, APIError>}
    */
   async get(id) {
     try {
-      let member;
+      let user;
 
       if (mongoose.Types.ObjectId.isValid(id)) {
-        member = await this.findById(id).exec();
+        user = await this.findById(id).exec();
       }
-      if (member) {
-        return member;
+      if (user) {
+        return user;
       }
 
       throw new APIError({
-        message: "Member does not exist",
+        message: "User does not exist",
         status: httpStatus.NOT_FOUND,
       });
     } catch (error) {
@@ -146,10 +150,10 @@ memberSchema.statics = {
   },
 
   /**
-   * Find member by email and tries to generate a JWT token
+   * Find user by email and tries to generate a JWT token
    *
-   * @param {ObjectId} id - The objectId of member.
-   * @returns {Promise<Member, APIError>}
+   * @param {ObjectId} id - The objectId of user.
+   * @returns {Promise<User, APIError>}
    */
   async findAndGenerateToken(options) {
     const { email, password, refreshObject } = options;
@@ -158,18 +162,18 @@ memberSchema.statics = {
         message: "An email is required to generate a token",
       });
 
-    const member = await this.findOne({ email }).exec();
+    const user = await this.findOne({ email }).exec();
     const err = {
       status: httpStatus.UNAUTHORIZED,
       isPublic: true,
     };
     if (password) {
-      if (member && (await member.passwordMatches(password))) {
-        return { member, accessToken: member.token() };
+      if (user && (await user.passwordMatches(password))) {
+        return { user, accessToken: user.token() };
       }
       err.message = "Incorrect email or password";
-    } else if (refreshObject && refreshObject.memberEmail === email) {
-      return { member, accessToken: member.token() };
+    } else if (refreshObject && refreshObject.userEmail === email) {
+      return { user, accessToken: user.token() };
     } else {
       err.message = "Incorrect email or refreshToken";
     }
@@ -177,11 +181,11 @@ memberSchema.statics = {
   },
 
   /**
-   * List members in descending order of 'createdAt' timestamp.
+   * List users in descending order of 'createdAt' timestamp.
    *
-   * @param {number} skip - Number of members to be skipped.
-   * @param {number} limit - Limit number of members to be returned.
-   * @returns {Promise<Member[]>}
+   * @param {number} skip - Number of users to be skipped.
+   * @param {number} limit - Limit number of users to be returned.
+   * @returns {Promise<User[]>}
    */
   list({ page = 1, perPage = 30, name, email, role }) {
     const options = omitBy({ name, email, role }, isNil);
@@ -223,14 +227,14 @@ memberSchema.statics = {
   },
 
   async oAuthLogin({ service, id, email, name, picture }) {
-    const member = await this.findOne({
+    const user = await this.findOne({
       $or: [{ [`services.${service}`]: id }, { email }],
     });
-    if (member) {
-      member.services[service] = id;
-      if (!member.name) member.name = name;
-      if (!member.picture) member.picture = picture;
-      return member.save();
+    if (user) {
+      user.services[service] = id;
+      if (!user.name) user.name = name;
+      if (!user.picture) user.picture = picture;
+      return user.save();
     }
     const password = uuidv4();
     return this.create({
@@ -244,6 +248,6 @@ memberSchema.statics = {
 };
 
 /**
- * @typedef Member
+ * @typedef User
  */
-module.exports = mongoose.model("Member", memberSchema, "members");
+module.exports = mongoose.model("User", userSchema);

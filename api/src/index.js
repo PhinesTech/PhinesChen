@@ -1,15 +1,18 @@
-Promise = require("bluebird");
+// make bluebird default Promise
+Promise = require("bluebird"); // eslint-disable-line no-global-assign
 
+const { port, host, env } = require("./config/vars");
 const app = require("./config/express");
 const chalk = require("./config/chalk");
-const { port, host } = require("./config/variables");
+const mongoose = require("./config/mongoose");
 
-// Listen to requests
+// open mongoose connection
+mongoose.connect();
+
+// listen to requests
 app.listen(port, host, () =>
-  console.log(
-    chalk.connected(
-      `Example app listening on port ${port} in ${app.settings.env} mode!`
-    )
+  console.info(
+    chalk.connected(`Example app listening on port ${port} in ${env} mode!`)
   )
 );
 
@@ -26,16 +29,11 @@ process.on("exit", (code) => {
 
 process.on("unhandledRejection", (error) => {
   // Will print "unhandledRejection error is not defined"
-  console.log("unhandledRejection", error.message);
+  console.error(chalk.termination(`unhandledRejection: ${error.message}`));
 });
 
-// new Promise((_, reject) => reject(new Error("woops"))).catch((error) => {
-//   // Will not execute
-//   console.log("caught", error.message);
-// });
-
 /**
- * Exports Express
+ * Exports express
  * @public
  */
 module.exports = app;
