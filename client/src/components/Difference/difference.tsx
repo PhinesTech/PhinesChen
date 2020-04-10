@@ -1,7 +1,8 @@
 import React from 'react';
-import DONATELOGO from '../../assets/images/HmPgIcon-Donate.png';
-import VOLUNTEERLOGO from '../../assets/images/HmPgIcon-Volunteer.png';
-import PARTNERLOGO from '../../assets/images/HmPgIcon-Partner.png';
+import DONATELOGO from '../../assets/images/HmPgIcon-Donate2.png'
+import VOLUNTEERLOGO from '../../assets/images/HmPgIcon-Volunteer1.png';
+import PARTNERLOGO from '../../assets/images/HmPgIcon-Partner1.png';
+
 
 import './difference.scss';
 

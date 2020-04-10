@@ -1,4 +1,6 @@
 import React from 'react';
+import PARTNERS from "../../assets/images/partnersbg.jpg"
+
 import './partners.scss';
 
 const Partners: React.FC = () => {
@@ -8,6 +10,12 @@ const Partners: React.FC = () => {
                 <br />
                 <br />
                 <h1>Our Partners</h1>
+                <div className="partnerslogos ">
+                    <br></br>
+                    <img src={PARTNERS} alt="PARTNERS">
+
+                    </img>
+                </div>
         </section>
 
         );
