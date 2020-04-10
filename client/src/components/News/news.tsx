@@ -13,7 +13,7 @@ const News: React.FC = () => {
             <div className="updates">
                 <br />
                 <br />
-                <br />
+
                 <h1>News</h1>
             </div>
             <div className="newsbox firstbox">

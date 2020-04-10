@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
               <FontAwesomeIcon icon={faTwitter} className="fa" />
             </a>
             <a
-              href="(209)726-3663"
+              href="tel:(209)726-3663"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "#0000" }}
