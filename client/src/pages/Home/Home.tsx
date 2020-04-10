@@ -4,6 +4,7 @@ import Title from '../../components/Title/title';
 import Navbar from '../../components/Navbar/navbar';
 import About from '../../components/About/about';
 import News from '../../components/News/news';
+import Donate from '../../components/Donate/donate';
 
 const Home: React.FC = () => {
     return (
@@ -12,6 +13,7 @@ const Home: React.FC = () => {
             <Title/>
             <About/>
             <News/>
+            <Donate/>
          
         </div>
     )

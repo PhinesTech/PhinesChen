@@ -11,8 +11,11 @@ const Title: React.FC = () => {
         <div className="title-subtext">
             Let's Make Change Together
         </div>
-        <button className="bg-white BUTTON">
-            Learn More
+        <button className="bg-yellow-500 text-white BUTTON font-bold">
+           DONATE NOW
+        </button>
+        <button className="bg-red-500 text-white  BUTTON font-bold">
+          COVID-19
         </button>
 
        

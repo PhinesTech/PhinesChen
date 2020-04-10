@@ -43,7 +43,7 @@ const About: React.FC = () => {
                 and advocate for public policies that alleviate hunger.
                 </p>
                 <br/>
-                <button className="aboutbutton">
+                <button className="aboutbutton bg-yellow-500 font-bold">
                     LEARN MORE
                     </button>
             </div>
@@ -69,7 +69,7 @@ const About: React.FC = () => {
                 organizations <br/> serving people in need.
                 </p>
                 <br/>
-                <button className="aboutbutton">
+                <button className="aboutbutton bg-yellow-500 font-bold">
                     LEARN MORE
                     </button>
 

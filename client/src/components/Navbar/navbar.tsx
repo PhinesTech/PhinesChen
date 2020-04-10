@@ -17,32 +17,32 @@ const Navbar: React.FC = () => {
             <div className="block flex-auto justify-center">
                 <ul className="flex justify-center">
                     <li className="mr-3 ">
-                        <a className="inline-block text-gray-400 hover:bg-green-900 py-2 px-3" href="#">
+                        <a className="inline-block rounded text-gray-400 hover:bg-green-900 py-2 px-3" href="#">
                             ABOUT
                         </a>
                     </li>
                     <li className="mr-3">
-                        <a className="inline-block  text-gray-400 hover:bg-green-900 py-2 px-3" href="#">
-                            WORK
+                        <a className="inline-block rounded  text-gray-400 hover:bg-green-900 py-2 px-3" href="#">
+                            FIND FOOD
                         </a>
                     </li>
                     <li className="mr-3">
-                        <a className="inline-block text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-400 " href="#">
+                        <a className="inline-block rounded text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-400 " href="#">
                             PROGRAM
                         </a>
                     </li>
                     <li className="mr-3">
-                        <a className="inline-block text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-400 " href="#">
+                        <a className="inline-block rounded text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-400 " href="#">
                             VOLUNTEER
                         </a>
                     </li>
                     <li>
-                        <a className="inline-block text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-400 " href="#">
+                        <a className="inline-block rounded text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-400 " href="#">
                             CONTACT US
                         </a>
                     </li>
                     <li className=" mr-3">
-                        <a className="inline-block text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-400 " href="#">
+                        <a className="inline-block rounded text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-400 " href="#">
                             DONATE
                         </a>
                     </li>
