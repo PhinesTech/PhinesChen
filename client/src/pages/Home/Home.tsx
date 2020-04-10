@@ -9,14 +9,13 @@ import Donate from '../../components/Donate/donate';
 const Home: React.FC = () => {
     return (
         <div className="bg-gray-500">
-            <Navbar/>
-            <Title/>
-            <About/>
-            <News/>
-            <Donate/>
-         
+            <Navbar />
+            <Title />
+            <About />
+            <News />
+            <Donate />
         </div>
-    )
-}
+    );
+};
 
 export default Home;
