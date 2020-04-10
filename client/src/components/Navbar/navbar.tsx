@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
                 <ul className="flex justify-center">
                     <li className="mr-3 ">
                         <a
-                            className="inline-block rounded font-bold hover:text-gray-400 text-gray-900 hover:bg-green-900 py-2 px-3"
+                            className="inline-block rounded font-bold hover:text-gray-400 text-gray-100 hover:bg-green-900 py-2 px-3"
                             href="#"
                         >
                             ABOUT
@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li className="mr-3">
                         <a
-                            className="inline-block rounded font-bold hover:text-gray-400 text-gray-900 hover:bg-green-900 py-2 px-3"
+                            className="inline-block rounded font-bold hover:text-gray-400 text-gray-100 hover:bg-green-900 py-2 px-3"
                             href="#"
                         >
                             FIND FOOD
@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li className="mr-3">
                         <a
-                            className="inline-block rounded font-bold text-gray-400 hover:text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-900 "
+                            className="inline-block rounded font-bold hover:text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-100 "
                             href="#"
                         >
                             PROGRAM
@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li className="mr-3">
                         <a
-                            className="inline-block rounded font-bold text-gray-400 hover:text-gray-400  hover:bg-green-900 py-2 px-3 text-gray-900 "
+                            className="inline-block rounded font-bold hover:text-gray-400  hover:bg-green-900 py-2 px-3 text-gray-100 "
                             href="#"
                         >
                             VOLUNTEER
@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li>
                         <a
-                            className="inline-block rounded font-bold text-gray-400 hover:text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-900 "
+                            className="inline-block rounded font-bold hover:text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-100 "
                             href="#"
                         >
                             CONTACT US
@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li className=" mr-3">
                         <a
-                            className="inline-block rounded font-bold text-gray-400 hover:text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-900 "
+                            className="inline-block rounded font-bold hover:text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-100 "
                             href="#"
                         >
                             DONATE
@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
                     </li>
                     <li className="login mr-3 relative inset-y-0 right-0 top-auto left-auto hover:text-gray-400  bottom-auto flex items-center pr-2 sm:ml-6 sm:pr-0">
                         <a
-                            className=" inline-block font-bold border border-white rounded hover:border-black hover:text-gray-400  text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-900 "
+                            className=" inline-block font-bold hover:border rounded hover:border-black hover:text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-100 "
                             href="#"
                         >
                             Login

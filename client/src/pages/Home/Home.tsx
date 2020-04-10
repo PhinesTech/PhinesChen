@@ -5,6 +5,8 @@ import Navbar from '../../components/Navbar/navbar';
 import About from '../../components/About/about';
 import News from '../../components/News/news';
 import Donate from '../../components/Donate/donate';
+import Partners from '../../components/Partners/partners';
+import Footer from '../../components/Footer/footer';
 
 const Home: React.FC = () => {
     return (
@@ -14,6 +16,8 @@ const Home: React.FC = () => {
             <About />
             <News />
             <Donate />
+            <Partners />
+            <Footer />
         </div>
     );
 };
