@@ -9,7 +9,7 @@
     "setup": "yarn clean && yarn install",
     "start": "yarn tailwind:css && react-scripts start",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "tailwind:css": "tailwind build src/tailwind.css -c tailwind.config.js -o src/index.css",
+    "tailwind:css": "tailwind build src/tailwind.css -c tailwind.config.js -o src/index.scss",
     "test": "react-scripts test"
   },
   "browserslist": {
