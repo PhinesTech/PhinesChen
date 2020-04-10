@@ -7,7 +7,7 @@ import BREAD from "../../assets/images/AK Senior Brown Bags 1.jpg";
 const About: React.FC = () => {
     return (
         <section className="ABOUT">
-            <div className="believe">
+            <div className="believe ">
                 <h2>
                     WHAT WE BELIEVE IN
                 </h2>

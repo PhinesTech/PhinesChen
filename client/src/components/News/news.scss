@@ -1,20 +1,18 @@
 .NEWS{
-    background-color: rgb(24, 23, 23);
+    background-color: rgb(238, 238, 238);
 
 }
 .updates{
     color: whitesmoke;
-    font-size: small;
 }
 .newsbox{
-    color: whitesmoke;
+    color: black;
     font-size: small;
     float: left;
     width: 33.33%;
     height: 60%;
     padding: 2%;
-    display: grid;
-    
+    display: grid;   
   
 }
 .newscontent{   
@@ -30,10 +28,11 @@
 //     padding: 1% 3% 0% 0%;
 // }
 h3{
-    color: rgb(165, 164, 164);
+    color: rgb(46, 45, 45)
 }
 .newsheader{
     font-size: 15px;
+    font-weight: bold;
 }
 
 .NEWS:after {
