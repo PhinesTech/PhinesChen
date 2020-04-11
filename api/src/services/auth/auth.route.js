@@ -7,18 +7,6 @@ const { login, register, oAuth, refresh } = require("./auth.validation");
 
 const router = express.Router();
 
-router.get("/endpoints", (req, res) => {
-  let list = [];
-
-  router.stack.forEach((r) => {
-    if (r.route && r.route.path) {
-      list.push(r.route.path);
-    }
-  });
-
-  res.status(200).send({ routes: list });
-});
-
 /**
  * @api {post} v1/auth/register Register
  * @apiDescription Register a new user

@@ -16,7 +16,7 @@ const {
 /**
  * User Roles
  */
-const roles = ["user", "admin"];
+const roles = ["user", "admin", "donator", "partner"];
 
 /**
  * User Schema
@@ -53,10 +53,14 @@ const userSchema = new mongoose.Schema(
       enum: roles,
       default: "user",
     },
-    picture: {
-      type: String,
-      trim: true,
+    donatedFood: {
+      type: Array,
+      default: [],
     },
+    requestedFood: {
+      type: Array,
+      default: [],
+    }
   },
   {
     timestamps: true,
@@ -92,7 +96,7 @@ userSchema.pre("save", async function save(next) {
 userSchema.method({
   transform() {
     const transformed = {};
-    const fields = ["id", "name", "email", "picture", "role", "createdAt"];
+    const fields = ["id", "name", "email", "donatedFood", "requestedFood", "role", "createdAt"];
 
     fields.forEach((field) => {
       transformed[field] = this[field];
@@ -226,14 +230,13 @@ userSchema.statics = {
     return error;
   },
 
-  async oAuthLogin({ service, id, email, name, picture }) {
+  async oAuthLogin({ service, id, email, name }) {
     const user = await this.findOne({
       $or: [{ [`services.${service}`]: id }, { email }],
     });
     if (user) {
       user.services[service] = id;
       if (!user.name) user.name = name;
-      if (!user.picture) user.picture = picture;
       return user.save();
     }
     const password = uuidv4();
@@ -242,7 +245,6 @@ userSchema.statics = {
       email,
       password,
       name,
-      picture,
     });
   },
 };

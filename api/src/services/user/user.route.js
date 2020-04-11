@@ -12,18 +12,6 @@ const {
 
 const router = express.Router();
 
-router.get("/endpoints", (req, res) => {
-  let list = [];
-
-  router.stack.forEach((r) => {
-    if (r.route && r.route.path) {
-      list.push(r.route.path);
-    }
-  });
-
-  res.status(200).send({ routes: list });
-});
-
 /**
  * Load user when API with userId route parameter is hit
  */
