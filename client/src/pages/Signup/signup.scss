@@ -1,4 +1,4 @@
-.LOGIN {
+.SIGNUP {
     color: white;
     background-color:rgb(238, 238, 238) ;
    
@@ -15,10 +15,10 @@
       color:#555;
       background: #ecf0f3;
   
-    .login-div {
+    .signup-div {
       width:500px;
       height: 550px;
-      padding: 40px 35px 35px 35px;
+      padding: 0px 35px 35px 35px;
       border-radius: 40px;
       margin: 4% 0% 0% 0%;
       background: #ecf0f3;
@@ -45,7 +45,7 @@
     .title {
       text-align: center;
       font-size: 28px;
-      padding-top: 24px;
+      padding-top: 20px;
       letter-spacing: 0.5px;
     }
     .sub-title {
@@ -54,12 +54,12 @@
       padding-top: 7px;
       letter-spacing: 3px;
     }
-    .fields {
+    .signupfields {
       width: 100%;
-      padding: 75px 5px 0px 5px;
+      padding: 15px 5px 0px 5px;
       
     }
-    .fields input {
+    .signupfields input {
       border: none;
       outline:none;
       background: none;
@@ -68,22 +68,23 @@
       padding:20px 10px 20px 5px;
       
     }
-    .username, .password {
-      margin-bottom: 30px;
+    .email, .password1, .firstname, .lastname, .companyname {
+      margin-bottom: 20px;
       border-radius: 25px;
       box-shadow: inset 8px 8px 8px #cbced1,
                   inset -8px -8px 8px #ffffff;
     }
-    .fields svg {
+
+    .signupfields svg {
       height: 22px;
       margin:0 10px -3px 25px;
     }
-    .signin-button {
+    .submit-button {
       outline: none;
       border:none;
       cursor: pointer;
-      width:60%;
-      height: 50px;
+      width:50%;
+      height: 30px;
       border-radius: 30px;
       font-size: 20px;
       font-weight: 700;
@@ -91,31 +92,22 @@
       color:#fff;
       text-align: center;
       position: relative;
-      left: 20%;
+      left: 25%;
     
       box-shadow: 3px 3px 8px #b1b1b1,
                   -3px -3px 8px #ffffff;
       transition: 0.5s;
     }
-    .signin-button:hover {
+    .submit-button:hover {
       background:darkgreen;
     }
-    .signin-button:active {
+    .submit-button:active {
       background:darkslategray;
     }
-    .signin-button:hover {
+    .submit-button:hover {
       box-shadow: 10px 10px 5px grey;
       
   }
-    .link {
-      padding: 2%;
-      text-align: center;
-    }
-    .link a {
-      text-decoration: none;
-      color:#aaa;
-      font-size: 15px;
-  
-    }
+    
   }
   
