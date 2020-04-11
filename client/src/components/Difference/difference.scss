@@ -1,53 +1,56 @@
-.DIFFERENCE{
+.DIFFERENCE {
     background-color: rgb(238, 238, 238);
-    
-      h3 {
+
+    h3 {
         overflow: hidden;
         font-size: x-large;
-      }
+    }
 
-    
-      .grid-container {
-          background-color: rgb(238, 238, 238);
+    .grid-container {
+        background-color: rgb(238, 238, 238);
         float: left;
         display: grid;
-        
+
         width: 33.33%;
         height: 60%;
         padding: 5% 0% 5% 10%;
-        display: grid; 
+        display: grid;
         text-align: center;
-      }
-    
-      .grid-item-title {
+    }
+
+    .grid-item-title {
         padding: 0% 3% 0% 0%;
         margin: 15% 25% 0% 0%;
         text-align: center;
         position: center;
-      }
-    
-      #donate-logo {
-        width: 70%;
-        
-      }
-    
-      #volunteer-logo {
-        width: 70%;
-         
-      }
-      #partner-logo {
-        width:70%;  
-      }
+    }
 
-      .DIFFERENCE:after {
-        content: "";
+    #donate-logo {
+        width: 70%;
+        cursor: pointer;
+    }
+
+    #volunteer-logo {
+        width: 70%;
+        cursor: pointer;
+    }
+    #partner-logo {
+        width: 70%;
+        cursor: pointer;
+    }
+    .grid-item-image:hover {
+        box-shadow: 10px 10px 5px grey;
+        border-radius: 50%;
+    }
+
+    .DIFFERENCE:after {
+        content: '';
         display: table;
         clear: both;
-      }
-
+    }
 }
 @media screen and (max-width: 500px) {
     .grid-container {
-      width: 100%;
+        width: 100%;
     }
-  }
+}

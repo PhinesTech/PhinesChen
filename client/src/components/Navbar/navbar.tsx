@@ -9,7 +9,7 @@ const styles = {
 
 const Navbar: React.FC = () => {
     return (
-        <nav className="navbar bg-yellow-500 flex-1 flex sm:items-stretch sm:justify-start sticky">
+        <nav className="navbar bg-yellow-600 flex-1 flex sm:items-stretch sm:justify-start sticky">
             <div className="mcfb-logo ">
                 <img src={MCFB} style={styles} alt="MCFB LOGO" />
             </div>

@@ -1,9 +1,7 @@
 import React from 'react';
-import VEGGIES from "../../assets/images/vegies.jpg";
-// import BANNER from "../../assets/images/banner.jpg";
-import SENIOR from "../../assets/images/Brown-bag-31-1.jpg";
-// import HERO from "../../assets/images/food-drive-hero.jpg";
-import STRAWBERRIES from "../../assets/images/FINAL-Merced-County-Food-Bank (1).jpg";
+import VEGGIES from '../../assets/images/vegies.jpg';
+import SENIOR from '../../assets/images/Brown-bag-31-1.jpg';
+import STRAWBERRIES from '../../assets/images/FINAL-Merced-County-Food-Bank (1).jpg';
 
 import './news.scss';
 
@@ -17,13 +15,11 @@ const News: React.FC = () => {
                 <h1>News</h1>
             </div>
             <div className="newsbox firstbox">
-                <div className="newsheader ">
-                    New Program Aims to Help Families in need find healthier produce
-                </div>
+                <div className="newsheader ">New Program Aims to Help Families in need find healthier produce</div>
                 <div className="newscontent ">
                     June 17, 2017
                     <span>
-                    <img src={VEGGIES} alt="Newspaper"></img>
+                        <img src={VEGGIES} alt="Newspaper"></img>
                     </span>
                     <h3>
                         Health and food bank officials in Merced County are teaming up on a project to make fresh
@@ -38,7 +34,7 @@ const News: React.FC = () => {
                 <div className="newscontent">
                     December 16, 2016
                     <span>
-                    <img src={STRAWBERRIES} alt="Newspaper"></img>
+                        <img src={STRAWBERRIES} alt="Newspaper"></img>
                     </span>
                     <h3>
                         Local food pantries are seeing increased demand this holiday season, despite a spike in year-end
@@ -53,7 +49,7 @@ const News: React.FC = () => {
                 <div className="newscontent">
                     October 27, 2016
                     <span>
-                    <img src={SENIOR} alt="Newspaper"></img>
+                        <img src={SENIOR} alt="Newspaper"></img>
                     </span>
                     <h3>
                         The Senior Brown Bag Program is a service for residents ages 55 and older, according to the

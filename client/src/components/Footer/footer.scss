@@ -9,24 +9,24 @@
     text-align: center;
     position: relative;
     bottom: 0;
-    p{
+    p {
         font-size: 10px;
     }
-  
+
     .fa {
-      color: white;
-      font-size: 24px !important;
-      margin: 5px;
+        color: white;
+        font-size: 24px !important;
+        margin: 5px;
     }
-  
+
     .credits {
-      align-items: center;
-      justify-content: center;
-      display: flex;
-      font-size: 10px;
-  
-      .copyright {
-        overflow: hidden;
-      }
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        font-size: 10px;
+
+        .copyright {
+            overflow: hidden;
+        }
     }
-  }
+}
