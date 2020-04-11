@@ -11,7 +11,7 @@ import Footer from '../../components/Footer/footer';
 
 const Home: React.FC = () => {
     return (
-        <div className="bg-gray-500">
+        <div className="">
             <Navbar />
             <Title />
             <About />

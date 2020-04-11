@@ -14,13 +14,13 @@
     justify-content: center;
     color:#555;
     background: #ecf0f3;
-  
+
   .login-div {
-    width:430px;
-    height: 625px;
-    padding: 60px 35px 35px 35px;
+    width:500px;
+    height: 550px;
+    padding: 40px 35px 35px 35px;
     border-radius: 40px;
-    
+    margin: 0% 0% 0% 0%;
     background: #ecf0f3;
     box-shadow: 13px 13px 20px #cbced1,
                 -13px -13px 20px #ffffff;
@@ -56,7 +56,7 @@
   }
   .fields {
     width: 100%;
-    padding: 75px 5px 5px 5px;
+    padding: 75px 5px 0px 5px;
     
   }
   .fields input {
@@ -82,14 +82,16 @@
     outline: none;
     border:none;
     cursor: pointer;
-    width:100%;
-    height: 60px;
+    width:60%;
+    height: 50px;
     border-radius: 30px;
     font-size: 20px;
     font-weight: 700;
     font-family: 'Lato', sans-serif;
     color:#fff;
     text-align: center;
+    position: relative;
+    left: 20%;
   
     box-shadow: 3px 3px 8px #b1b1b1,
                 -3px -3px 8px #ffffff;
@@ -106,12 +108,13 @@
     
 }
   .link {
-    padding-top: 20px;
+    padding: 2%;
     text-align: center;
   }
   .link a {
     text-decoration: none;
     color:#aaa;
     font-size: 15px;
+
   }
 }

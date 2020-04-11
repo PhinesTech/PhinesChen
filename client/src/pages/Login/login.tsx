@@ -1,9 +1,15 @@
 import React from 'react';
+import Navbar from '../../components/Navbar/navbar';
+import Footer from '../../components/Footer/footer';
+
 import './login.scss';
 
 const Login: React.FC = () => {
     return (
-        <section className="LOGIN">
+        <section className="">
+          <Navbar />
+         
+          <div className="LOGIN">
             <div className="login-div">
                 <div className="logo"></div>
                 <div className="title">Merced County Food Bank Login</div>
@@ -33,6 +39,8 @@ const Login: React.FC = () => {
                     <a href="#">Forgot password?</a> or <a href="#">Sign up</a>
                 </div>
             </div>
+            </div>
+            <Footer />
         </section>
     );
 };
