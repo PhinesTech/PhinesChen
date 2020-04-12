@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/login';
 import Signup from './pages/Signup/signup';
+import Dashboard from './pages/Dashboard/dashboard';
 
 import './App.scss';
 
@@ -14,6 +15,7 @@ const App: React.FC = () => {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
+                <Route exact path="/dashboard" component={Dashboard} />
             </Switch>
         </Router>
     );
