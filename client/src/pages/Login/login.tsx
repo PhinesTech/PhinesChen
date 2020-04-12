@@ -36,7 +36,9 @@ const Login: React.FC = () => {
                             <input type="password" className="pass-input" placeholder="password" />
                         </div>
                     </div>
+                    <Link to="dashboard">
                     <button className="signin-button bg-yellow-500">Login</button>
+                    </Link>
                     <div className="link">
                         <a href="#">Forgot password?</a> or
                         <Link to="signup">&nbsp; Sign Up</Link>

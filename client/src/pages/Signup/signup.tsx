@@ -66,7 +66,6 @@ const Signup: React.FC = () => {
                     </Link>
                 </div>
             </div>
-
             <Footer />
         </section>
     );
