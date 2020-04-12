@@ -9,6 +9,9 @@
     width: 18%;
     border-radius: 4px;
     color: white;
+    border-radius: 3px 0 0 3px;
+    box-shadow: 13px 13px 20px #cbced1,
+    -13px -13px 20px #ffffff;
 }
 
 .donatebutton:hover {

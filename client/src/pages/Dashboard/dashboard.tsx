@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 
 import './dashboard.scss';
 
@@ -16,7 +16,7 @@ const Dashboard: React.FC = () => {
                 </div>
                 <div className="navigation">
                 <ul>
-                    <li><div className="homeicon">Home</div></li>
+                    <li><div className="homeicon"> <Link to="/">Home</Link></div></li>
                     <li> <div className="donateicon">Donate</div></li>
                     <li> <div className="packageicon">Package</div></li>
                     <li> <div className="contacticon">Contact</div></li>

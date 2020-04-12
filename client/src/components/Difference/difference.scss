@@ -28,19 +28,21 @@
     #donate-logo {
         width: 70%;
         cursor: pointer;
+        border-radius: 50%;
+        box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
     }
 
     #volunteer-logo {
         width: 70%;
         cursor: pointer;
+        border-radius: 50%;
+        box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
     }
     #partner-logo {
         width: 70%;
         cursor: pointer;
-    }
-    .grid-item-image:hover {
-        box-shadow: 10px 10px 5px grey;
         border-radius: 50%;
+        box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
     }
 
     .DIFFERENCE:after {
