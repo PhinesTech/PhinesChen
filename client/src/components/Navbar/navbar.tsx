@@ -13,7 +13,9 @@ const Navbar: React.FC = () => {
     return (
         <nav className="navbar bg-yellow-600 flex-1 flex sm:items-stretch sm:justify-start sticky">
             <div className="mcfb-logo ">
-                <img src={MCFB} style={styles} alt="MCFB LOGO" />
+             
+             <Link to="/"> <img src={MCFB} style={styles} alt="MCFB LOGO" />
+             </Link>
             </div>
 
             <div className="block flex-auto justify-center">
