@@ -1,121 +1,30 @@
-.DASHBOARD{
-    box-sizing: border-box;
-    background-color:rgb(238, 238, 238) ;
-    height: 100vh;
-    font-family: 'Roboto', sans-serif;
-    // background: -webkit-gradient(linear, left bottom, right top, from(#7c89d5), to(#f599a5));
-    // background: linear-gradient(to top right, #7c89d5, #f599a5);
-    font-size: 12px;
-  
-  .center {
-    position: absolute;
-    display: block;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-    width: 80vw;
-    height: 88vh;
-    max-width: 800px;
-    display: -webkit-box;
-    display: flex;
-  }
- 
-  .left {
-    -webkit-box-flex: 0;
-            flex: 0 0 150px;
-    width: 150px;
-    height: 100%;
-    background-color: #fff;
-    color: #848697;
-    border-radius: 3px 0 0 3px;
-    box-shadow: 13px 13px 20px #cbced1,
-    -13px -13px 20px #ffffff;
-  }
-  .dashboardlogo {
-    background: url('../../assets/images/profilephoto.jpg');
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  
-    margin: 20% 0% 15% 30%;
-    box-shadow: 
-/* logo shadow */ 0px 0px 2px #5f5f5f, /* offset */ 0px 0px 0px 5px #ecf0f3,
-        /*bottom right */ 8px 8px 15px #a7aaaf, /* top left */ -8px -8px 15px #ffffff;
-}
-  .company {
-    text-align: center;
-  }
-  .company .company-name {
-    font-weight: bold;
-    color: #333;
-  }
-  .company .company-description {
-    position: relative;
-    margin: 10px auto;
-    width: 100px;
-    font-size: 10px;
-  }
-
-
-  .navigation {
-    position: relative;
-    display: block;
-    margin: 30% 0% 20% 7%;
-    padding-left: 20px;
-    cursor: pointer;
-  }
-  .homeicon{
-      width: 55%;
-  }
-  .homeicon:hover{
-    box-shadow: 10px 10px 5px grey;
-    border-radius: 5%;
-    background-color: #fffef8;
-  }
-  .donateicon{
-    width: 60%;
-  }
-  .donateicon:hover{
-    box-shadow: 10px 10px 5px grey;
-    border-radius: 5%;
-    background-color: #fffef8;
-  }
-  .packageicon{
-    width: 70%;
-  }
-  .packageicon:hover{
-    box-shadow: 10px 10px 5px grey;
-    border-radius: 5%;
-    background-color: #fffef8;
-  }
-
-  .contacticon{
-    width: 65%;
-  }
-  .contacticon:hover{
-    box-shadow: 10px 10px 5px grey;
-    border-radius: 5%;
-    background-color: #fffef8;
-  }
-  
-  .navigation li {
-    padding: 0px 25px;
-    margin: 10px 0;
+.ADMIN{
    
-   
-  
-  }
-  .navigation li i {
-    font-size: 20px;
+    .center {
+        position: absolute;
+        display: block;
+        top: 50%;
+        left: 62%;
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        width: 70vw;
+        height: 88vh;
+        max-width: 800px;
+        display: -webkit-box;
+        display: flex;
+      }
+ .inspiration {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        font-family: 'Gill Sans', sans-serif;
+        color:#555;
+      }
     
-  }
-  .navigation li span {
-    padding-left: 15px;
-    vertical-align: super;
-  }
-  
-  .right {
+.right {
     -webkit-box-flex: 1;
             flex: 1 1 auto;
     background-color: #fffef8;
