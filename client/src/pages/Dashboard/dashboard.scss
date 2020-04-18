@@ -11,7 +11,7 @@
     position: absolute;
     display: block;
     top: 50%;
-    left: 50%;
+    left: 45%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
     width: 80vw;
@@ -20,7 +20,16 @@
     display: -webkit-box;
     display: flex;
   }
- 
+  .inspiration {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Gill Sans', sans-serif;
+    color:#555;
+  }
   .left {
     -webkit-box-flex: 0;
             flex: 0 0 150px;
@@ -81,10 +90,10 @@
     border-radius: 5%;
     background-color: #fffef8;
   }
-  .packageicon{
+  .requesticon{
     width: 70%;
   }
-  .packageicon:hover{
+  .requesticon:hover{
     box-shadow: 10px 10px 5px grey;
     border-radius: 5%;
     background-color: #fffef8;
