@@ -7,11 +7,7 @@ const jwt = require("jwt-simple");
 const uuidv4 = require("uuid/v4");
 
 const APIError = require("../../utils/APIError");
-const {
-  env,
-  jwtSecret,
-  jwtExpirationInterval,
-} = require("../../config/vars");
+const { env, jwtSecret, jwtExpirationInterval } = require("../../config/vars");
 
 /**
  * User Roles
@@ -44,6 +40,14 @@ const userSchema = new mongoose.Schema(
       index: true,
       trim: true,
     },
+    donatedFood: {
+      type: Array,
+      default: [],
+    },
+    requestedFood: {
+      type: Array,
+      default: [],
+    },
     services: {
       facebook: String,
       google: String,
@@ -53,14 +57,6 @@ const userSchema = new mongoose.Schema(
       enum: roles,
       default: "user",
     },
-    donatedFood: {
-      type: Array,
-      default: [],
-    },
-    requestedFood: {
-      type: Array,
-      default: [],
-    }
   },
   {
     timestamps: true,
@@ -96,13 +92,20 @@ userSchema.pre("save", async function save(next) {
 userSchema.method({
   transform() {
     const transformed = {};
-    const fields = ["id", "name", "email", "donatedFood", "requestedFood", "role", "createdAt"];
+    const fields = [
+      "id",
+      "name",
+      "email",
+      "donatedFood",
+      "requestedFood",
+      "role",
+    ];
 
     fields.forEach((field) => {
       transformed[field] = this[field];
     });
 
-    console.log("transformed: ", transformed)
+    console.log("transformed: ", transformed);
 
     return transformed;
   },
