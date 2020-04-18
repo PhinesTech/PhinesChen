@@ -5,7 +5,7 @@ import './admin.scss';
 const Admin: React.FC = () => {
     return (
         <section className="ADMIN">
-              <div className="center">
+              <div className="center3">
              <div className="right">
                 <div className="title">Dashboard</div>
                 <div className="description">Track your food distribution</div>

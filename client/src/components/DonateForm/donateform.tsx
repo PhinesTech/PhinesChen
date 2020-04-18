@@ -6,7 +6,7 @@ import DONATELOGO from '../../assets/images/HmPgIcon-Donate2.png';
 const DonateForm: React.FC = () => {
     return (
         <section className="DONATEFORM">
-            <div className="center">
+            <div className="center2">
                 <div className="right">
                     <div className="title">Donate Form</div>
                     <div className="description">

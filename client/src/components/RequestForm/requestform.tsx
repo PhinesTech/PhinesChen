@@ -6,7 +6,7 @@ import REQUESTLOGO from "../../assets/images/request.png";
 const RequestForm: React.FC = () => {
     return (
         <section className="REQUESTFORM">
-            <div className="center">
+            <div className="center1">
                 <div className="right">
                     <div className="title">Request Form</div>
                     <div className="description">The information provided from this form only will be seen by 
