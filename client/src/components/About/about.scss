@@ -1,46 +1,51 @@
-.ABOUT{
-    background-color: rgb(24, 23, 23);
+.ABOUT {
+    background-color: rgb(238, 238, 238);
 }
-h2{
+h2 {
     text-align: center;
-    background-color: rgb(24, 23, 23);
-    color: rgb(165, 164, 164);
+    background-color: rgb(238, 238, 238);
+    color: darkgreen;
     padding: 3% 0% 0% 0%;
     font-size: small;
+    font-weight: bold;
 }
-h1{
+h1 {
     text-align: center;
-    background-color: rgb(24, 23, 23);
-    color: whitesmoke;
+    background-color: rgb(238, 238, 238);
+    color: black;
     font-size: 160%;
     line-height: 1.5em;
+    font-weight: bolder;
 }
-hr{
+hr {
     display: block;
-    border-width: 1px; 
-    color: white;
+    border-width: 2px;
+    color: darkgreen;
+    background-color: darkgreen;
 }
-p{
+p {
     text-align: center;
-    color: rgb(165, 164, 164);
+    color: rgb(46, 45, 45);
+    font-weight: medium;
 }
-span{
+span {
     width: 70%;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
-.aboutbutton{
-    border-width: thick;
-    border-color: black;
+.aboutbutton {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 18%;
     border-radius: 4px;
     color: white;
+    border-radius: 3px 0 0 3px;
+    box-shadow: 13px 13px 20px #cbced1,
+    -13px -13px 20px #ffffff;
 }
 
-.aboutbutton:hover{
-    box-shadow: 0 12px 16px 0 white, 0 17px 50px 0 white;
+.aboutbutton:hover {
+    box-shadow: 0 12px 16px 0 yellow, 0 17px 50px 0 yellow;
 }

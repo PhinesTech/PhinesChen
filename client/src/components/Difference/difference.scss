@@ -1,0 +1,58 @@
+.DIFFERENCE {
+    background-color: rgb(238, 238, 238);
+
+    h3 {
+        overflow: hidden;
+        font-size: x-large;
+    }
+
+    .grid-container {
+        background-color: rgb(238, 238, 238);
+        float: left;
+        display: grid;
+
+        width: 33.33%;
+        height: 60%;
+        padding: 5% 0% 5% 10%;
+        display: grid;
+        text-align: center;
+    }
+
+    .grid-item-title {
+        padding: 0% 3% 0% 0%;
+        margin: 15% 25% 0% 0%;
+        text-align: center;
+        position: center;
+    }
+
+    #donate-logo {
+        width: 70%;
+        cursor: pointer;
+        border-radius: 50%;
+        box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+    }
+
+    #volunteer-logo {
+        width: 70%;
+        cursor: pointer;
+        border-radius: 50%;
+        box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+    }
+    #partner-logo {
+        width: 70%;
+        cursor: pointer;
+        border-radius: 50%;
+        box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+    }
+
+    .DIFFERENCE:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+@media screen and (max-width: 500px) {
+    .grid-container {
+        width: 100%;
+    }
+}
