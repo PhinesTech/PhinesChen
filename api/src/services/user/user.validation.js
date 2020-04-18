@@ -10,6 +10,8 @@ module.exports = {
       perPage: Joi.number().min(1).max(100),
       name: Joi.string(),
       email: Joi.string(),
+      donatedFood: Joi.array().items(Joi.string(), Joi.number()),
+      requestedFood: Joi.array().items(Joi.string(), Joi.number()),
       role: Joi.string().valid(...User.roles),
     }),
   },
@@ -30,6 +32,8 @@ module.exports = {
       email: Joi.string().email().required(),
       password: Joi.string().min(6).max(128).required(),
       name: Joi.string().max(128),
+      donatedFood: Joi.array().items(Joi.string(), Joi.number()),
+      requestedFood: Joi.array().items(Joi.string(), Joi.number()),
       role: Joi.string().valid(...User.roles),
     }),
     params: Joi.object({
@@ -45,6 +49,8 @@ module.exports = {
       email: Joi.string().email(),
       password: Joi.string().min(6).max(128),
       name: Joi.string().max(128),
+      donatedFood: Joi.array().items(Joi.string(), Joi.number()),
+      requestedFood: Joi.array().items(Joi.string(), Joi.number()),
       role: Joi.string().valid(...User.roles),
     }),
     params: Joi.object({
