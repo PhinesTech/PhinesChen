@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './dashboard.scss';
 // import Admin from '../../components/Admin/admin';
-import DonateForm from "../../components/DonateForm/donateform"
+// import DonateForm from "../../components/DonateForm/donateform"
+import RequestForm from "../../components/RequestForm/requestform"
 // import Profile from '../../components/Profile/profile';
 
 // let activeDashboard = 0;
@@ -65,7 +66,7 @@ const Dashboard: React.FC = () => {
                 </div>
             </div>
             {/* {dashboardView(activeDashboard)} */}
-            <DonateForm />
+            <RequestForm />
         </section>
     );
 };

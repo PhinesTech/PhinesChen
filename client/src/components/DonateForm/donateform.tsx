@@ -13,6 +13,9 @@ const DonateForm: React.FC = () => {
                     <div className="DONATELOGO">
                         <img id="donate-logo2" className="grid-item-image" src={DONATELOGO} alt="Donate" />
                         </div>
+                        <button className="statusbutton" type="button">
+                        Donate Status: Pending
+                        </button>
                         <button className="cashbutton" type="button">
                             $50
                         </button>
