@@ -29,12 +29,12 @@ const Navbar: React.FC = () => {
                         </a>
                     </li>
                     <li className="mr-3">
-                        <a
+                        <Link
                             className="inline-block rounded font-bold hover:text-gray-400 text-gray-100 hover:bg-green-900 py-2 px-3"
-                            href="#"
-                        >
+                            to="foodlocator"
+                            >
                             FIND FOOD
-                        </a>
+                        </Link>
                     </li>
                     <li className="mr-3">
                         <a
