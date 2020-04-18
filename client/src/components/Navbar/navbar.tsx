@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
              </Link>
             </div>
 
-            <div className="block flex-auto justify-center">
+            <div className="NAVTEXT block flex-auto justify-center">
                 <ul className="flex justify-center">
                     <li className="mr-3 ">
                         <a
