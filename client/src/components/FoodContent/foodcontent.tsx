@@ -40,13 +40,13 @@ const FoodContent: React.FC = () => {
             </div>
             <div className="element">
                 <div className="locationbox" >
-                <h2>APOSTOLIC TABERNACLE</h2>
+                <h2>CALVARY ASSEMBLY OF GOD </h2>
                 <p>
-                2745 E. Highway 140	<br/>
+                21021 R Street	<br/>
                 Merced, California<br/>
-                (209) 723-0545<br/>
-                Monday, Wednesday 10 AM – 1 PM	<br/>
-                Friday 10 AM – 12 PM
+                (209) 723-2395<br/>
+                Food giveaway 3rd and 4th Thursday	<br/>
+                Wednesday, and Friday
                 </p>
                 </div>
             </div>
