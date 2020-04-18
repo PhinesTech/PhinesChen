@@ -16,6 +16,7 @@ const DonateForm: React.FC = () => {
                         <button className="statusbutton" type="button">
                         Donate Status: Pending
                         </button>
+                        <br/>
                         <button className="cashbutton" type="button">
                             $50
                         </button>

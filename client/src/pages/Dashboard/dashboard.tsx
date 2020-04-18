@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './dashboard.scss';
 // import Admin from '../../components/Admin/admin';
-// import DonateForm from "../../components/DonateForm/donateform"
-import RequestForm from "../../components/RequestForm/requestform"
+import DonateForm from "../../components/DonateForm/donateform";
+// import RequestForm from "../../components/RequestForm/requestform";
 // import Profile from '../../components/Profile/profile';
 
 // let activeDashboard = 0;
@@ -45,28 +45,34 @@ const Dashboard: React.FC = () => {
                                 </div>
                             </li>
                             <li>
+                                <div className="contacticon">
                                 {' '}
-                                <div className="contacticon">Admin</div>
+                                <Link to="/admin">Admin</Link>
+                                </div>
                             </li>
                             <li>
+                                <div className="donateicon">
                                 {' '}
-                                <div className="donateicon">Donate</div>
-                                <Link to="/donateform"></Link>
+                                <Link to="/requestform">Donate</Link>
+                                </div>
                             </li>
                             <li>
+                                <div className="requesticon">
                                 {' '}
-                                <div className="packageicon">Request</div>
+                                <Link to="/requestform">Request</Link>
+                                </div>
                             </li>
                             <li>
-                                {' '}
                                 <div className="contacticon">Contact</div>
+                                {' '}
+                                
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
             {/* {dashboardView(activeDashboard)} */}
-            <RequestForm />
+            <DonateForm />
         </section>
     );
 };
