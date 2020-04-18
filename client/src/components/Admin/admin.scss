@@ -4,7 +4,7 @@
         position: absolute;
         display: block;
         top: 50%;
-        left: 62%;
+        left: 57%;
         -webkit-transform: translate(-50%, -50%);
                 transform: translate(-50%, -50%);
         width: 70vw;
@@ -38,11 +38,13 @@
   .right .title {
     font-size: 25px;
     font-weight: bold;
+    text-align: center;
   }
   .right .description {
     margin-top: 5px;
     margin-bottom: 20px;
     color: #808080;
+    text-align: center;
   }
   .right .row {
     display: -webkit-box;
@@ -59,7 +61,7 @@
   }
   .right .graph {
     display: inline-block;
-    width: 250px;
+    width: 400px;
     height: 150px;
     background-color: #fff;
     border-radius: 10px;

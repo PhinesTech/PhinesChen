@@ -48,8 +48,8 @@ const Admin: React.FC = () => {
                                         <i className="fa fa-inverse fa-angle-double-up"></i>
                                     </div>
                                     <div className="stock-info">
-                                        <div className="stock-name">PPRPLR</div>
-                                        <div className="stock-fullname">Paperpillar Studio</div>
+                                        <div className="stock-name">Requestors</div>
+                                        <div className="stock-fullname">Individuals</div>
                                     </div>
                                 </div>
                             </svg>
