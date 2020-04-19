@@ -1,9 +1,9 @@
 import React from 'react';
 
-import './donateform.scss';
+import './donateMoneyForm.scss';
 import DONATELOGO from '../../assets/images/HmPgIcon-Donate2.png';
 
-const DonateForm: React.FC = () => {
+const DonateMoneyForm: React.FC = () => {
     return (
         <section className="DONATEFORM">
             <div className="center2">
@@ -66,11 +66,11 @@ const DonateForm: React.FC = () => {
                 </div>
             </div>
 
-            <a className="inspiration " href="https://github.com/PhinesTech" target="_blank">
+            <a className="inspiration " href="https://github.com/PhinesTech" target="_blank" rel="noopener noreferrer">
                 PhinesTech{' '}
             </a>
         </section>
     );
 };
 
-export default DonateForm;
+export default DonateMoneyForm;

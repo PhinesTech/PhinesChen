@@ -4,27 +4,42 @@ module.exports = {
   // GET /v1/request
   listRequest: {
     query: Joi.object({
-      name: Joi.string(),
-      quantity: Joi.number().min(1),
-      isPerishable: Joi.boolean()
+      householdSize: Joi.number(),
+      dietaryRestrictions: Joi.string(),
+      allergies: Joi.string(),
+      address: Joi.object({
+        street: Joi.string(),
+        city: Joi.string(),
+        zip: Joi.number(),
+      }),
     }),
   },
 
   // POST /v1/request
   createRequest: {
     body: Joi.object({
-      name: Joi.string(),
-      quantity: Joi.number().min(1),
-      isPerishable: Joi.boolean()
+      householdSize: Joi.number(),
+      dietaryRestrictions: Joi.string(),
+      allergies: Joi.string(),
+      address: Joi.object({
+        street: Joi.string(),
+        city: Joi.string(),
+        zip: Joi.number(),
+      }),
     }),
   },
 
   // PUT /v1/request/:requestId
   replaceRequest: {
     body: Joi.object({
-      name: Joi.string(),
-      quantity: Joi.number().min(1),
-      isPerishable: Joi.boolean()
+      householdSize: Joi.number(),
+      dietaryRestrictions: Joi.string(),
+      allergies: Joi.string(),
+      address: Joi.object({
+        street: Joi.string(),
+        city: Joi.string(),
+        zip: Joi.number(),
+      }),
     }),
     params: Joi.object({
       requestId: Joi.string()
@@ -36,9 +51,14 @@ module.exports = {
   // PATCH /v1/request/:requestId
   updateRequest: {
     body: Joi.object({
-      name: Joi.string(),
-      quantity: Joi.number().min(1),
-      isPerishable: Joi.boolean()
+      householdSize: Joi.number(),
+      dietaryRestrictions: Joi.string(),
+      allergies: Joi.string(),
+      address: Joi.object({
+        street: Joi.string(),
+        city: Joi.string(),
+        zip: Joi.number(),
+      }),
     }),
     params: Joi.object({
       requestId: Joi.string()

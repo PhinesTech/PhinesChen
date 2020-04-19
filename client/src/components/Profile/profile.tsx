@@ -23,13 +23,13 @@ const Profile: React.FC<ProfileProps> = props => {
                     <button className="profilebar">
                     Help & Support
                     </button>
-                   
-                    
-               
+
+
+
             </div>
         </div>
 
-        <a className="inspiration " href="https://github.com/PhinesTech" target="_blank">
+        <a className="inspiration " href="https://github.com/PhinesTech" target="_blank" rel="noopener noreferrer">>
             PhinesTech{' '}
         </a>
         <div>{`${userId}'s accessToken is ${accessToken}`}</div>

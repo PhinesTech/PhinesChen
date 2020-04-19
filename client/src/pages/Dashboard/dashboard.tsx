@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import { DashboardProps, DashboardState } from './dashboard.types';
 
 import Admin from '../../components/Admin/admin';
-import DonateForm from '../../components/DonateForm/donateform';
-import RequestForm from '../../components/RequestForm/requestform';
+import DonateMoneyForm from '../../components/DonateMoneyForm/donateMoneyForm';
+// import RequestForm from '../../components/RequestForm/requestform';
 import Profile from '../../components/Profile/profile';
 
 import './dashboard.scss';
+import DonateFoodForm from '../../components/DonateFoodForm/donateFoodForm';
 
 class Dashboard extends Component<DashboardProps, DashboardState> {
     state = {
@@ -67,9 +68,9 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                 {(() => {
                     switch (dashboard) {
                         case 'donate':
-                            return <DonateForm />;
+                            return <DonateMoneyForm />;
                         case 'request':
-                            return <RequestForm />;
+                            return <DonateFoodForm userId={userId} accessToken={accessToken} />;
                         case 'admin':
                             return <Admin />;
                         default:

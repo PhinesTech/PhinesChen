@@ -40,7 +40,7 @@ router
    * @apiError (Unauthorized 401)  Unauthorized  Only authenticated request can access the data
    * @apiError (Forbidden 403)     Forbidden     Only admins can access the data
    */
-  .get(authorize(LOGGED_USER), validator.query(listRequest.query), controller.list)
+  .get(authorize(ADMIN), validator.query(listRequest.query), controller.list)
   /**
    * @api {post} v1/request Create Request
    * @apiDescription Create a new request
@@ -66,7 +66,7 @@ router
    * @apiError (Unauthorized 401)  Unauthorized     Only authenticated request can create the data
    * @apiError (Forbidden 403)     Forbidden        Only admins can create the data
    */
-  .post(authorize(ADMIN), validator.body(createRequest.body), controller.create);
+  .post(validator.body(createRequest.body), controller.create);
 
 router
   .route("/:requestId")
