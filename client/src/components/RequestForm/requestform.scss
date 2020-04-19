@@ -24,17 +24,7 @@
         color:#555;
       }
     
-.right {
-    -webkit-box-flex: 1;
-            flex: 1 1 auto;
-    background-color: #fffef8;
-    padding: 30px;
-    border-radius: 0 3px 3px 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    box-shadow: 13px 13px 20px #cbced1,
-    -13px -13px 20px #ffffff;
-  }
+
   .right .title {
     font-size: 25px;
     font-weight: bold;
@@ -300,7 +290,7 @@
 }
 
 .requestbutton {
-	background-color: transparent;
+	background-color: white;
 	color: #61677C;
 	font-size: 15px;
 	font-weight: bold;
@@ -322,7 +312,8 @@
 	&:hover {
         color: white;
         background: darkgreen;
-	}
+  }
+
 	
 }
 .REQUESTLOGO{
@@ -336,7 +327,7 @@
 }
 
 .statusbutton {
-	background-color: transparent;
+	background-color: white;
 	color: #61677C;
 	font-size: 15px;
 	font-weight: bold;
@@ -352,7 +343,8 @@
 	&:hover {
         color: black;
         background: rgb(248, 248, 165);
-	}
+  }
+ 
 	
 }
   

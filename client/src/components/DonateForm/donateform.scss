@@ -24,17 +24,7 @@
         color:#555;
       }
     
-.right {
-    -webkit-box-flex: 1;
-            flex: 1 1 auto;
-    background-color: #fffef8;
-    padding: 30px;
-    border-radius: 0 3px 3px 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    box-shadow: 13px 13px 20px #cbced1,
-    -13px -13px 20px #ffffff;
-  }
+
   .right .title {
     font-size: 25px;
     font-weight: bold;
@@ -225,6 +215,7 @@
 
 .form {
   display: block;
+  
 	// width: 330px;
 	// height: auto;
 	// padding: 32px;
@@ -233,7 +224,8 @@
 //   box-shadow:  3px 3px 5px #BABECC,  -5px -5px 10px #FFF;
 	&__field {
 		display: grid;
-		gap: 24px;
+    gap: 24px;
+    
         margin-bottom: 32px;
         padding: 0% 10% 0% 30%;
 	}
@@ -254,7 +246,7 @@
 	&__input{
 		display: block;    
     -moz-appearance: none;
-    background-color: aliceblue;
+    background-color: white;
     -webkit-appearance: none;
     appearance: none;
        
@@ -277,7 +269,7 @@
 }
 
 .donatebutton {
-	background-color: transparent;
+	background-color: white;
 	color: #61677C;
 	font-size: 15px;
 	font-weight: bold;
@@ -297,6 +289,7 @@
 }
 .DONATELOGO{
     position: relative;
+    
     left: 40%;
     border-radius: 55%;
     width: 18%;
@@ -304,7 +297,7 @@
 }
 
 .cashbutton {
-	background-color: transparent;
+	background-color: white;
 	color: #61677C;
 	font-size: 15px;
 	font-weight: bold;
@@ -324,7 +317,7 @@
 	
 }
 .statusbutton {
-	background-color: transparent;
+  background-color: white;
 	color: #61677C;
 	font-size: 15px;
 	font-weight: bold;

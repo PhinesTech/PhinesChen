@@ -1,6 +1,6 @@
 .DASHBOARD{
     box-sizing: border-box;
-    background-color:rgb(238, 238, 238) ;
+    background-image: url("../../assets/images/banner.jpg"); 
     height: 100vh;
     font-family: 'Roboto', sans-serif;
     // background: -webkit-gradient(linear, left bottom, right top, from(#7c89d5), to(#f599a5));
@@ -35,11 +35,12 @@
             flex: 0 0 150px;
     width: 150px;
     height: 100%;
-    background-color: #fff;
+    background-color: white;
     color: #848697;
-    border-radius: 3px 0 0 3px;
-    box-shadow: 13px 13px 20px #cbced1,
-    -13px -13px 20px #ffffff;
+    border-radius: 10px 0 0 3px;
+    // box-shadow: 13px 13px 20px #cbced1,
+    // ;
+  
   }
   .dashboardlogo {
     background: url('../../assets/images/profilephoto.jpg');
@@ -97,7 +98,9 @@
     box-shadow: 10px 10px 5px grey;
     border-radius: 5%;
     background-color: #fffef8;
+    
   }
+ 
 
   .contacticon{
     width: 65%;
@@ -127,13 +130,13 @@
   .right {
     -webkit-box-flex: 1;
             flex: 1 1 auto;
-    background-color: #fffef8;
+            background: #ecf0f3;
     padding: 30px;
-    border-radius: 0 3px 3px 0;
+    border-radius: 10 3px 10px 0;
     overflow-x: hidden;
     overflow-y: auto;
-    box-shadow: 13px 13px 20px #cbced1,
-    -13px -13px 20px #ffffff;
+    // box-shadow: 13px 13px 20px #cbced1,
+    // ;
   }
   .right .title {
     font-size: 25px;
