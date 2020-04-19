@@ -7,6 +7,8 @@
     background-size: cover;
     background-color: rgb(31, 27, 27);
     overflow: hidden;
+
+    
 }
 .FOOD-TITLE-TEXT {
     font-size: 54px;
@@ -24,3 +26,23 @@
     margin: 2% auto auto auto;
     font-weight: bold;
 }
+
+   /* SCROLLBAR width */
+   ::-webkit-scrollbar {
+    width: 15px;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(33, 107, 33); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: darkgreen; 
+  }
+  
