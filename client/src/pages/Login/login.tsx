@@ -15,7 +15,7 @@ const Login: React.FC = () => {
                 <div className="login-div">
                     <div className="logo"></div>
                     <div className="title">Login</div>
-
+                    <form className="loginform" >
                     <div className="fields">
                         <div className="username">
                             <svg fill="#999" viewBox="0 0 1024 1024">
@@ -36,13 +36,16 @@ const Login: React.FC = () => {
                             <input type="password" className="pass-input" placeholder="password" />
                         </div>
                     </div>
+                  
                     <Link to="dashboard">
                     <button className="signin-button bg-yellow-500">Login</button>
                     </Link>
+                    </form>
                     <div className="link">
                         <a href="#">Forgot password?</a> or
                         <Link to="signup">&nbsp; Sign Up</Link>
                     </div>
+                  
                 </div>
             </div>
             <Footer />

@@ -12,7 +12,7 @@ const Signup: React.FC = () => {
             <div className="SIGNUP">
                 <div className="signup-div">
                     <div className="title">Register</div>
-
+                    <form className="signupform" >
                     <div className="signupfields">
                         <div className="firstname">
                             <svg fill="#999" viewBox="0 0 20 20">
@@ -64,6 +64,7 @@ const Signup: React.FC = () => {
                     <Link to="dashboard">
                         <button className="submit-button bg-yellow-500">Submit</button>
                     </Link>
+                    </form>
                 </div>
             </div>
             <Footer />
