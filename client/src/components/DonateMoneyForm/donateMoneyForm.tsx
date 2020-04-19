@@ -36,7 +36,7 @@ const DonateMoneyForm: React.FC = () => {
                         $1000
                     </button>
                     <form className="form">
-                        <div className="form__field">
+                        <div className="form__field3">
                             <div className="input-group">
                                 <label className="input-group__label">Amount</label>
                                 <input className="input-group__input" type="text" placeholder="  $50.00" />
@@ -49,6 +49,7 @@ const DonateMoneyForm: React.FC = () => {
                                 <label className="input-group__label">Card Number</label>
                                 <input className="input-group__input" type="email" placeholder="  1234 5678 9123" />
                             </div>
+                            <div className="form__field4">
                             <div className="input-group">
                                 <label className="input-group__label">Expiration Date</label>
                                 <input className="input-group__input" type="text" placeholder="  Expiration (MM/YY)" />
@@ -56,6 +57,7 @@ const DonateMoneyForm: React.FC = () => {
                             <div className="input-group">
                                 <label className="input-group__label">Security Code</label>
                                 <input className="input-group__input" type="text" placeholder="  123" />
+                            </div>
                             </div>
                         </div>
 

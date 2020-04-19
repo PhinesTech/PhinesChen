@@ -5,11 +5,10 @@ import { DashboardProps, DashboardState } from './dashboard.types';
 
 import Admin from '../../components/Admin/admin';
 import DonateMoneyForm from '../../components/DonateMoneyForm/donateMoneyForm';
-// import RequestForm from '../../components/RequestForm/requestform';
+import RequestForm from '../../components/RequestForm/requestForm';
 import Profile from '../../components/Profile/profile';
 
 import './dashboard.scss';
-import DonateFoodForm from '../../components/DonateFoodForm/donateFoodForm';
 
 class Dashboard extends Component<DashboardProps, DashboardState> {
     state = {
@@ -70,7 +69,7 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                         case 'donate':
                             return <DonateMoneyForm />;
                         case 'request':
-                            return <DonateFoodForm userId={userId} accessToken={accessToken} />;
+                            return <RequestForm userId={userId} accessToken={accessToken} />;
                         case 'admin':
                             return <Admin />;
                         default:

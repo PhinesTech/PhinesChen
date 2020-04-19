@@ -2,7 +2,7 @@ import React, { Component, ChangeEvent } from 'react';
 import axios from 'axios';
 
 import REQUESTLOGO from '../../assets/images/request.png';
-import './requestform.scss';
+import './requestForm.scss';
 import { RequestFormProps, RequestFormState } from './requestForm.types';
 
 const token =
@@ -10,13 +10,19 @@ const token =
 
 class RequestForm extends Component<RequestFormProps, RequestFormState> {
     state = {
-        name: '',
-        quantity: 1,
+        householdSize: 1,
+        dietaryRestrictions: '',
+        allergies: '',
+        address: {
+            street: '',
+            city: '',
+            zip: 90000,
+        },
     };
 
     constructor(props: any) {
-      super(props);
-      this.handleSubmit = this.handleSubmit.bind(this);
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(event: any) {
@@ -25,12 +31,7 @@ class RequestForm extends Component<RequestFormProps, RequestFormState> {
         axios
             .post(
                 'http://localhost:3001/v1/request/',
-                {
-                    body: {
-                      name: this.state.name,
-                      quantity: this.state.quantity
-                    },
-                },
+                this.state,
                 {
                     headers: {
                         Authorization: `Basic ${token}`,
@@ -43,11 +44,11 @@ class RequestForm extends Component<RequestFormProps, RequestFormState> {
     }
 
     render() {
-        const { name, quantity } = this.state;
+        const { dietaryRestrictions, allergies, address } = this.state;
 
         return (
             <section className="REQUESTFORM">
-                <div className="center1">
+                <div className="center5">
                     <div className="right">
                         <div className="title">Request Form</div>
                         <div className="description">
@@ -65,26 +66,72 @@ class RequestForm extends Component<RequestFormProps, RequestFormState> {
                         <form className="form" onSubmit={this.handleSubmit}>
                             <div className="form__field">
                                 <div className="input-group">
-                                    <label className="input-group__label">Food Name</label>
+                                    <label className="input-group__label">Household Size</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="number"
+                                        min="1"
+                                        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                                            this.setState({ householdSize: Number(event.target.value) })
+                                        }
+                                    />
+                                </div>
+                                <div className="input-group">
+                                    <label className="input-group__label">Dietary Restrictions</label>
                                     <input
                                         className="input-group__input"
                                         type="text"
-                                        value={name}
+                                        value={dietaryRestrictions}
                                         onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                                            this.setState({ name: event.target.value })
+                                            this.setState({ dietaryRestrictions: event.target.value })
+                                        }
+                                    />
+                                </div>
+                                <div className="input-group">
+                                    <label className="input-group__label">City</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="text"
+                                        value={address.city}
+                                        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                                            this.setState({ address: { ...address, city: event.target.value } })
                                         }
                                     />
                                 </div>
                             </div>
                             <div className="form__field1">
                                 <div className="input-group">
-                                    <label className="input-group__label">Quantity</label>
+                                    <label className="input-group__label">Allergies</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="text"
+                                        value={allergies}
+                                        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                                            this.setState({ allergies: event.target.value })
+                                        }
+                                    />
+                                </div>
+
+                                <div className="input-group">
+                                    <label className="input-group__label">Street Address</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="text"
+                                        value={address.street}
+                                        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                                            this.setState({ address: { ...address, street: event.target.value } })
+                                        }
+                                    />
+                                </div>
+
+                                <div className="input-group">
+                                    <label className="input-group__label">Zipcode</label>
                                     <input
                                         className="input-group__input"
                                         type="number"
-                                        value={quantity}
+                                        min="10000"
                                         onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                                            this.setState({ quantity: Number(event.target.value) })
+                                            this.setState({ address: { ...address, zip: Number(event.target.value) } })
                                         }
                                     />
                                 </div>

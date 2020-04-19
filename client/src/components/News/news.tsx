@@ -12,7 +12,7 @@ const News: React.FC = () => {
                 <br />
                 <br />
 
-                <h1>News</h1>
+                <h1>Stories</h1>
             </div>
             <div className="newsbox firstbox">
                 <div className="newsheader ">New Program Aims to Help Families in need find healthier produce</div>

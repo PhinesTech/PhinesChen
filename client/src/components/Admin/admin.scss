@@ -4,10 +4,10 @@
         position: absolute;
         display: block;
         top: 50%;
-        left: 57.5%;
+        left: 55%;
         -webkit-transform: translate(-50%, -50%);
                 transform: translate(-50%, -50%);
-        width: 70vw;
+        width: 70.5%;
         height: 88vh;
         max-width: 800px;
         display: -webkit-box;
@@ -226,8 +226,8 @@ body { width: 100%; height: 100%; display: flex; background: #DBDDE5; }
 
 #app {
   margin: auto;
-  width: 60vw;
-  min-height: 50vh;
+  // width: 60vw;
+  // min-height: 50vh;
   background: #EBEBEC;
   overflow: hidden;
   box-shadow: 0 1rem 1rem rgba(black, 0.05);
