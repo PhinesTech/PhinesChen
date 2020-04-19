@@ -1,5 +1,5 @@
 .FOODLOCATOR {
-        background-image: url(../../assets/images/banner.jpg);
+        background-image: url("../../assets/images/foodbanner.jpg");
         width: auto;
         height: 590px;
         background-size: 200%;
@@ -7,22 +7,6 @@
         background-size: cover;
         background-color: rgb(31, 27, 27);
         overflow: hidden;
-}
-.FOOD-TITLE-TEXT {
-        font-size: 54px;
-        line-height: 1em;
-        text-align: center;
-        margin: 21% auto auto auto;
-        color: rgb(238, 238, 238);
-        font-weight: bolder;
-        overflow: hidden;
-}
-.food-title-subtext {
-        color:rgb(206, 204, 204);
-        font-size: 20px;
-        text-align: center;
-        margin: 2% auto auto auto;
-        font-weight: bold;
 }
 .foodlocation{
     color: white;

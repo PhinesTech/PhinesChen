@@ -15,6 +15,7 @@ const FoodContent: React.FC = () => {
             <div className="foodmap ">
                 <h2>Map</h2>
                 <h1>Food Distribution Locations</h1>
+                <br/>
                 <span className="map">
                     <img src={FOODMAP} alt="FOODMAP"></img>
                 </span>
