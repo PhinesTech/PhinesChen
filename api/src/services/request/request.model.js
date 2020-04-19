@@ -5,25 +5,37 @@ const { omitBy, isNil } = require("lodash");
 const APIError = require("../../utils/APIError");
 
 /**
- * Food Schema
+ * Request Schema
  * @private
  */
-const foodSchema = new mongoose.Schema(
+const requestSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-      trim: true,
-      lowercase: true,
-    },
-    quantity: {
+    householdSize: {
       type: Number,
       required: true,
       trim: true,
     },
-    isPerishable: {
-      type: Boolean,
-      required: true,
+    dietaryRestrictions: {
+      type: String,
+      trim: true,
+    },
+    allergies: {
+      type: String,
+      trim: true,
+    },
+    address: {
+      type: Object,
+      street: {
+        type: String,
+        trim: true
+      },
+      city: {
+        type: String,
+        trim: true,
+      },
+      zip: {
+        type: Number
+      }
     }
   },
   {
@@ -34,14 +46,15 @@ const foodSchema = new mongoose.Schema(
 /**
  * Methods
  */
-foodSchema.method({
+requestSchema.method({
   transform() {
     const transformed = {};
     const fields = [
       "id",
-      "name",
-      "quantity",
-      "isPerishable",
+      "householdSize",
+      "dietaryRestrictions",
+      "allergies",
+      "address",
       "createdAt",
     ];
 
@@ -56,27 +69,27 @@ foodSchema.method({
 /**
  * Statics
  */
-foodSchema.statics = {
+requestSchema.statics = {
   /**
-   * Get food
+   * Get request
    *
-   * @param {ObjectId} id - The objectId of food.
-   * @returns {Promise<Food, APIError>}
+   * @param {ObjectId} id - The objectId of request.
+   * @returns {Promise<Request, APIError>}
    */
   async get(id) {
     try {
-      let food;
+      let request;
 
       if (mongoose.Types.ObjectId.isValid(id)) {
-        food = await this.findById(id).exec();
+        request = await this.findById(id).exec();
       }
 
-      if (food) {
-        return food;
+      if (request) {
+        return request;
       }
 
       throw new APIError({
-        message: "Food does not exist",
+        message: "Request does not exist",
         status: httpStatus.NOT_FOUND,
       });
     } catch (error) {
@@ -85,14 +98,14 @@ foodSchema.statics = {
   },
 
   /**
-   * List food in descending order of 'createdAt' timestamp.
+   * List request in descending order of 'createdAt' timestamp.
    *
-   * @param {number} skip - Number of food to be skipped.
-   * @param {number} limit - Limit number of food to be returned.
-   * @returns {Promise<Food[]>}
+   * @param {number} skip - Number of request to be skipped.
+   * @param {number} limit - Limit number of request to be returned.
+   * @returns {Promise<Request[]>}
    */
-  list({ page = 1, perPage = 30, name, quantity, isPerishable }) {
-    const options = omitBy({ name, quantity, isPerishable }, isNil);
+  list({ page = 1, perPage = 30, householdSize, dietaryRestrictions, allergies, address }) {
+    const options = omitBy({ householdSize, dietaryRestrictions, allergies, address }, isNil);
 
     return this.find(options)
       .sort({ createdAt: -1 })
@@ -106,4 +119,4 @@ foodSchema.statics = {
 /**
  * @typedef User
  */
-module.exports = mongoose.model("Food", foodSchema);
+module.exports = mongoose.model("Request", requestSchema);

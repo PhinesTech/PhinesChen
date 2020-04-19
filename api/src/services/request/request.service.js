@@ -1,80 +1,80 @@
 const { omit } = require("lodash");
 
-const Food = require("./food.model");
+const Request = require("./request.model");
 
 /**
- * Get food
+ * Get request
  * @public
  */
-exports.get = async (id) => Food.get(id);
+exports.get = async (id) => Request.get(id);
 
 /**
- * Get logged in food info
+ * Get logged in request info
  * @public
  */
-exports.loggedIn = (req, res) => res.json(req.food.transform());
+exports.loggedIn = (req, res) => res.json(req.request.transform());
 
 /**
- * Create new food
+ * Create new request
  * @public
  */
-exports.create = async (foodData) => {
+exports.create = async (requestData) => {
   try {
-    const food = new Food(foodData);
-    const savedFood = await food.save();
-    return savedFood.transform();
+    const request = new Request(requestData);
+    const savedRequest = await request.save();
+    return savedRequest.transform();
   } catch (error) {
     throw error;
   }
 };
 
 /**
- * Replace existing food
+ * Replace existing request
  * @public
  */
-exports.replace = async (food, newFoodData) => {
+exports.replace = async (request, newRequestData) => {
   try {
-    const newFood = new Food(newFoodData);
-    const newFoodObject = omit(newFood.toObject(), "_id");
+    const newRequest = new Request(newRequestData);
+    const newRequestObject = omit(newRequest.toObject(), "_id");
 
-    await food.update(newFoodObject, { override: true, upsert: true });
-    const savedFood = await Food.findById(food._id);
+    await request.update(newRequestObject, { override: true, upsert: true });
+    const savedRequest = await Request.findById(request._id);
 
-    return savedFood.transform();
+    return savedRequest.transform();
   } catch (error) {
     throw error;
   }
 };
 
 /**
- * Update existing food
+ * Update existing request
  * @public
  */
-exports.update = async (food, updatedData) => {
+exports.update = async (request, updatedData) => {
   try {
-    const savedFood = await updatedFood.save();
-    return savedFood.transform();
+    const savedRequest = await updatedRequest.save();
+    return savedRequest.transform();
   } catch (error) {
     throw error;
   }
 };
 
 /**
- * Get food list
+ * Get request list
  * @public
  */
 exports.list = async (params) => {
   try {
-    const foods = await Food.list(params);
-    const transformedFoods = foods.map((food) => food.transform());
-    return transformedFoods;
+    const requests = await Request.list(params);
+    const transformedRequests = requests.map((request) => request.transform());
+    return transformedRequests;
   } catch (error) {
     throw error;
   }
 };
 
 /**
- * Delete food
+ * Delete request
  * @public
  */
-exports.remove = async (food) => food.remove();
+exports.remove = async (request) => request.remove();

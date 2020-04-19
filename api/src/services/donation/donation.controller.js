@@ -1,16 +1,16 @@
 const httpStatus = require("http-status");
 
-const service = require("./user.service");
+const service = require("./donation.service");
 const { handler: errorHandler } = require("../../middlewares/error");
 
 /**
- * Load food and append to req.
+ * Load donation and append to req.
  * @public
  */
 exports.load = async (req, res, next, id) => {
   try {
-    const food = await service.get(id);
-    req.locals = { food };
+    const donation = await service.get(id);
+    req.locals = { donation };
     return next();
   } catch (error) {
     return errorHandler(error, req, res);
@@ -18,19 +18,13 @@ exports.load = async (req, res, next, id) => {
 };
 
 /**
- * Get food
+ * Get donation
  * @public
  */
-exports.get = (req, res) => res.json(req.locals.food.transform());
+exports.get = (req, res) => res.json(req.locals.donation.transform());
 
 /**
- * Get logged in food info
- * @public
- */
-exports.loggedIn = (req, res) => res.json(req.food.transform());
-
-/**
- * Create new food
+ * Create new donation
  * @public
  */
 exports.create = async (req, res, next) => {
@@ -43,13 +37,13 @@ exports.create = async (req, res, next) => {
 };
 
 /**
- * Replace existing food
+ * Replace existing donation
  * @public
  */
 exports.replace = async (req, res, next) => {
   try {
-    const { food } = req.locals;
-    const response = await service.replace(food, req.body);
+    const { donation } = req.locals;
+    const response = await service.replace(donation, req.body);
     return res.json(response);
   } catch (error) {
     return next(error);
@@ -57,13 +51,13 @@ exports.replace = async (req, res, next) => {
 };
 
 /**
- * Update existing food
+ * Update existing donation
  * @public
  */
 exports.update = async (req, res, next) => {
   try {
-    const { food } = req.locals;
-    const response = await service.update(food, req.body);
+    const { donation } = req.locals;
+    const response = await service.update(donation, req.body);
     return res.json(response);
   } catch (error) {
     return next(error);
@@ -71,7 +65,7 @@ exports.update = async (req, res, next) => {
 };
 
 /**
- * Get food list
+ * Get donation list
  * @public
  */
 exports.list = async (req, res, next) => {
@@ -84,13 +78,13 @@ exports.list = async (req, res, next) => {
 };
 
 /**
- * Delete food
+ * Delete donation
  * @public
  */
 exports.remove = async (req, res, next) => {
   try {
-    const { food } = req.locals;
-    await service.remove(food);
+    const { donation } = req.locals;
+    await service.remove(donation);
     res.status(httpStatus.NO_CONTENT).end();
   } catch (error) {
     next(error);

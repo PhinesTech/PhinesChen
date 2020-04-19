@@ -1,16 +1,16 @@
 const httpStatus = require("http-status");
 
-const service = require("./user.service");
+const service = require("./request.service");
 const { handler: errorHandler } = require("../../middlewares/error");
 
 /**
- * Load food and append to req.
+ * Load request and append to req.
  * @public
  */
 exports.load = async (req, res, next, id) => {
   try {
-    const food = await service.get(id);
-    req.locals = { food };
+    const request = await service.get(id);
+    req.locals = { request };
     return next();
   } catch (error) {
     return errorHandler(error, req, res);
@@ -18,19 +18,19 @@ exports.load = async (req, res, next, id) => {
 };
 
 /**
- * Get food
+ * Get request
  * @public
  */
-exports.get = (req, res) => res.json(req.locals.food.transform());
+exports.get = (req, res) => res.json(req.locals.request.transform());
 
 /**
- * Get logged in food info
+ * Get logged in request info
  * @public
  */
-exports.loggedIn = (req, res) => res.json(req.food.transform());
+exports.loggedIn = (req, res) => res.json(req.request.transform());
 
 /**
- * Create new food
+ * Create new request
  * @public
  */
 exports.create = async (req, res, next) => {
@@ -43,13 +43,13 @@ exports.create = async (req, res, next) => {
 };
 
 /**
- * Replace existing food
+ * Replace existing request
  * @public
  */
 exports.replace = async (req, res, next) => {
   try {
-    const { food } = req.locals;
-    const response = await service.replace(food, req.body);
+    const { request } = req.locals;
+    const response = await service.replace(request, req.body);
     return res.json(response);
   } catch (error) {
     return next(error);
@@ -57,13 +57,13 @@ exports.replace = async (req, res, next) => {
 };
 
 /**
- * Update existing food
+ * Update existing request
  * @public
  */
 exports.update = async (req, res, next) => {
   try {
-    const { food } = req.locals;
-    const response = await service.update(food, req.body);
+    const { request } = req.locals;
+    const response = await service.update(request, req.body);
     return res.json(response);
   } catch (error) {
     return next(error);
@@ -71,7 +71,7 @@ exports.update = async (req, res, next) => {
 };
 
 /**
- * Get food list
+ * Get request list
  * @public
  */
 exports.list = async (req, res, next) => {
@@ -84,13 +84,13 @@ exports.list = async (req, res, next) => {
 };
 
 /**
- * Delete food
+ * Delete request
  * @public
  */
 exports.remove = async (req, res, next) => {
   try {
-    const { food } = req.locals;
-    await service.remove(food);
+    const { request } = req.locals;
+    await service.remove(request);
     res.status(httpStatus.NO_CONTENT).end();
   } catch (error) {
     next(error);

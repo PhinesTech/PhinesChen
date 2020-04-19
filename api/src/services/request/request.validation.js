@@ -1,8 +1,8 @@
 const Joi = require("@hapi/joi");
 
 module.exports = {
-  // GET /v1/food
-  listFood: {
+  // GET /v1/request
+  listRequest: {
     query: Joi.object({
       name: Joi.string(),
       quantity: Joi.number().min(1),
@@ -10,8 +10,8 @@ module.exports = {
     }),
   },
 
-  // POST /v1/food
-  createFood: {
+  // POST /v1/request
+  createRequest: {
     body: Joi.object({
       name: Joi.string(),
       quantity: Joi.number().min(1),
@@ -19,29 +19,29 @@ module.exports = {
     }),
   },
 
-  // PUT /v1/food/:foodId
-  replaceFood: {
+  // PUT /v1/request/:requestId
+  replaceRequest: {
     body: Joi.object({
       name: Joi.string(),
       quantity: Joi.number().min(1),
       isPerishable: Joi.boolean()
     }),
     params: Joi.object({
-      foodId: Joi.string()
+      requestId: Joi.string()
         .regex(/^[a-fA-F0-9]{24}$/)
         .required(),
     }),
   },
 
-  // PATCH /v1/food/:foodId
-  updateFood: {
+  // PATCH /v1/request/:requestId
+  updateRequest: {
     body: Joi.object({
       name: Joi.string(),
       quantity: Joi.number().min(1),
       isPerishable: Joi.boolean()
     }),
     params: Joi.object({
-      foodId: Joi.string()
+      requestId: Joi.string()
         .regex(/^[a-fA-F0-9]{24}$/)
         .required(),
     }),

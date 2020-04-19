@@ -32,6 +32,20 @@ const foodSchema = new mongoose.Schema(
 );
 
 /**
+ * Add your
+ * - pre-save hooks
+ * - validations
+ * - virtuals
+ */
+foodSchema.pre("save", async function save(next) {
+  try {
+    return next();
+  } catch (error) {
+    return next(error);
+  }
+});
+
+/**
  * Methods
  */
 foodSchema.method({
@@ -104,6 +118,6 @@ foodSchema.statics = {
 };
 
 /**
- * @typedef User
+ * @typedef Food
  */
 module.exports = mongoose.model("Food", foodSchema);

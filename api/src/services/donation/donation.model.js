@@ -5,10 +5,10 @@ const { omitBy, isNil } = require("lodash");
 const APIError = require("../../utils/APIError");
 
 /**
- * Food Schema
+ * Donation Schema
  * @private
  */
-const foodSchema = new mongoose.Schema(
+const donationSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -34,7 +34,7 @@ const foodSchema = new mongoose.Schema(
 /**
  * Methods
  */
-foodSchema.method({
+donationSchema.method({
   transform() {
     const transformed = {};
     const fields = [
@@ -56,27 +56,27 @@ foodSchema.method({
 /**
  * Statics
  */
-foodSchema.statics = {
+donationSchema.statics = {
   /**
-   * Get food
+   * Get donation
    *
-   * @param {ObjectId} id - The objectId of food.
+   * @param {ObjectId} id - The objectId of donation.
    * @returns {Promise<Food, APIError>}
    */
   async get(id) {
     try {
-      let food;
+      let donation;
 
       if (mongoose.Types.ObjectId.isValid(id)) {
-        food = await this.findById(id).exec();
+        donation = await this.findById(id).exec();
       }
 
-      if (food) {
-        return food;
+      if (donation) {
+        return donation;
       }
 
       throw new APIError({
-        message: "Food does not exist",
+        message: "Donation does not exist",
         status: httpStatus.NOT_FOUND,
       });
     } catch (error) {
@@ -85,11 +85,11 @@ foodSchema.statics = {
   },
 
   /**
-   * List food in descending order of 'createdAt' timestamp.
+   * List donations in descending order of 'createdAt' timestamp.
    *
-   * @param {number} skip - Number of food to be skipped.
-   * @param {number} limit - Limit number of food to be returned.
-   * @returns {Promise<Food[]>}
+   * @param {number} skip - Number of Donations to be skipped.
+   * @param {number} limit - Limit number of donations to be returned.
+   * @returns {Promise<Donations[]>}
    */
   list({ page = 1, perPage = 30, name, quantity, isPerishable }) {
     const options = omitBy({ name, quantity, isPerishable }, isNil);
@@ -104,6 +104,6 @@ foodSchema.statics = {
 };
 
 /**
- * @typedef User
+ * @typedef Donation
  */
-module.exports = mongoose.model("Food", foodSchema);
+module.exports = mongoose.model("Donation", donationSchema);
