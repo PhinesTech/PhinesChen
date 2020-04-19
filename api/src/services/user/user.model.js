@@ -78,8 +78,6 @@ userSchema.pre("save", async function save(next) {
     const hash = await bcrypt.hash(this.password, rounds);
     this.password = hash;
 
-    console.log("this: ", this.password);
-
     return next();
   } catch (error) {
     return next(error);
@@ -104,8 +102,6 @@ userSchema.method({
     fields.forEach((field) => {
       transformed[field] = this[field];
     });
-
-    console.log("transformed: ", transformed);
 
     return transformed;
   },
