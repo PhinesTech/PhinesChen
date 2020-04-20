@@ -1,3 +1,18 @@
+export type Token = {
+  tokenType: String;
+  accessToken: String;
+  refreshToken: String;
+  expiresIn: String;
+}
+
+export type User = {
+  id: String;
+  name: String;
+  email: String;
+  donatedFood: Array<String>;
+  requestedFood: Array<String>;
+  role: String;
+}
 
 type Address = {
   street: String;
@@ -6,8 +21,8 @@ type Address = {
 }
 
 export type RequestFormProps = {
-  userId: String;
-  accessToken: String;
+  token: Token;
+  user: User;
 };
 
 export type RequestFormState = {

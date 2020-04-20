@@ -13,9 +13,10 @@ const Navbar: React.FC = () => {
     return (
         <nav className="navbar bg-yellow-600 flex-1 flex sm:items-stretch sm:justify-start sticky">
             <div className="mcfb-logo ">
-             
-             <Link to="/"> <img src={MCFB} style={styles} alt="MCFB LOGO" />
-             </Link>
+                <Link to="/">
+                    {' '}
+                    <img src={MCFB} style={styles} alt="MCFB LOGO" />
+                </Link>
             </div>
 
             <div className="NAVTEXT block flex-auto justify-center">
@@ -23,7 +24,7 @@ const Navbar: React.FC = () => {
                     <li className="mr-3 ">
                         <a
                             className="inline-block rounded font-bold hover:text-gray-400 text-gray-100 hover:bg-green-900 py-2 px-3"
-                            href="#"
+                            href="http://localhost:3000/"
                         >
                             ABOUT
                         </a>
@@ -32,14 +33,14 @@ const Navbar: React.FC = () => {
                         <Link
                             className="inline-block rounded font-bold hover:text-gray-400 text-gray-100 hover:bg-green-900 py-2 px-3"
                             to="foodlocator"
-                            >
+                        >
                             FIND FOOD
                         </Link>
                     </li>
                     <li className="mr-3">
                         <a
                             className="inline-block rounded font-bold hover:text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-100 "
-                            href="#"
+                            href="http://localhost:3000/"
                         >
                             PROGRAM
                         </a>
@@ -47,7 +48,7 @@ const Navbar: React.FC = () => {
                     <li className="mr-3">
                         <a
                             className="inline-block rounded font-bold hover:text-gray-400  hover:bg-green-900 py-2 px-3 text-gray-100 "
-                            href="#"
+                            href="http://localhost:3000/"
                         >
                             VOLUNTEER
                         </a>
@@ -55,15 +56,15 @@ const Navbar: React.FC = () => {
                     <li>
                         <a
                             className="inline-block rounded font-bold hover:text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-100 "
-                            href="#"
+                            href="http://localhost:3000/"
                         >
                             CONTACT US
                         </a>
                     </li>
-                    <li className=" mr-3">
+                    <li className="mr-3">
                         <a
                             className="inline-block rounded font-bold hover:text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-100 "
-                            href="#"
+                            href="http://localhost:3000/"
                         >
                             DONATE
                         </a>

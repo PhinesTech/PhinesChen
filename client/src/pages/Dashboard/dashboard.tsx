@@ -16,7 +16,7 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
     };
 
     render() {
-        const { userId, accessToken } = this.props;
+        const { user } = this.props.location.state;
         const { dashboard } = this.state;
 
         return (
@@ -42,11 +42,13 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                                         <button onClick={() => this.setState({ dashboard: '' })}>Profile</button>
                                     </div>
                                 </li>
-                                <li>
-                                    <div className="contacticon">
-                                        <button onClick={() => this.setState({ dashboard: 'admin' })}>Admin</button>
-                                    </div>
-                                </li>
+                                {user.role === 'admin' ? (
+                                    <li>
+                                        <div className="contacticon">
+                                            <button onClick={() => this.setState({ dashboard: 'admin' })}>Admin</button>
+                                        </div>
+                                    </li>
+                                ) : null}
                                 <li>
                                     <div className="donateicon">
                                         <button onClick={() => this.setState({ dashboard: 'donate' })}>Donate</button>
@@ -69,11 +71,11 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                         case 'donate':
                             return <DonateMoneyForm />;
                         case 'request':
-                            return <RequestForm userId={userId} accessToken={accessToken} />;
+                            return <RequestForm {...this.props} />;
                         case 'admin':
                             return <Admin />;
                         default:
-                            return <Profile userId={userId} accessToken={accessToken} />;
+                            return <Profile {...this.props} />;
                     }
                 })()}
             </section>

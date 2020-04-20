@@ -8,6 +8,8 @@ const service = require("./auth.service");
  */
 exports.register = async (req, res, next) => {
   try {
+    // res.set('Access-Control-Allow-Origin', '*');
+    // res.type('application/json')
     const response = await service.register(req.body);
     console.log("response: ", response);
     return res.status(httpStatus.CREATED).json(response);
@@ -22,6 +24,9 @@ exports.register = async (req, res, next) => {
  */
 exports.login = async (req, res, next) => {
   try {
+    // res.header('Access-Control-Allow-Origin', 'Origin, X-Requested-With, Content-Type, Accept');
+    // res.set('Access-Control-Allow-Origin', '*');
+    // res.type('application/json')
     const response = await service.login(req.body);
     return res.json(response);
   } catch (error) {

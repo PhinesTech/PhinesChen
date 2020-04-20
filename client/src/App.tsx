@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
+import history from './app.history';
 
 import Home from './pages/Home/Home';
 import FoodLocator from './pages/FoodLocator/foodlocator'
@@ -11,7 +12,7 @@ import './App.scss';
 
 const App: React.FC = () => {
     return (
-        <Router>
+        <Router history={history}>
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/foodlocator" component={FoodLocator} />
