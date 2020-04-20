@@ -133,7 +133,7 @@ const DonateMoneyForm: React.FC = () => {
 
                             <div className="input-group">
                                 <label className="input-group__label">List of Ingredients</label>
-                                <input className="input-group__input" type="number" />
+                                <input className="input-group__input" type="text" />
                             </div>
                         </div>
                         <button className="donatebutton2" type="button">

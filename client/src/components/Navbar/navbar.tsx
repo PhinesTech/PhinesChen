@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
                             className="inline-block rounded font-bold hover:text-gray-400 hover:bg-green-900 py-2 px-3 text-gray-100 "
                             href="#"
                         >
-                            PROGRAM
+                            PROGRAMS
                         </a>
                     </li>
                     <li className="mr-3">
