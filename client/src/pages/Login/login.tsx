@@ -5,9 +5,8 @@ import Axios from 'axios';
 import history from '../../app.history';
 import Navbar from '../../components/Navbar/navbar';
 import Footer from '../../components/Footer/footer';
-
-import './login.scss';
 import { LoginProps, LoginState } from './login.types';
+import './login.scss';
 
 class Login extends Component<LoginProps, LoginState> {
     state = {
@@ -24,7 +23,7 @@ class Login extends Component<LoginProps, LoginState> {
         event.preventDefault();
 
         Axios.post('http://localhost:3001/v1/auth/login', this.state).then(response => {
-            history.push('/dashboard', response.data)
+            history.push('/dashboard', response.data);
         });
     }
 
