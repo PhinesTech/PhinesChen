@@ -42,7 +42,7 @@ const Admin: React.FC = () => {
                                 fill="rgb(111,232,255)"
                             ></path>
                             <text transform="matrix(1,0,0,1,195,5)">+14%</text>
-        
+
                             {/* style="font-family:&amp;quot;Open Sans&amp;quot;;font-weight:700;font-size:12px;font-style:normal;fill:#6fe8ff;stroke:none;" */}
                             <div className="stock">
                                     <div className="stock-logo paperpillar">
@@ -232,7 +232,7 @@ const Admin: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <a className="inspiration " href="https://github.com/PhinesTech" target="_blank">
+            <a className="inspiration " href="https://github.com/PhinesTech" target="_blank" rel="noopener noreferrer">
                 PhinesTech{' '}
             </a>
         </section>
