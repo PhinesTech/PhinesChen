@@ -1,5 +1,5 @@
 const express = require("express");
-const validator = require('express-joi-validation').createValidator({})
+const validator = require("express-joi-validation").createValidator({});
 
 const controller = require("./auth.controller");
 const oAuthLogin = require("../../middlewares/auth").oAuth;
@@ -34,7 +34,9 @@ const router = express.Router();
  *
  * @apiError (Bad Request 400)  ValidationError  Some parameters may contain invalid values
  */
-router.route("/register").post(validator.body(register.body), controller.register);
+router
+  .route("/register")
+  .post(validator.body(register.body), controller.register);
 
 /**
  * @api {post} v1/auth/login Login
@@ -84,7 +86,9 @@ router.route("/login").post(validator.body(login.body), controller.login);
  * @apiError (Bad Request 400)  ValidationError  Some parameters may contain invalid values
  * @apiError (Unauthorized 401)  Unauthorized     Incorrect email or refreshToken
  */
-router.route("/refresh-token").post(validator.body(refresh.body), controller.refresh);
+router
+  .route("/refresh-token")
+  .post(validator.body(refresh.body), controller.refresh);
 
 /**
  * TODO: POST /v1/auth/reset-password

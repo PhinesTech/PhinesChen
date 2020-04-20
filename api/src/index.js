@@ -12,7 +12,7 @@ mongoose.connect();
 // listen to requests
 app.listen(port, host, () =>
   console.info(
-    chalk.connected(`Example app listening on port ${port} in ${env} mode!`)
+    chalk.connected(`TSG api listening on port ${port} in ${env} mode!`)
   )
 );
 

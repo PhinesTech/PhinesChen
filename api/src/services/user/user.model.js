@@ -7,16 +7,12 @@ const jwt = require("jwt-simple");
 const uuidv4 = require("uuid/v4");
 
 const APIError = require("../../utils/APIError");
-const {
-  env,
-  jwtSecret,
-  jwtExpirationInterval,
-} = require("../../config/vars");
+const { env, jwtSecret, jwtExpirationInterval } = require("../../config/vars");
 
 /**
  * User Roles
  */
-const roles = ["user", "admin"];
+const roles = ["user", "admin", "donator", "partner"];
 
 /**
  * User Schema
@@ -44,6 +40,19 @@ const userSchema = new mongoose.Schema(
       index: true,
       trim: true,
     },
+    companyName: {
+      type: String,
+      index: true,
+      trim: true,
+    },
+    donatedFood: {
+      type: Array,
+      default: [],
+    },
+    requestedFood: {
+      type: Array,
+      default: [],
+    },
     services: {
       facebook: String,
       google: String,
@@ -52,10 +61,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: roles,
       default: "user",
-    },
-    picture: {
-      type: String,
-      trim: true,
     },
   },
   {
@@ -78,8 +83,6 @@ userSchema.pre("save", async function save(next) {
     const hash = await bcrypt.hash(this.password, rounds);
     this.password = hash;
 
-    console.log("this: ", this.password);
-
     return next();
   } catch (error) {
     return next(error);
@@ -92,13 +95,19 @@ userSchema.pre("save", async function save(next) {
 userSchema.method({
   transform() {
     const transformed = {};
-    const fields = ["id", "name", "email", "picture", "role", "createdAt"];
+    const fields = [
+      "id",
+      "name",
+      "companyName",
+      "email",
+      "donatedFood",
+      "requestedFood",
+      "role",
+    ];
 
     fields.forEach((field) => {
       transformed[field] = this[field];
     });
-
-    console.log("transformed: ", transformed)
 
     return transformed;
   },
@@ -187,8 +196,8 @@ userSchema.statics = {
    * @param {number} limit - Limit number of users to be returned.
    * @returns {Promise<User[]>}
    */
-  list({ page = 1, perPage = 30, name, email, role }) {
-    const options = omitBy({ name, email, role }, isNil);
+  list({ page = 1, perPage = 30, name, companyName, email, service, donatedFood, requestedFood, role }) {
+    const options = omitBy({ name, companyName, email, service, donatedFood, requestedFood, role }, isNil);
 
     return this.find(options)
       .sort({ createdAt: -1 })
@@ -226,14 +235,13 @@ userSchema.statics = {
     return error;
   },
 
-  async oAuthLogin({ service, id, email, name, picture }) {
+  async oAuthLogin({ service, id, email, name }) {
     const user = await this.findOne({
       $or: [{ [`services.${service}`]: id }, { email }],
     });
     if (user) {
       user.services[service] = id;
       if (!user.name) user.name = name;
-      if (!user.picture) user.picture = picture;
       return user.save();
     }
     const password = uuidv4();
@@ -242,7 +250,6 @@ userSchema.statics = {
       email,
       password,
       name,
-      picture,
     });
   },
 };
