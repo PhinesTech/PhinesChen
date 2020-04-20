@@ -136,10 +136,11 @@ class RequestForm extends Component<RequestFormProps, RequestFormState> {
                                     />
                                 </div>
                             </div>
+                            </form>
                             <button className="requestbutton" type="submit">
                                 Submit
                             </button>
-                        </form>
+                      
                     </div>
                 </div>
 

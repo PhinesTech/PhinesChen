@@ -1,7 +1,9 @@
 import React from 'react';
+import DONATELOGO from '../../assets/images/HmPgIcon-Donate2.png';
+import BASKETLOGO from '../../assets/images/basketicon.png';
 
 import './donateMoneyForm.scss';
-import DONATELOGO from '../../assets/images/HmPgIcon-Donate2.png';
+
 
 const DonateMoneyForm: React.FC = () => {
     return (
@@ -15,6 +17,9 @@ const DonateMoneyForm: React.FC = () => {
                     </div>
                     <div className="DONATELOGO">
                         <img id="donate-logo2" className="grid-item-image" src={DONATELOGO} alt="Donate" />
+                    </div>
+                    <div className="BASKETLOGO">
+                        <img id="donate-logo2" className="grid-item-image" src={BASKETLOGO} alt="Donate" />
                     </div>
                     <button className="statusbutton" type="button">
                         Donate Status: Pending
@@ -36,26 +41,27 @@ const DonateMoneyForm: React.FC = () => {
                         $1000
                     </button>
                     <form className="form">
+                        <h2>Bill Form</h2>
                         <div className="form__field3">
-                            <div className="input-group">
+                            <div className="input-group3">
                                 <label className="input-group__label">Amount</label>
                                 <input className="input-group__input" type="text" placeholder="  $50.00" />
                             </div>
-                            <div className="input-group">
+                            <div className="input-group3">
                                 <label className="input-group__label">Cardholder Name</label>
                                 <input className="input-group__input" type="text" placeholder="  Full Name" />
                             </div>
-                            <div className="input-group">
+                            <div className="input-group3">
                                 <label className="input-group__label">Card Number</label>
                                 <input className="input-group__input" type="email" placeholder="  1234 5678 9123" />
                             </div>
                             <div className="form__field4">
-                            <div className="input-group">
+                            <div className="input-group3">
                                 <label className="input-group__label">Expiration Date</label>
                                 <input className="input-group__input" type="text" placeholder="  Expiration (MM/YY)" />
                             </div>
-                            <div className="input-group">
-                                <label className="input-group__label">Security Code</label>
+                            <div className="input-group3">
+                                <label className="input-group__label">CVV Code</label>
                                 <input className="input-group__input" type="text" placeholder="  123" />
                             </div>
                             </div>
@@ -65,6 +71,104 @@ const DonateMoneyForm: React.FC = () => {
                             Donate
                         </button>
                     </form>
+                    
+                    <form className="form" >
+                        <h2>Food Form</h2>  
+                        <br/>
+                            <div className="form__field">
+                                <div className="input-group">
+                                    <label className="input-group__label">Company Name</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="text"
+                                       
+                                    />
+                                </div>
+                                <div className="input-group">
+                                    <label className="input-group__label">Mailing Address</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="text"
+                                       
+                                    />
+                                </div>
+                                <div className="input-group">
+                                    <label className="input-group__label">Reason for Donation</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="text"
+                                      
+                                    />
+                                </div>
+                                <div className="input-group">
+                                    <label className="input-group__label">Storage Requirements</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="text"
+                                      
+                                    />
+                                </div>
+                                <div className="input-group">
+                                    <label className="input-group__label">Number of Units, Pounds, Cases</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="number"
+                                      
+                                    />
+                                </div>
+        
+                            </div>
+
+
+
+                            <div className="form__field1">
+                                <div className="input-group">
+                                    <label className="input-group__label">Contact Name</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="text"
+                                      
+                                    />
+                                </div>
+
+                                <div className="input-group">
+                                    <label className="input-group__label">Phone Number</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="text"
+                                      
+                                    />
+                                </div>
+                                <div className="input-group">
+                                    <label className="input-group__label">Product Description</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="text"
+                                      
+                                    />
+                                </div>
+                                <div className="input-group">
+                                    <label className="input-group__label">Packaging Details</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="text"
+                                      
+                                    />
+                                </div>
+
+                                <div className="input-group">
+                                    <label className="input-group__label">List of Ingredients</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="number"
+                                       
+                                    />
+                                </div>
+                            </div>
+                            <button className="donatebutton2" type="button">
+                            Donate
+                            </button>
+                            </form>
                 </div>
             </div>
 
