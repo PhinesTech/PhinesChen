@@ -1,80 +1,84 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import './dashboard.scss';
+import { DashboardProps, DashboardState } from './dashboard.types';
 import Admin from '../../components/Admin/admin';
-// import DonateForm from "../../components/DonateForm/donateform";
-// import RequestForm from "../../components/RequestForm/requestform";
-// import Profile from '../../components/Profile/profile';
+import DonateForm from '../../components/DonateForm/donateform';
+import RequestForm from '../../components/RequestForm/requestForm';
+import Profile from '../../components/Profile/profile';
+import './dashboard.scss';
 
-// let activeDashboard = 0;
+class Dashboard extends Component<DashboardProps, DashboardState> {
+    state = {
+        dashboard: '',
+    };
 
-// function dashboardView(dash: number) {
-//     switch (dash) {
-//         // case 0:
-//         //     return <Profile/>
-//         // case 1:
-//         //     return <Donation/>
-//         // case 2:
-//         //     return <Request/>
-//         case 3:
-//             return <Admin />;
-//         default:
-//             return <Profile />;
-//     }
-// }
+    render() {
+        const { user } = this.props.location.state;
+        const { dashboard } = this.state;
 
-const Dashboard: React.FC = () => {
-    return (
-        <section className="DASHBOARD">
-            <div className="center">
-                <div className="left">
-                    <div className="dashboardlogo"></div>
-                    <div className="company">
-                        <div className="company-name">
-                            Merced County <br /> Food Bank
+        return (
+            <section className="DASHBOARD">
+                <div className="center">
+                    <div className="left">
+                        <div className="dashboardlogo"></div>
+                        <div className="company">
+                            <div className="company-name">
+                                Merced County <br /> Food Bank
+                            </div>
+                            <div className="company-description">Welcome, Admin </div>
                         </div>
-                        <div className="company-description">Welcome, Admin </div>
-                    </div>
-                    <div className="navigation">
-                        <ul>
-                            <li>
-                                <div className="homeicon">
-                                    {' '}
-                                    <Link to="/">Home</Link>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="contacticon">
-                                {' '}
-                                <Link to="/admin">Admin</Link>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="donateicon">
-                                {' '}
-                                <Link to="/requestform">Donate</Link>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="requesticon">
-                                {' '}
-                                <Link to="/requestform">Request</Link>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="contacticon">Contact</div>
-                                {' '}
-                                
-                            </li>
-                        </ul>
+                        <div className="navigation">
+                            <ul>
+                                <li>
+                                    <div className="homeicon">
+                                        <Link to="/">Home</Link>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="contacticon">
+                                        <button onClick={() => this.setState({ dashboard: '' })}>Profile</button>
+                                    </div>
+                                </li>
+                                {user.role === 'admin' ? (
+                                    <li>
+                                        <div className="contacticon">
+                                            <button onClick={() => this.setState({ dashboard: 'admin' })}>Admin</button>
+                                        </div>
+                                    </li>
+                                ) : null}
+                                <li>
+                                    <div className="donateicon">
+                                        <button onClick={() => this.setState({ dashboard: 'donate' })}>Donate</button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="requesticon">
+                                        <button onClick={() => this.setState({ dashboard: 'request' })}>Request</button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="contacticon">Contact</div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {/* {dashboardView(activeDashboard)} */}
-            <Admin />
-        </section>
-    );
-};
+                {(() => {
+                    switch (dashboard) {
+                        case 'donate':
+                            return <DonateForm {...this.props} />;
+                        case 'request':
+                            return <RequestForm {...this.props} />;
+                        case 'admin':
+                            return <Admin />;
+                        default:
+                            return <Profile {...this.props} />;
+                    }
+                })()}
+            </section>
+        );
+    }
+}
 
 export default Dashboard;
