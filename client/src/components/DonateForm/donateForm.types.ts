@@ -15,21 +15,21 @@ export type User = {
   role: String;
 }
 
-type Address = {
-  street: String;
-  city: String;
-  zip: Number;
-}
-
-export type RequestFormProps = {
+export type DonateFormProps = {
   token: Token;
   user: User;
   location: any;
 };
 
-export type RequestFormState = {
-  householdSize: Number;
-  dietaryRestrictions: String;
-  allergies: String;
-  address: Address;
+export type DonateFormState = {
+  companyName: String;
+  mailingAddress: String;
+  reasonForDonaation: String;
+  storageRequirements: String;
+  quantity: Number;
+  contactName: String;
+  phoneNumber: String;
+  productDescription: String;
+  packagingDetails: String;
+  listOfIngredients: String;
 };

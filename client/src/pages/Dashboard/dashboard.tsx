@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { DashboardProps, DashboardState } from './dashboard.types';
-
 import Admin from '../../components/Admin/admin';
-import DonateMoneyForm from '../../components/DonateForm/donateform';
+import DonateForm from '../../components/DonateForm/donateform';
 import RequestForm from '../../components/RequestForm/requestForm';
 import Profile from '../../components/Profile/profile';
-
 import './dashboard.scss';
 
 class Dashboard extends Component<DashboardProps, DashboardState> {
@@ -69,7 +67,7 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                 {(() => {
                     switch (dashboard) {
                         case 'donate':
-                            return <DonateMoneyForm />;
+                            return <DonateForm {...this.props} />;
                         case 'request':
                             return <RequestForm {...this.props} />;
                         case 'admin':

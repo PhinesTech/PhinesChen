@@ -1,12 +1,9 @@
 import React, { Component, ChangeEvent } from 'react';
-import axios from 'axios';
+import Axios from 'axios';
 
 import REQUESTLOGO from '../../assets/images/request.png';
 import './requestForm.scss';
 import { RequestFormProps, RequestFormState } from './requestForm.types';
-
-const token =
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODcyOTA4MTUsImlhdCI6MTU4NzI4OTkxNSwic3ViIjoiNWU4ZWEwMzdhNzJjNDAwMDFiNWE1MmY5In0.EjcEGnJl-qUX7brzaFWqQlnKDQq8O4j8hGg7PHMISMg';
 
 class RequestForm extends Component<RequestFormProps, RequestFormState> {
     state = {
@@ -28,19 +25,13 @@ class RequestForm extends Component<RequestFormProps, RequestFormState> {
     handleSubmit(event: any) {
         event.preventDefault();
 
-        axios
-            .post(
-                'http://localhost:3001/v1/request/',
-                this.state,
-                {
-                    headers: {
-                        Authorization: `Basic ${token}`,
-                    },
-                },
-            )
-            .then((response: any) => {
-                console.log(response);
-            });
+        Axios.post('http://localhost:3001/v1/request/', this.state, {
+            headers: {
+                Authorization: `Bearer ${this.props.location.state.token.accessToken}`,
+            },
+        }).then((response: any) => {
+            console.log(response);
+        });
     }
 
     render() {
@@ -63,7 +54,7 @@ class RequestForm extends Component<RequestFormProps, RequestFormState> {
                             Request Status: Pending
                         </button>
 
-                        <form className="form" onSubmit={this.handleSubmit}>
+                        <form className="form" onSubmit={this.handleSubmit} autoComplete="off">
                             <div className="form__field">
                                 <div className="input-group">
                                     <label className="input-group__label">Household Size</label>
@@ -136,11 +127,10 @@ class RequestForm extends Component<RequestFormProps, RequestFormState> {
                                     />
                                 </div>
                             </div>
-                            </form>
                             <button className="requestbutton" type="submit">
                                 Submit
                             </button>
-                      
+                        </form>
                     </div>
                 </div>
 

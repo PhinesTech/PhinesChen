@@ -8,6 +8,7 @@ export type Token = {
 export type User = {
   id: String;
   name: String;
+  companyName: String;
   email: String;
   donatedFood: Array<String>;
   requestedFood: Array<String>;
