@@ -4,7 +4,6 @@ import BASKETLOGO from '../../assets/images/basketicon.png';
 
 import './donateMoneyForm.scss';
 
-
 const DonateMoneyForm: React.FC = () => {
     return (
         <section className="DONATEFORM">
@@ -42,6 +41,12 @@ const DonateMoneyForm: React.FC = () => {
                     </button>
                     <form className="form">
                         <h2>Bill Form</h2>
+                        <div className="description">
+                        Merced County Food Bank puts the power of spare change to work 
+                        toward feeding hungry families. Just sign up once and start making 
+                        purchases. Your small investments over time will make a world of 
+                        difference. 
+                        </div>
                         <div className="form__field3">
                             <div className="input-group3">
                                 <label className="input-group__label">Amount</label>
@@ -56,14 +61,18 @@ const DonateMoneyForm: React.FC = () => {
                                 <input className="input-group__input" type="email" placeholder="  1234 5678 9123" />
                             </div>
                             <div className="form__field4">
-                            <div className="input-group3">
-                                <label className="input-group__label">Expiration Date</label>
-                                <input className="input-group__input" type="text" placeholder="  Expiration (MM/YY)" />
-                            </div>
-                            <div className="input-group3">
-                                <label className="input-group__label">CVV Code</label>
-                                <input className="input-group__input" type="text" placeholder="  123" />
-                            </div>
+                                <div className="input-group3">
+                                    <label className="input-group__label">Expiration Date</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="text"
+                                        placeholder="  Expiration (MM/YY)"
+                                    />
+                                </div>
+                                <div className="input-group3">
+                                    <label className="input-group__label">CVV Code</label>
+                                    <input className="input-group__input" type="text" placeholder="  123" />
+                                </div>
                             </div>
                         </div>
 
@@ -71,104 +80,66 @@ const DonateMoneyForm: React.FC = () => {
                             Donate
                         </button>
                     </form>
-                    
-                    <form className="form" >
-                        <h2>Food Form</h2>  
-                        <br/>
-                            <div className="form__field">
-                                <div className="input-group">
-                                    <label className="input-group__label">Company Name</label>
-                                    <input
-                                        className="input-group__input"
-                                        type="text"
-                                       
-                                    />
-                                </div>
-                                <div className="input-group">
-                                    <label className="input-group__label">Mailing Address</label>
-                                    <input
-                                        className="input-group__input"
-                                        type="text"
-                                       
-                                    />
-                                </div>
-                                <div className="input-group">
-                                    <label className="input-group__label">Reason for Donation</label>
-                                    <input
-                                        className="input-group__input"
-                                        type="text"
-                                      
-                                    />
-                                </div>
-                                <div className="input-group">
-                                    <label className="input-group__label">Storage Requirements</label>
-                                    <input
-                                        className="input-group__input"
-                                        type="text"
-                                      
-                                    />
-                                </div>
-                                <div className="input-group">
-                                    <label className="input-group__label">Number of Units, Pounds, Cases</label>
-                                    <input
-                                        className="input-group__input"
-                                        type="number"
-                                      
-                                    />
-                                </div>
-        
+
+                    <form className="form">
+                        <h2>Food Form</h2>
+                        <div className="description">
+                            The Merced County Food Bank has a need for more than food. When thinking of ways to donate,
+                            remember that any food you eat or product you use to get you through the day are the types
+                            of products that could potentially be donated..
+                        </div>
+                        <br />
+                        <div className="form__field">
+                            <div className="input-group">
+                                <label className="input-group__label">Company Name</label>
+                                <input className="input-group__input" type="text" />
+                            </div>
+                            <div className="input-group">
+                                <label className="input-group__label">Mailing Address</label>
+                                <input className="input-group__input" type="text" />
+                            </div>
+                            <div className="input-group">
+                                <label className="input-group__label">Reason for Donation</label>
+                                <input className="input-group__input" type="text" />
+                            </div>
+                            <div className="input-group">
+                                <label className="input-group__label">Storage Requirements</label>
+                                <input className="input-group__input" type="text" />
+                            </div>
+                            <div className="input-group">
+                                <label className="input-group__label">Number of Units, Pounds, Cases</label>
+                                <input className="input-group__input" type="number" />
+                            </div>
+                        </div>
+
+                        <div className="form__field1">
+                            <div className="input-group">
+                                <label className="input-group__label">Contact Name</label>
+                                <input className="input-group__input" type="text" />
                             </div>
 
-
-
-                            <div className="form__field1">
-                                <div className="input-group">
-                                    <label className="input-group__label">Contact Name</label>
-                                    <input
-                                        className="input-group__input"
-                                        type="text"
-                                      
-                                    />
-                                </div>
-
-                                <div className="input-group">
-                                    <label className="input-group__label">Phone Number</label>
-                                    <input
-                                        className="input-group__input"
-                                        type="text"
-                                      
-                                    />
-                                </div>
-                                <div className="input-group">
-                                    <label className="input-group__label">Product Description</label>
-                                    <input
-                                        className="input-group__input"
-                                        type="text"
-                                      
-                                    />
-                                </div>
-                                <div className="input-group">
-                                    <label className="input-group__label">Packaging Details</label>
-                                    <input
-                                        className="input-group__input"
-                                        type="text"
-                                      
-                                    />
-                                </div>
-
-                                <div className="input-group">
-                                    <label className="input-group__label">List of Ingredients</label>
-                                    <input
-                                        className="input-group__input"
-                                        type="number"
-                                       
-                                    />
-                                </div>
+                            <div className="input-group">
+                                <label className="input-group__label">Phone Number</label>
+                                <input className="input-group__input" type="text" />
                             </div>
-                            <button className="donatebutton2" type="button">
+                            <div className="input-group">
+                                <label className="input-group__label">Product Description</label>
+                                <input className="input-group__input" type="text" />
+                            </div>
+                            <div className="input-group">
+                                <label className="input-group__label">Packaging Details</label>
+                                <input className="input-group__input" type="text" />
+                            </div>
+
+                            <div className="input-group">
+                                <label className="input-group__label">List of Ingredients</label>
+                                <input className="input-group__input" type="number" />
+                            </div>
+                        </div>
+                        <button className="donatebutton2" type="button">
                             Donate
-                            </button>
-                            </form>
+                        </button>
+                    </form>
                 </div>
             </div>
 

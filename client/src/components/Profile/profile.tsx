@@ -11,6 +11,7 @@ const Profile: React.FC<ProfileProps> = props => {
             <div className="right">
                 <div className="title">Profile</div>
                 <div className="profilelogo"></div>
+                <br/>
                     <button className="profilebar">
                     Jane Doe
                     </button>
@@ -22,6 +23,9 @@ const Profile: React.FC<ProfileProps> = props => {
                     </button>
                     <button className="profilebar">
                     Help & Support
+                    </button>
+                    <button className="profilebar">
+                    Logout
                     </button>
 
 
