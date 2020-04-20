@@ -53,6 +53,10 @@ const DonateMoneyForm: React.FC = () => {
                                 <input className="input-group__input" type="text" placeholder="  $50.00" />
                             </div>
                             <div className="input-group3">
+                                <label className="input-group__label">Address</label>
+                                <input className="input-group__input" type="text" placeholder="Street Address, City, State, Zip Code" />
+                            </div>
+                            <div className="input-group3">
                                 <label className="input-group__label">Cardholder Name</label>
                                 <input className="input-group__input" type="text" placeholder="  Full Name" />
                             </div>
