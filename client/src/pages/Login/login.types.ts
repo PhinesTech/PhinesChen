@@ -1,6 +1,5 @@
 export type LoginProps = {
-  userId: String;
-  accessToken: String;
+  isAuthenticated: Boolean;
 };
 
 export type LoginState = {
