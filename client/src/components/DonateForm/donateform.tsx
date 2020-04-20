@@ -2,7 +2,7 @@ import React from 'react';
 import DONATELOGO from '../../assets/images/HmPgIcon-Donate2.png';
 import BASKETLOGO from '../../assets/images/basketicon.png';
 
-import './donateMoneyForm.scss';
+import './donateform.scss';
 
 const DonateMoneyForm: React.FC = () => {
     return (

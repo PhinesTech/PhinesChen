@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { DashboardProps, DashboardState } from './dashboard.types';
 
 import Admin from '../../components/Admin/admin';
-import DonateMoneyForm from '../../components/DonateMoneyForm/donateMoneyForm';
+import DonateMoneyForm from '../../components/DonateForm/donateform';
 import RequestForm from '../../components/RequestForm/requestForm';
 import Profile from '../../components/Profile/profile';
 
