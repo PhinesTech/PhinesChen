@@ -53,7 +53,7 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                         
                                 ) : null}
                                 <li>
-                                    <div className="storageicon">
+                                    <div className="requesticon">
                                         <button onClick={() => this.setState({ dashboard: 'storage' })}>Storage</button>
                                     </div>
                                 </li>
