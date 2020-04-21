@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { DashboardProps, DashboardState } from './dashboard.types';
 import Admin from '../../components/Admin/admin';
+import Storage from '../../components/Storage/storage';
 import DonateForm from '../../components/DonateForm/donateform';
 import RequestForm from '../../components/RequestForm/requestForm';
 import Profile from '../../components/Profile/profile';
@@ -46,7 +47,14 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                                             <button onClick={() => this.setState({ dashboard: 'admin' })}>Admin</button>
                                         </div>
                                     </li>
+                                    
+                        
                                 ) : null}
+                                <li>
+                                    <div className="storageicon">
+                                        <button onClick={() => this.setState({ dashboard: 'storage' })}>Storage</button>
+                                    </div>
+                                </li>
                                 <li>
                                     <div className="donateicon">
                                         <button onClick={() => this.setState({ dashboard: 'donate' })}>Donate</button>
@@ -72,6 +80,8 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                             return <RequestForm {...this.props} />;
                         case 'admin':
                             return <Admin />;
+                        case 'storage':
+                                return <Storage />;
                         default:
                             return <Profile {...this.props} />;
                     }
