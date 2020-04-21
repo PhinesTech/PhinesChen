@@ -150,7 +150,7 @@ class RequestForm extends Component<RequestFormProps, RequestFormState> {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    > PhinesTech{' '}
+                    PhinesTech{' '}
                 </a>
             </section>
         );

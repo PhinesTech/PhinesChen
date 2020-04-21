@@ -19,7 +19,7 @@ const Profile: React.FC<ProfileProps> = () => {
             </div>
 
             <a className="inspiration " href="https://github.com/PhinesTech" target="_blank" rel="noopener noreferrer">
-                > PhinesTech{' '}
+                 PhinesTech{' '}
             </a>
         </section>
     );
