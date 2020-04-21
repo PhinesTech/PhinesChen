@@ -10,21 +10,54 @@ const APIError = require("../../utils/APIError");
  */
 const donationSchema = new mongoose.Schema(
   {
-    name: {
+    companyName: {
       type: String,
       required: true,
       trim: true,
-      lowercase: true,
+    },
+    mailingAddress: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    reasonForDonaation: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    storageRequirements: {
+      type: String,
+      required: true,
+      trim: true,
     },
     quantity: {
       type: Number,
       required: true,
       trim: true,
     },
-    isPerishable: {
-      type: Boolean,
+    contactName: {
+      type: String,
+      trim: true,
+    },
+    phoneNumber: {
+      type: String,
+      trim: true,
+    },
+    productDescription: {
+      type: String,
       required: true,
-    }
+      trim: true,
+    },
+    packagingDetails: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    listOfIngredients: {
+      type: String,
+      required: true,
+      trim: true,
+    },
   },
   {
     timestamps: true,
@@ -39,9 +72,16 @@ donationSchema.method({
     const transformed = {};
     const fields = [
       "id",
-      "name",
+      "companyName",
+      "mailingAddress",
+      "reasonForDonaation",
+      "storageRequirements",
       "quantity",
-      "isPerishable",
+      "contactName",
+      "phoneNumber",
+      "productDescription",
+      "packagingDetails",
+      "listOfIngredients",
       "createdAt",
     ];
 
@@ -50,7 +90,7 @@ donationSchema.method({
     });
 
     return transformed;
-  }
+  },
 });
 
 /**
@@ -91,8 +131,35 @@ donationSchema.statics = {
    * @param {number} limit - Limit number of donations to be returned.
    * @returns {Promise<Donations[]>}
    */
-  list({ page = 1, perPage = 30, name, quantity, isPerishable }) {
-    const options = omitBy({ name, quantity, isPerishable }, isNil);
+  list({
+    page = 1,
+    perPage = 30,
+    companyName,
+    mailingAddress,
+    reasonForDonaation,
+    storageRequirements,
+    quantity,
+    contactName,
+    phoneNumber,
+    productDescription,
+    packagingDetails,
+    listOfIngredients,
+  }) {
+    const options = omitBy(
+      {
+        companyName,
+        mailingAddress,
+        reasonForDonaation,
+        storageRequirements,
+        quantity,
+        contactName,
+        phoneNumber,
+        productDescription,
+        packagingDetails,
+        listOfIngredients,
+      },
+      isNil
+    );
 
     return this.find(options)
       .sort({ createdAt: -1 })
@@ -100,7 +167,6 @@ donationSchema.statics = {
       .limit(perPage)
       .exec();
   },
-
 };
 
 /**

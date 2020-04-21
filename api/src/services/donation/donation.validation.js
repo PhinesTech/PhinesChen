@@ -4,27 +4,48 @@ module.exports = {
   // GET /v1/donation
   listDonation: {
     query: Joi.object({
-      name: Joi.string(),
-      quantity: Joi.number().min(1),
-      isPerishable: Joi.boolean()
+      companyName: Joi.string(),
+      mailingAddress: Joi.string(),
+      reasonForDonaation: Joi.string(),
+      storageRequirements: Joi.string(),
+      quantity: Joi.number(),
+      contactName: Joi.string(),
+      phoneNumber: Joi.string(),
+      productDescription: Joi.string(),
+      packagingDetails: Joi.string(),
+      listOfIngredients: Joi.string(),
     }),
   },
 
   // POST /v1/donation
   createDonation: {
     body: Joi.object({
-      name: Joi.string(),
-      quantity: Joi.number().min(1),
-      isPerishable: Joi.boolean()
+      companyName: Joi.string(),
+      mailingAddress: Joi.string(),
+      reasonForDonaation: Joi.string(),
+      storageRequirements: Joi.string(),
+      quantity: Joi.number(),
+      contactName: Joi.string(),
+      phoneNumber: Joi.string(),
+      productDescription: Joi.string(),
+      packagingDetails: Joi.string(),
+      listOfIngredients: Joi.string(),
     }),
   },
 
   // PUT /v1/donation/:donationId
   replaceDonation: {
     body: Joi.object({
-      name: Joi.string(),
-      quantity: Joi.number().min(1),
-      isPerishable: Joi.boolean()
+      companyName: Joi.string(),
+      mailingAddress: Joi.string(),
+      reasonForDonaation: Joi.string(),
+      storageRequirements: Joi.string(),
+      quantity: Joi.number(),
+      contactName: Joi.string(),
+      phoneNumber: Joi.string(),
+      productDescription: Joi.string(),
+      packagingDetails: Joi.string(),
+      listOfIngredients: Joi.string(),
     }),
     params: Joi.object({
       donationId: Joi.string()
@@ -36,9 +57,16 @@ module.exports = {
   // PATCH /v1/donation/:donationId
   updateDonation: {
     body: Joi.object({
-      name: Joi.string(),
-      quantity: Joi.number().min(1),
-      isPerishable: Joi.boolean()
+      companyName: Joi.string(),
+      mailingAddress: Joi.string(),
+      reasonForDonaation: Joi.string(),
+      storageRequirements: Joi.string(),
+      quantity: Joi.number(),
+      contactName: Joi.string(),
+      phoneNumber: Joi.string(),
+      productDescription: Joi.string(),
+      packagingDetails: Joi.string(),
+      listOfIngredients: Joi.string(),
     }),
     params: Joi.object({
       donationId: Joi.string()

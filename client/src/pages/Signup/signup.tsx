@@ -43,7 +43,7 @@ class Signup extends Component<SignUpProps, SignUpState> {
                 <div className="SIGNUP">
                     <div className="signup-div">
                         <div className="title">Register</div>
-                        <form className="signupform" onSubmit={this.handleSubmit}>
+                        <form className="signupform" onSubmit={this.handleSubmit} autoComplete="off">
                             <div className="signupfields">
                                 <div className="firstname">
                                     <svg fill="#999" viewBox="0 0 20 20">

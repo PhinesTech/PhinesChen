@@ -38,7 +38,7 @@ class Login extends Component<LoginProps, LoginState> {
                     <div className="login-div">
                         <div className="logo"></div>
                         <div className="title">Login</div>
-                        <form className="loginform" onSubmit={this.handleSubmit}>
+                        <form className="loginform" onSubmit={this.handleSubmit} autoComplete="off">
                             <div className="fields">
                                 <div className="username">
                                     <svg fill="#999" viewBox="0 0 1024 1024">
