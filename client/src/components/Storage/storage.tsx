@@ -32,31 +32,43 @@ class Storage extends Component<StorageProps> {
         let table: Array<any> = [];
 
         this.props.storage.forEach((element: any) => {
+            let {
+                product_id,
+                product_name,
+                product_amount,
+                product_group,
+                distribution_to,
+                distribution_from,
+                pack_date,
+            } = element;
+
             table.push(
-                <tr className="tablehover" property="row" mv-multiple>
-                    <td property="date">element</td>
-                    <td property="name">B. Rice</td>
-                    <td property="itemnumber">{element.id}</td>
-                    <td property="quantity">300</td>
-                    <td property="product">Grain</td>
-                    <td property="distributionTO">Soup Kitchens</td>
-                    <td property="distributionFROM">MCFB</td>
-                </tr>
+                <tr className="tablehover" property="row" mv-multiple="true" key={product_id}>
+                    <td property="date">{`${(new Date(pack_date)).getMonth()}/${(new Date(pack_date)).getDate()}/${(new Date(pack_date)).getFullYear()}`}</td>
+                    <td property="name">{product_name}</td>
+                    <td property="itemnumber">{product_id}</td>
+                    <td property="quantity">{product_amount}</td>
+                    <td property="product">{product_group}</td>
+                    <td property="distributionTO">{distribution_to}</td>
+                    <td property="distributionFROM">{distribution_from}</td>
+                </tr>,
             );
         });
 
         return (
             <table>
-                <tr>
-                    <th id="date">Date</th>
-                    <th id="name">Name</th>
-                    <th id="itemnumber">Item #</th>
-                    <th id="quantity">Quantity</th>
-                    <th id="product">Product</th>
-                    <th id="distributionTO">To </th>
-                    <th id="product">From </th>
-                </tr>
-                {table}
+                <thead>
+                    <tr>
+                        <th id="date">Date</th>
+                        <th id="name">Name</th>
+                        <th id="itemnumber">Item #</th>
+                        <th id="quantity">Quantity</th>
+                        <th id="product">Product</th>
+                        <th id="distributionTO">To </th>
+                        <th id="product">From </th>
+                    </tr>
+                </thead>
+                <tbody>{table}</tbody>
             </table>
         );
     }
@@ -88,7 +100,7 @@ class Storage extends Component<StorageProps> {
                             ></div>
                         </div>
                         <main mv-app="table" mv-storage="local" mv-mode="edit">
-                            {this.generateTable}
+                            {this.generateTable()}
                             <div className="bar">
                                 <button className="add-row">Add Row</button>
                                 <div className="saved">Your changes have been saved to local storage</div>

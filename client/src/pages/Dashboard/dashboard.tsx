@@ -16,10 +16,6 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
         storage: [],
     };
 
-    constructor(props: any) {
-        super(props);
-    }
-
     componentDidMount() {
         Axios.get<Array<Object>>('http://localhost:3001/v1/food-storage').then(response => {
             this.setState({
