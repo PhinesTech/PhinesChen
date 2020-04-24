@@ -78,11 +78,15 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                                         </div>
                                     </li>
                                 ) : null}
-                                <li>
-                                    <div className="requesticon">
-                                        <button onClick={() => this.setState({ dashboard: 'storage' })}>Storage</button>
-                                    </div>
-                                </li>
+                                {user.role === 'admin' ? (
+                                    <li>
+                                        <div className="requesticon">
+                                            <button onClick={() => this.setState({ dashboard: 'storage' })}>
+                                                Storage
+                                            </button>
+                                        </div>
+                                    </li>
+                                ) : null}
                                 <li>
                                     <div className="donateicon">
                                         <button onClick={() => this.setState({ dashboard: 'donate' })}>Donate</button>
