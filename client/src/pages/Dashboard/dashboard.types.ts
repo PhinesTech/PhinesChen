@@ -24,4 +24,6 @@ export type DashboardProps = {
 export type DashboardState = {
   dashboard: string;
   storage: Array<Object>;
+  requests: Array<Object>;
+  donations: Array<Object>;
 };

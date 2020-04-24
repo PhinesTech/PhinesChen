@@ -14,14 +14,34 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
     state = {
         dashboard: '',
         storage: [],
+        requests: [],
+        donations: [],
     };
 
     componentDidMount() {
-        Axios.get<Array<Object>>('http://localhost:3001/v1/food-storage').then(response => {
-            this.setState({
-                storage: response.data,
-            });
-        });
+        const { token } = this.props.location.state;
+
+        Axios.all([
+            Axios.get<Array<Object>>('http://localhost:3001/v1/food-storage'),
+            Axios.get<Array<Object>>('http://localhost:3001/v1/request', {
+                headers: {
+                    Authorization: `Bearer ${token.accessToken}`,
+                },
+            }),
+            Axios.get<Array<Object>>('http://localhost:3001/v1/donation', {
+                headers: {
+                    Authorization: `Bearer ${token.accessToken}`,
+                },
+            }),
+        ]).then(
+            Axios.spread((storage, requests, donations) => {
+                this.setState({
+                    storage: storage.data,
+                    requests: requests.data,
+                    donations: donations.data,
+                });
+            }),
+        );
     }
 
     render() {
@@ -87,7 +107,7 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                         case 'request':
                             return <RequestForm {...this.props} />;
                         case 'admin':
-                            return <Admin />;
+                            return <Admin requests={this.state.requests} donations={this.state.donations} />;
                         case 'storage':
                             return <Storage storage={this.state.storage} />;
                         default:
