@@ -5,6 +5,7 @@ const authRoutes = require("../../services/auth/auth.route");
 const foodRoutes = require("../../services/food/food.route");
 const donationRoutes = require("../../services/donation/donation.route");
 const requestRoutes = require("../../services/request/request.route");
+const FOOD_STORAGE_DATA = require("../../utils/MOCK_PRODUCT_DATA.json");
 
 const router = express.Router();
 
@@ -26,5 +27,12 @@ router.use("/auth", authRoutes);
 router.use("/food", foodRoutes);
 router.use("/donation", donationRoutes);
 router.use("/request", requestRoutes);
+
+/**
+ * GET Food Storage Data
+ */
+router.get("/food-storage", (req, res) => {
+  res.status(200).send(FOOD_STORAGE_DATA)
+});
 
 module.exports = router;

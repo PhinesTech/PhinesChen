@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Axios from 'axios';
 
 import { DashboardProps, DashboardState } from './dashboard.types';
 import Admin from '../../components/Admin/admin';
@@ -12,7 +13,20 @@ import './dashboard.scss';
 class Dashboard extends Component<DashboardProps, DashboardState> {
     state = {
         dashboard: '',
+        storage: [],
     };
+
+    constructor(props: any) {
+        super(props);
+    }
+
+    componentDidMount() {
+        Axios.get<Array<Object>>('http://localhost:3001/v1/food-storage').then(response => {
+            this.setState({
+                storage: response.data,
+            });
+        });
+    }
 
     render() {
         const { user } = this.props.location.state;
@@ -47,8 +61,6 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                                             <button onClick={() => this.setState({ dashboard: 'admin' })}>Admin</button>
                                         </div>
                                     </li>
-                                    
-                        
                                 ) : null}
                                 <li>
                                     <div className="requesticon">
@@ -81,7 +93,7 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                         case 'admin':
                             return <Admin />;
                         case 'storage':
-                                return <Storage />;
+                            return <Storage storage={this.state.storage} />;
                         default:
                             return <Profile {...this.props} />;
                     }
