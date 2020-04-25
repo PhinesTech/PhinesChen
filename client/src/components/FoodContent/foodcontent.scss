@@ -7,6 +7,7 @@
     }
     .map{
         width: 90%;
+        
        
     }
        /* SCROLLBAR width */
@@ -87,6 +88,10 @@ body::-webkit-scrollbar-track {
       .locationbox3{
         font-size: 70px; 
         color: grey;
+      }
+
+      .mapboxgl-canvas{
+        height: 534px;
       }
    
 }
