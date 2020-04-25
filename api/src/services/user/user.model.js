@@ -40,6 +40,11 @@ const userSchema = new mongoose.Schema(
       index: true,
       trim: true,
     },
+    companyName: {
+      type: String,
+      index: true,
+      trim: true,
+    },
     donatedFood: {
       type: Array,
       default: [],
@@ -78,8 +83,6 @@ userSchema.pre("save", async function save(next) {
     const hash = await bcrypt.hash(this.password, rounds);
     this.password = hash;
 
-    console.log("this: ", this.password);
-
     return next();
   } catch (error) {
     return next(error);
@@ -95,6 +98,7 @@ userSchema.method({
     const fields = [
       "id",
       "name",
+      "companyName",
       "email",
       "donatedFood",
       "requestedFood",
@@ -104,8 +108,6 @@ userSchema.method({
     fields.forEach((field) => {
       transformed[field] = this[field];
     });
-
-    console.log("transformed: ", transformed);
 
     return transformed;
   },
@@ -194,8 +196,8 @@ userSchema.statics = {
    * @param {number} limit - Limit number of users to be returned.
    * @returns {Promise<User[]>}
    */
-  list({ page = 1, perPage = 30, name, email, role }) {
-    const options = omitBy({ name, email, role }, isNil);
+  list({ page = 1, perPage = 30, name, companyName, email, service, donatedFood, requestedFood, role }) {
+    const options = omitBy({ name, companyName, email, service, donatedFood, requestedFood, role }, isNil);
 
     return this.find(options)
       .sort({ createdAt: -1 })

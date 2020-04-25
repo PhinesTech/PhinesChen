@@ -1,0 +1,48 @@
+.FOODTITLE {
+    background-image: url(../../assets/images/banner2.jpg);
+    width: auto;
+    height: 860px;
+    background-size: 200%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(31, 27, 27);
+    overflow: hidden;
+
+    
+}
+.FOOD-TITLE-TEXT {
+    font-size: 54px;
+    line-height: 1em;
+    text-align: center;
+    margin: 19% auto auto auto;
+    color: rgb(31, 27, 27);
+    font-weight: bolder;
+    overflow: hidden;
+}
+.food-title-subtext {
+    color:rgb(59, 58, 58);
+    font-size: 20px;
+    text-align: center;
+    margin: 2% auto auto auto;
+    font-weight: bold;
+}
+
+   /* SCROLLBAR width */
+   ::-webkit-scrollbar {
+    width: 15px;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(33, 107, 33); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: darkgreen; 
+  }
+  
