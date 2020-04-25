@@ -18,7 +18,7 @@ const FoodContent: React.FC = () => {
                 <h1>Food Distribution Locations</h1>
                 <br />
                 <span className="map">
-                    <Map style="mapbox://styles/mapbox/streets-v9" lng={2} lat={3} zoom={1} />
+                    <Map mapStyle="mapbox://styles/mapbox/streets-v9" lng={2} lat={3} zoom={1} />
                 </span>
             </div>
             <div className="maptitle">

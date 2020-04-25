@@ -2,28 +2,16 @@ import React, { Component } from 'react';
 
 import './storage.scss';
 import { StorageProps } from './storage.types';
-
-// $('.mv-save').on('click', function() {
-//     $('.saved').fadeIn().delay(3000).fadeOut();
-//   });
-
-//   function mobileViewUpdate() {
-//       var viewportWidth = $(window).width();
-//       if (viewportWidth < 600) {
-//         $('td:not([property="breed"])').each(function(event) {
-//           header = $(this).attr('property')
-
-//           if(! $(this).parent().find('#' + header).length) {
-//             $('#' + header).clone().insertBefore(this);
-//           }
-//         });
-//       }
-//   }
-
-//   $(window).on('load resize', mobileViewUpdate);
+import Pagination from '../Pagination/pagination';
 
 class Storage extends Component<StorageProps> {
-    constructor(props: any) {
+    state = {
+        currentStorage: [],
+        currentPage: 1,
+        totalPages: 1,
+    };
+
+    constructor(props: Readonly<StorageProps>) {
         super(props);
         this.generateTable = this.generateTable.bind(this);
     }
@@ -31,7 +19,7 @@ class Storage extends Component<StorageProps> {
     generateTable() {
         let table: Array<any> = [];
 
-        this.props.storage.forEach((element: any) => {
+        this.state.currentStorage.forEach((element: any) => {
             let {
                 id,
                 product_name,
@@ -75,7 +63,21 @@ class Storage extends Component<StorageProps> {
         );
     }
 
+    onPageChanged = (data: { currentPage: any; totalPages: any; pageLimit: any }) => {
+        const { storage } = this.props;
+        const { currentPage, totalPages, pageLimit } = data;
+
+        const offset = (currentPage - 1) * pageLimit;
+        const currentStorage = storage.slice(offset, offset + pageLimit);
+
+        this.setState({ currentPage, currentStorage, totalPages });
+    };
+
     render() {
+        const totalItemsInStorage = this.props.storage.length;
+
+        if (totalItemsInStorage === 0) return null;
+
         return (
             <section className="STORAGE">
                 <div className="center7">
@@ -83,29 +85,28 @@ class Storage extends Component<StorageProps> {
                         <div className="title">Food Storage</div>
                         <br />
 
-                        <div className="container" data-ng-app="myApp" data-ng-controller="myCtrl">
+                        <div className="container">
                             <div className="row">
                                 <div className="searchtitle">
                                     <h2>Search: &nbsp;</h2>
                                 </div>
                                 <div className="col-md-10">
-                                    <input type="text" className="search" data-ng-model="table" />
+                                    <input type="text" className="search" />
                                 </div>
                             </div>
                             <br />
-                            <div
-                                data-pagination="2"
-                                data-num-pages="numPages()"
-                                data-current-page="currentPage"
-                                data-max-size="maxSize"
-                                data-boundary-links="true"
-                            ></div>
+                            <Pagination
+                                totalRecords={totalItemsInStorage}
+                                pageLimit={100}
+                                pageNeighbours={1}
+                                onPageChanged={this.onPageChanged}
+                            />
                         </div>
-                        <main mv-app="table" mv-storage="local" mv-mode="edit">
+
+                        <main>
                             {this.generateTable()}
                             <div className="bar">
                                 <button className="add-row">Add Row</button>
-                                <div className="saved">Your changes have been saved to local storage</div>
                                 <div className="mv-bar mv-ui">
                                     <button className="mv-save">Save</button>
                                     <button className="mv-export mv-button">Export</button>

@@ -8,11 +8,11 @@ class Map extends Component<MapProps> {
     mapRef: React.RefObject<any> = React.createRef();
 
     componentDidMount() {
-        let { style, lng, lat, zoom } = this.props;
+        let { mapStyle, lng, lat, zoom } = this.props;
 
         const map = new mapboxgl.Map({
             container: this.mapRef.current,
-            style: style,
+            style: mapStyle,
             center: [lng, lat],
             zoom: zoom,
         });

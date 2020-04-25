@@ -4,7 +4,7 @@ import './admin.scss';
 import { AdminProps } from './admin.types';
 
 class Admin extends Component<AdminProps> {
-    constructor(props: any) {
+    constructor(props: Readonly<AdminProps>) {
         super(props);
         this.getRequesters = this.getRequesters.bind(this);
         this.getDonators = this.getDonators.bind(this);
