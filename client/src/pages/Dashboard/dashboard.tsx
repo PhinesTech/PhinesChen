@@ -22,7 +22,11 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
         const { token } = this.props.location.state;
 
         Axios.all([
-            Axios.get<Array<Object>>('http://localhost:3001/v1/food-storage'),
+            Axios.get<Array<Object>>('http://localhost:3001/v1/food', {
+                headers: {
+                    Authorization: `Bearer ${token.accessToken}`,
+                },
+            }),
             Axios.get<Array<Object>>('http://localhost:3001/v1/request', {
                 headers: {
                     Authorization: `Bearer ${token.accessToken}`,

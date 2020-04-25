@@ -33,7 +33,7 @@ class Storage extends Component<StorageProps> {
 
         this.props.storage.forEach((element: any) => {
             let {
-                product_id,
+                id,
                 product_name,
                 product_amount,
                 product_group,
@@ -43,10 +43,12 @@ class Storage extends Component<StorageProps> {
             } = element;
 
             table.push(
-                <tr className="tablehover" property="row" mv-multiple="true" key={product_id}>
-                    <td property="date">{`${(new Date(pack_date)).getMonth()}/${(new Date(pack_date)).getDate()}/${(new Date(pack_date)).getFullYear()}`}</td>
+                <tr className="tablehover" property="row" mv-multiple="true" key={id}>
+                    <td property="date">{`${new Date(pack_date).getMonth()}/${new Date(pack_date).getDate()}/${new Date(
+                        pack_date,
+                    ).getFullYear()}`}</td>
                     <td property="name">{product_name}</td>
-                    <td property="itemnumber">{product_id}</td>
+                    <td property="itemnumber">{id}</td>
                     <td property="quantity">{product_amount}</td>
                     <td property="product">{product_group}</td>
                     <td property="distributionTO">{distribution_to}</td>
