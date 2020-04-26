@@ -3,7 +3,8 @@ const validator = require("express-joi-validation").createValidator({});
 
 const controller = require("./auth.controller");
 const oAuthLogin = require("../../middlewares/auth").oAuth;
-const { login, register, oAuth, refresh } = require("./auth.validation");
+const { authorize, LOGGED_USER } = require("../../middlewares/auth");
+const { login, register, oAuth, refresh, logout } = require("./auth.validation");
 
 const router = express.Router();
 
@@ -35,8 +36,8 @@ const router = express.Router();
  * @apiError (Bad Request 400)  ValidationError  Some parameters may contain invalid values
  */
 router
-  .route("/register")
-  .post(validator.body(register.body), controller.register);
+    .route("/register")
+    .post(validator.body(register.body), controller.register);
 
 /**
  * @api {post} v1/auth/login Login
@@ -68,6 +69,37 @@ router
 router.route("/login").post(validator.body(login.body), controller.login);
 
 /**
+ * @api {post} v1/auth/logout Logout
+ * @apiDescription Remove refreshToken
+ * @apiVersion 1.0.0
+ * @apiName Logout
+ * @apiGroup Auth
+ * @apiPermission public
+ *
+ * @apiHeader {String} Authorization  User's access token
+ *
+ * @apiParam  {String}         email     User's email
+ * @apiParam  {String{..128}}  password  User's password
+ *
+ * @apiSuccess  {String}  token.tokenType     Access Token's type
+ * @apiSuccess  {String}  token.accessToken   Authorization Token
+ * @apiSuccess  {String}  token.refreshToken  Token to get a new accessToken
+ *                                                   after expiration time
+ * @apiSuccess  {Number}  token.expiresIn     Access Token's expiration time
+ *                                                   in miliseconds
+ *
+ * @apiSuccess  {String}  user.id             User's id
+ * @apiSuccess  {String}  user.name           User's name
+ * @apiSuccess  {String}  user.email          User's email
+ * @apiSuccess  {String}  user.role           User's role
+ * @apiSuccess  {Date}    user.createdAt      Timestamp
+ *
+ * @apiError (Bad Request 400)  ValidationError  Some parameters may contain invalid values
+ * @apiError (Unauthorized 401)  Unauthorized     Incorrect email or password
+ */
+router.route("/logout").post(authorize(LOGGED_USER), validator.body(logout.body), controller.logout);
+
+/**
  * @api {post} v1/auth/refresh-token Refresh Token
  * @apiDescription Refresh expired accessToken
  * @apiVersion 1.0.0
@@ -87,8 +119,8 @@ router.route("/login").post(validator.body(login.body), controller.login);
  * @apiError (Unauthorized 401)  Unauthorized     Incorrect email or refreshToken
  */
 router
-  .route("/refresh-token")
-  .post(validator.body(refresh.body), controller.refresh);
+    .route("/refresh-token")
+    .post(validator.body(refresh.body), controller.refresh);
 
 /**
  * TODO: POST /v1/auth/reset-password
@@ -113,8 +145,8 @@ router
  * @apiError (Unauthorized 401)  Unauthorized    Incorrect access_token
  */
 router
-  .route("/facebook")
-  .post(validator.body(oAuth.body), oAuthLogin("facebook"), controller.oAuth);
+    .route("/facebook")
+    .post(validator.body(oAuth.body), oAuthLogin("facebook"), controller.oAuth);
 
 /**
  * @api {post} v1/auth/google Google Login
@@ -135,7 +167,7 @@ router
  * @apiError (Unauthorized 401)  Unauthorized    Incorrect access_token
  */
 router
-  .route("/google")
-  .post(validator.body(oAuth.body), oAuthLogin("google"), controller.oAuth);
+    .route("/google")
+    .post(validator.body(oAuth.body), oAuthLogin("google"), controller.oAuth);
 
 module.exports = router;
