@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Axios from 'axios';
 
 import { DashboardProps, DashboardState } from './dashboard.types';
 import Admin from '../../components/Admin/admin';
+import Storage from '../../components/Storage/storage';
 import DonateForm from '../../components/DonateForm/donateform';
 import RequestForm from '../../components/RequestForm/requestForm';
 import Profile from '../../components/Profile/profile';
@@ -11,7 +13,40 @@ import './dashboard.scss';
 class Dashboard extends Component<DashboardProps, DashboardState> {
     state = {
         dashboard: '',
+        storage: [],
+        requests: [],
+        donations: [],
     };
+
+    componentDidMount() {
+        const { token } = this.props.location.state;
+
+        Axios.all([
+            Axios.get<Array<Object>>('http://localhost:3001/v1/food', {
+                headers: {
+                    Authorization: `Bearer ${token.accessToken}`,
+                },
+            }),
+            Axios.get<Array<Object>>('http://localhost:3001/v1/request', {
+                headers: {
+                    Authorization: `Bearer ${token.accessToken}`,
+                },
+            }),
+            Axios.get<Array<Object>>('http://localhost:3001/v1/donation', {
+                headers: {
+                    Authorization: `Bearer ${token.accessToken}`,
+                },
+            }),
+        ]).then(
+            Axios.spread((storage, requests, donations) => {
+                this.setState({
+                    storage: storage.data,
+                    requests: requests.data,
+                    donations: donations.data,
+                });
+            }),
+        );
+    }
 
     render() {
         const { user } = this.props.location.state;
@@ -47,6 +82,15 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                                         </div>
                                     </li>
                                 ) : null}
+                                {user.role === 'admin' ? (
+                                    <li>
+                                        <div className="requesticon">
+                                            <button onClick={() => this.setState({ dashboard: 'storage' })}>
+                                                Storage
+                                            </button>
+                                        </div>
+                                    </li>
+                                ) : null}
                                 <li>
                                     <div className="donateicon">
                                         <button onClick={() => this.setState({ dashboard: 'donate' })}>Donate</button>
@@ -71,7 +115,9 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                         case 'request':
                             return <RequestForm {...this.props} />;
                         case 'admin':
-                            return <Admin />;
+                            return <Admin requests={this.state.requests} donations={this.state.donations} />;
+                        case 'storage':
+                            return <Storage storage={this.state.storage} />;
                         default:
                             return <Profile {...this.props} />;
                     }

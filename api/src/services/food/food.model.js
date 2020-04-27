@@ -10,23 +10,63 @@ const APIError = require("../../utils/APIError");
  */
 const foodSchema = new mongoose.Schema(
   {
-    name: {
+    product_name: {
       type: String,
       required: true,
       trim: true,
       lowercase: true,
     },
-    quantity: {
+    product_amount: {
       type: Number,
       required: true,
-      trim: true,
     },
-    isPerishable: {
-      type: Boolean,
+    product_group: {
+      type: String,
       required: true,
-    }
+      trim: true,
+      lowercase: true,
+      enum: ["perishable", "not perishable"],
+    },
+    distribution_to: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+    },
+    distribution_from: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+    },
+    expiration_date: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+    },
+    pack_date: {
+      type: Date,
+      required: true,
+      trim: true,
+      lowercase: true,
+    },
+    sell_by_date: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+    },
+    use_by_date: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+    },
   },
   {
+    createdAt: "created_at",
+    updatedAt: "updated_at",
     timestamps: true,
   }
 );
@@ -53,18 +93,24 @@ foodSchema.method({
     const transformed = {};
     const fields = [
       "id",
-      "name",
-      "quantity",
-      "isPerishable",
+      "product_name",
+      "product_amount",
+      "product_group",
+      "distribution_to",
+      "distribution_from",
+      "expiration_date",
+      "pack_date",
+      "sell_by_date",
+      "use_by_date",
       "createdAt",
     ];
 
     fields.forEach((field) => {
-      transformed[field] = this[field];
+      transformed[field] = field === "id" ? this["_id"] : this[field];
     });
 
     return transformed;
-  }
+  },
 });
 
 /**
@@ -105,8 +151,33 @@ foodSchema.statics = {
    * @param {number} limit - Limit number of food to be returned.
    * @returns {Promise<Food[]>}
    */
-  list({ page = 1, perPage = 30, name, quantity, isPerishable }) {
-    const options = omitBy({ name, quantity, isPerishable }, isNil);
+  list({
+    page = 1,
+    perPage = 30,
+    product_name,
+    product_amount,
+    product_group,
+    distribution_to,
+    distribution_from,
+    expiration_date,
+    pack_date,
+    sell_by_date,
+    use_by_date,
+  }) {
+    const options = omitBy(
+      {
+        product_name,
+        product_amount,
+        product_group,
+        distribution_to,
+        distribution_from,
+        expiration_date,
+        pack_date,
+        sell_by_date,
+        use_by_date,
+      },
+      isNil
+    );
 
     return this.find(options)
       .sort({ createdAt: -1 })
@@ -114,7 +185,6 @@ foodSchema.statics = {
       .limit(perPage)
       .exec();
   },
-
 };
 
 /**

@@ -9,15 +9,16 @@ const { jwtExpirationInterval } = require("../../config/vars");
  * @private
  */
 function generateTokenResponse(user, accessToken) {
-  const tokenType = "Bearer";
-  const refreshToken = RefreshToken.generate(user).token;
-  const expiresIn = moment().add(jwtExpirationInterval, "minutes");
-  return {
-    tokenType,
-    accessToken,
-    refreshToken,
-    expiresIn,
-  };
+    const tokenType = "Bearer";
+    const refreshToken = RefreshToken.generate(user).token;
+    const expiresIn = moment().add(jwtExpirationInterval, "minutes");
+
+    return {
+        tokenType,
+        accessToken,
+        refreshToken,
+        expiresIn,
+    };
 }
 
 /**
@@ -25,15 +26,15 @@ function generateTokenResponse(user, accessToken) {
  * @public
  */
 exports.register = async (userData) => {
-  try {
-    const user = await new User(userData).save();
-    console.log("user: ", user);
-    const userTransformed = user.transform();
-    const token = generateTokenResponse(user, user.token());
-    return { token, user: userTransformed };
-  } catch (error) {
-    throw User.checkDuplicateEmail(error);
-  }
+    try {
+        const user = await new User(userData).save();
+        const userTransformed = user.transform();
+        const token = generateTokenResponse(user, user.token());
+
+        return { token, user: userTransformed };
+    } catch (error) {
+        throw User.checkDuplicateEmail(error);
+    }
 };
 
 /**
@@ -41,14 +42,15 @@ exports.register = async (userData) => {
  * @public
  */
 exports.login = async (userData) => {
-  try {
-    const { user, accessToken } = await User.findAndGenerateToken(userData);
-    const token = generateTokenResponse(user, accessToken);
-    const userTransformed = user.transform();
-    return { token, user: userTransformed };
-  } catch (error) {
-    throw error;
-  }
+    try {
+        const { user, accessToken } = await User.findAndGenerateToken(userData);
+        const token = generateTokenResponse(user, accessToken);
+        const userTransformed = user.transform();
+
+        return { token, user: userTransformed };
+    } catch (error) {
+        throw error;
+    }
 };
 
 /**
@@ -57,14 +59,15 @@ exports.login = async (userData) => {
  * @public
  */
 exports.oAuth = async (user) => {
-  try {
-    const accessToken = user.token();
-    const token = generateTokenResponse(user, accessToken);
-    const userTransformed = user.transform();
-    return { token, user: userTransformed };
-  } catch (error) {
-    throw error;
-  }
+    try {
+        const accessToken = user.token();
+        const token = generateTokenResponse(user, accessToken);
+        const userTransformed = user.transform();
+
+        return { token, user: userTransformed };
+    } catch (error) {
+        throw error;
+    }
 };
 
 /**
@@ -72,17 +75,35 @@ exports.oAuth = async (user) => {
  * @public
  */
 exports.refresh = async ({ email, refreshToken }) => {
-  try {
-    const refreshObject = await RefreshToken.findOneAndRemove({
-      userEmail: email,
-      token: refreshToken,
-    });
-    const { user, accessToken } = await User.findAndGenerateToken({
-      email,
-      refreshObject,
-    });
-    return generateTokenResponse(user, accessToken);
-  } catch (error) {
-    throw error;
-  }
+    try {
+        const refreshObject = await RefreshToken.findOneAndRemove({
+            userEmail: email,
+            token: refreshToken,
+        });
+
+        const { user, accessToken } = await User.findAndGenerateToken({
+            email,
+            refreshObject,
+        });
+
+        return generateTokenResponse(user, accessToken);
+    } catch (error) {
+        throw error;
+    }
+};
+
+/**
+ * Returns a metadata on removed object
+ * @public
+ */
+exports.logout = async ({ email }) => {
+    try {
+        const refreshObject = await RefreshToken.findOneAndRemove({
+            userEmail: email
+        });
+
+        return refreshObject;
+    } catch (error) {
+        throw error;
+    }
 };

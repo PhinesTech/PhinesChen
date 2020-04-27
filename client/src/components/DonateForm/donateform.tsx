@@ -20,7 +20,7 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
         listOfIngredients: '',
     };
 
-    constructor(props: any) {
+    constructor(props: Readonly<DonateFormProps>) {
         super(props);
         this.handleDonateFoodSubmit = this.handleDonateFoodSubmit.bind(this);
     }

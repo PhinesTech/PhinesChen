@@ -14,7 +14,7 @@ class Login extends Component<LoginProps, LoginState> {
         password: '',
     };
 
-    constructor(props: any) {
+    constructor(props: Readonly<LoginProps>) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
