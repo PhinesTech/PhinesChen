@@ -17,7 +17,7 @@ class RequestForm extends Component<RequestFormProps, RequestFormState> {
         },
     };
 
-    constructor(props: any) {
+    constructor(props: Readonly<RequestFormProps>) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -140,7 +140,7 @@ class RequestForm extends Component<RequestFormProps, RequestFormState> {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    > PhinesTech{' '}
+                    PhinesTech{' '}
                 </a>
             </section>
         );

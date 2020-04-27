@@ -7,13 +7,13 @@ const service = require("./auth.service");
  * @public
  */
 exports.register = async (req, res, next) => {
-  try {
-    const response = await service.register(req.body);
-    console.log("response: ", response);
-    return res.status(httpStatus.CREATED).json(response);
-  } catch (error) {
-    return next(error);
-  }
+    try {
+        const response = await service.register(req.body);
+        console.log("response: ", response);
+        return res.status(httpStatus.CREATED).json(response);
+    } catch (error) {
+        return next(error);
+    }
 };
 
 /**
@@ -21,12 +21,12 @@ exports.register = async (req, res, next) => {
  * @public
  */
 exports.login = async (req, res, next) => {
-  try {
-    const response = await service.login(req.body);
-    return res.json(response);
-  } catch (error) {
-    return next(error);
-  }
+    try {
+        const response = await service.login(req.body);
+        return res.json(response);
+    } catch (error) {
+        return next(error);
+    }
 };
 
 /**
@@ -35,13 +35,14 @@ exports.login = async (req, res, next) => {
  * @public
  */
 exports.oAuth = async (req, res, next) => {
-  try {
-    const { user } = req;
-    const response = await service.oAuth(user);
-    return res.json(response);
-  } catch (error) {
-    return next(error);
-  }
+    try {
+        const { user } = req;
+        const response = await service.oAuth(user);
+
+        return res.json(response);
+    } catch (error) {
+        return next(error);
+    }
 };
 
 /**
@@ -49,10 +50,26 @@ exports.oAuth = async (req, res, next) => {
  * @public
  */
 exports.refresh = async (req, res, next) => {
-  try {
-    const response = await service.refresh(req.body);
-    return res.json(response);
-  } catch (error) {
-    return next(error);
-  }
+    try {
+        const response = await service.refresh(req.body);
+
+        return res.json(response);
+    } catch (error) {
+        return next(error);
+    }
+};
+
+/**
+ * Returns a metadata on removed object
+ * @public
+ */
+exports.logout = async (req, res, next) => {
+    try {
+        console.log(req.body);
+        const response = await service.logout(req.body);
+
+        return res.json(response);
+    } catch (error) {
+        return next(error);
+    }
 };

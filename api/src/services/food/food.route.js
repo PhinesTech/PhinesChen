@@ -40,7 +40,7 @@ router
    * @apiError (Unauthorized 401)  Unauthorized  Only authenticated food can access the data
    * @apiError (Forbidden 403)     Forbidden     Only admins can access the data
    */
-  .get(authorize(LOGGED_USER), validator.query(listFood.query), controller.list)
+  .get(authorize(ADMIN), validator.query(listFood.query), controller.list)
   /**
    * @api {post} v1/food Create Food
    * @apiDescription Create a new food
@@ -90,7 +90,7 @@ router
    * @apiError (Forbidden 403)    Forbidden    Only food with same id or admins can access the data
    * @apiError (Not Found 404)    NotFound     Food does not exist
    */
-  .get(authorize(LOGGED_USER), controller.get)
+  .get(authorize(ADMIN), controller.get)
   /**
    * @api {put} v1/food/:id Replace Food
    * @apiDescription Replace the whole food document with a new one
