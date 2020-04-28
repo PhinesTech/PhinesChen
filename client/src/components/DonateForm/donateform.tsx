@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, FormEvent } from 'react';
 import Axios from 'axios';
 
 import DONATELOGO from '../../assets/images/HmPgIcon-Donate2.png';
@@ -25,15 +25,13 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
         this.handleDonateFoodSubmit = this.handleDonateFoodSubmit.bind(this);
     }
 
-    handleDonateFoodSubmit(event: any) {
+    handleDonateFoodSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         Axios.post('http://localhost:3001/v1/donation/', this.state, {
             headers: {
                 Authorization: `Bearer ${this.props.location.state.token.accessToken}`,
             },
-        }).then((response: any) => {
-            console.log(response);
         });
     }
 

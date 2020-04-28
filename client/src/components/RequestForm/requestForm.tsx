@@ -1,4 +1,4 @@
-import React, { Component, ChangeEvent } from 'react';
+import React, { Component, ChangeEvent, FormEvent } from 'react';
 import Axios from 'axios';
 
 import REQUESTLOGO from '../../assets/images/request.png';
@@ -7,6 +7,7 @@ import { RequestFormProps, RequestFormState } from './requestForm.types';
 
 class RequestForm extends Component<RequestFormProps, RequestFormState> {
     state = {
+        specificRequest: '',
         householdSize: 1,
         dietaryRestrictions: '',
         allergies: '',
@@ -15,6 +16,7 @@ class RequestForm extends Component<RequestFormProps, RequestFormState> {
             city: '',
             zip: 90000,
         },
+        status: 'Unrequested'
     };
 
     constructor(props: Readonly<RequestFormProps>) {
@@ -22,20 +24,18 @@ class RequestForm extends Component<RequestFormProps, RequestFormState> {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(event: any) {
+    handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         Axios.post('http://localhost:3001/v1/request/', this.state, {
             headers: {
                 Authorization: `Bearer ${this.props.location.state.token.accessToken}`,
             },
-        }).then((response: any) => {
-            console.log(response);
         });
     }
 
     render() {
-        const { dietaryRestrictions, allergies, address } = this.state;
+        const { status, dietaryRestrictions, allergies, address } = this.state;
 
         return (
             <section className="REQUESTFORM">
@@ -51,7 +51,7 @@ class RequestForm extends Component<RequestFormProps, RequestFormState> {
                             <img id="donate-logo2" className="grid-item-image" src={REQUESTLOGO} alt="Donate" />
                         </div>
                         <button className="statusbutton" type="button">
-                            Request Status: Pending
+                            Request Status: {status}
                         </button>
 
                         <form className="form" onSubmit={this.handleSubmit} autoComplete="off">

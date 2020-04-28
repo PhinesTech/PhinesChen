@@ -136,7 +136,7 @@ class Pagination extends Component<PaginationProps> {
                                     <li key={index} className="page-item">
                                         <a
                                             className="page-link"
-                                            href="#"
+                                            href="/#"
                                             aria-label="Previous"
                                             onClick={this.handleMoveLeft}
                                         >
@@ -151,7 +151,7 @@ class Pagination extends Component<PaginationProps> {
                                     <li key={index} className="page-item">
                                         <a
                                             className="page-link"
-                                            href="#"
+                                            href="/#"
                                             aria-label="Next"
                                             onClick={this.handleMoveRight}
                                         >
@@ -163,7 +163,7 @@ class Pagination extends Component<PaginationProps> {
 
                             return (
                                 <li key={index} className={`page-item${currentPage === page ? ' active' : ''}`}>
-                                    <a className="page-link" href="#" onClick={e => this.handleClick(Number(page), e)}>
+                                    <a className="page-link" href="/#" onClick={e => this.handleClick(Number(page), e)}>
                                         {page}
                                     </a>
                                 </li>

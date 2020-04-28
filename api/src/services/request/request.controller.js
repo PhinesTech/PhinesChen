@@ -8,13 +8,13 @@ const { handler: errorHandler } = require("../../middlewares/error");
  * @public
  */
 exports.load = async (req, res, next, id) => {
-  try {
-    const request = await service.get(id);
-    req.locals = { request };
-    return next();
-  } catch (error) {
-    return errorHandler(error, req, res);
-  }
+    try {
+        const request = await service.get(id);
+        req.locals = { request };
+        return next();
+    } catch (error) {
+        return errorHandler(error, req, res);
+    }
 };
 
 /**
@@ -34,12 +34,12 @@ exports.loggedIn = (req, res) => res.json(req.request.transform());
  * @public
  */
 exports.create = async (req, res, next) => {
-  try {
-    const response = await service.create(req.body);
-    return res.status(httpStatus.CREATED).json(response);
-  } catch (error) {
-    return next(error);
-  }
+    try {
+        const response = await service.create(req.body);
+        return res.status(httpStatus.CREATED).json(response);
+    } catch (error) {
+        return next(error);
+    }
 };
 
 /**
@@ -47,13 +47,13 @@ exports.create = async (req, res, next) => {
  * @public
  */
 exports.replace = async (req, res, next) => {
-  try {
-    const { request } = req.locals;
-    const response = await service.replace(request, req.body);
-    return res.json(response);
-  } catch (error) {
-    return next(error);
-  }
+    try {
+        const { request } = req.locals;
+        const response = await service.replace(request, req.body);
+        return res.json(response);
+    } catch (error) {
+        return next(error);
+    }
 };
 
 /**
@@ -61,13 +61,13 @@ exports.replace = async (req, res, next) => {
  * @public
  */
 exports.update = async (req, res, next) => {
-  try {
-    const { request } = req.locals;
-    const response = await service.update(request, req.body);
-    return res.json(response);
-  } catch (error) {
-    return next(error);
-  }
+    try {
+        const { request } = req.locals;
+        const response = await service.update(request, req.body);
+        return res.json(response);
+    } catch (error) {
+        return next(error);
+    }
 };
 
 /**
@@ -75,12 +75,12 @@ exports.update = async (req, res, next) => {
  * @public
  */
 exports.list = async (req, res, next) => {
-  try {
-    const response = await service.list(req.query);
-    res.json(response);
-  } catch (error) {
-    next(error);
-  }
+    try {
+        const response = await service.list(req.query);
+        res.json(response);
+    } catch (error) {
+        next(error);
+    }
 };
 
 /**
@@ -88,11 +88,11 @@ exports.list = async (req, res, next) => {
  * @public
  */
 exports.remove = async (req, res, next) => {
-  try {
-    const { request } = req.locals;
-    await service.remove(request);
-    res.status(httpStatus.NO_CONTENT).end();
-  } catch (error) {
-    next(error);
-  }
+    try {
+        const { request } = req.locals;
+        await service.remove(request);
+        res.status(httpStatus.NO_CONTENT).end();
+    } catch (error) {
+        next(error);
+    }
 };

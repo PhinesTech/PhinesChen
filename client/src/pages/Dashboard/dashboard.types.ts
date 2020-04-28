@@ -1,18 +1,18 @@
 export type Token = {
-  tokenType: String;
-  accessToken: String;
-  refreshToken: String;
-  expiresIn: String;
+  tokenType: string;
+  accessToken: string;
+  refreshToken: string;
+  expiresIn: string;
 }
 
 export type User = {
-  id: String;
-  name: String;
-  companyName: String;
-  email: String;
-  donatedFood: Array<String>;
-  requestedFood: Array<String>;
-  role: String;
+  id: string;
+  name: string;
+  companyName: string;
+  email: string;
+  donatedFood: Array<string>;
+  requestedFood: Array<string>;
+  role: string;
 }
 
 export type DashboardProps = {

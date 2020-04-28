@@ -40,16 +40,16 @@ const userSchema = new mongoose.Schema(
       index: true,
       trim: true,
     },
-    companyName: {
+    company_name: {
       type: String,
       index: true,
       trim: true,
     },
-    donatedFood: {
+    donated_food: {
       type: Array,
       default: [],
     },
-    requestedFood: {
+    requested_food: {
       type: Array,
       default: [],
     },

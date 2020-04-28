@@ -11,7 +11,7 @@ class Admin extends Component<AdminProps> {
     }
 
     getRequesters() {
-        let requesters: Array<any> = [],
+        let requesters: Array<JSX.Element> = [],
             { donations } = this.props;
 
         donations.forEach((element: any, index: Number) => {
@@ -42,7 +42,7 @@ class Admin extends Component<AdminProps> {
     }
 
     getDonators() {
-        let donators: Array<any> = [],
+        let donators: Array<JSX.Element> = [],
             { donations } = this.props;
 
         donations.forEach((element: any, index: Number) => {

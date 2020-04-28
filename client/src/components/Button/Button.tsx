@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React, { MouseEvent } from 'react';
 
 export interface IButtonProps {
     children?: React.ReactNode;
-    onClick?: (e: any) => void;
+    onClick?: (e: MouseEvent<HTMLElement>) => void;
     styles?: {};
     disabled?: true | false;
 }

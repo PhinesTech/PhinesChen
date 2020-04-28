@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, FormEvent } from 'react';
 import Axios from 'axios';
 
 import history from '../../app.history';
@@ -16,12 +16,12 @@ class Signup extends Component<SignUpProps, SignUpState> {
         companyName: '',
     };
 
-    constructor(props: any) {
+    constructor(props: Readonly<SignUpProps>) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(event: any) {
+    handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         const user = {
