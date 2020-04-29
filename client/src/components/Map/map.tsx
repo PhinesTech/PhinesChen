@@ -5,7 +5,7 @@ import { MapProps } from './map.types';
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFuam90OTAiLCJhIjoiY2s5NmVvOWt4MGlzazNlbzV1MjkyYTZxYiJ9.uBWNQNV6y53ItQob-0jbkQ';
 
 class Map extends Component<MapProps> {
-    mapRef: RefObject<string | HTMLElement> = React.createRef();
+    mapRef: RefObject<any> = React.createRef();
 
     componentDidMount() {
         const { mapStyle, lng, lat, zoom } = this.props;
