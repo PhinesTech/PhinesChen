@@ -22,14 +22,15 @@ export type DonateFormProps = {
 };
 
 export type DonateFormState = {
-  companyName: string;
-  mailingAddress: string;
-  reasonForDonaation: string;
-  storageRequirements: string;
-  quantity: Number;
-  contactName: string;
-  phoneNumber: string;
-  productDescription: string;
-  packagingDetails: string;
-  listOfIngredients: string;
+  company_name: string;
+  mailing_address: string;
+  reason_for_donation: string;
+  storage_requirements: string;
+  product_quantity: Number;
+  contact_name: string;
+  phone_number: string;
+  product_name: string;
+  product_description: string;
+  packaging_details: string;
+  list_of_ingredients: string;
 };
