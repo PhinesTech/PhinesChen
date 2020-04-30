@@ -4,6 +4,12 @@ import './admin.scss';
 import { AdminProps } from './admin.types';
 
 class Admin extends Component<AdminProps> {
+    state = {
+        currentRequestors: [],
+        currentPage: 1,
+        totalPages: 1,
+    };
+
     constructor(props: Readonly<AdminProps>) {
         super(props);
         this.getRequesters = this.getRequesters.bind(this);
@@ -12,17 +18,17 @@ class Admin extends Component<AdminProps> {
 
     getRequesters() {
         let requesters: Array<JSX.Element> = [],
-            { donations } = this.props;
+            { requests } = this.props;
 
-        donations.forEach((element: any, index: Number) => {
-            let { contactName, productDescription } = element;
+        requests.forEach((element: any, index: Number) => {
+            let { name, specific_request } = element;
 
             requesters.push(
                 <div className="ui-card -notification" key={index.toString()}>
                     <img src="http://i.pravatar.cc/100?img=13" alt="avatar" />
                     <div className="ui-content">
-                        <div className="ui-title">{contactName}</div>
-                        <div className="ui-message">Requested: {productDescription}</div>
+                        <div className="ui-title">{name}</div>
+                        <div className="ui-message">Requested: {specific_request}</div>
                     </div>
                     <button className="acceptbutton" type="button">
                         Accept

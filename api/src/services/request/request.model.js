@@ -10,16 +10,16 @@ const APIError = require("../../utils/APIError");
  */
 const requestSchema = new mongoose.Schema(
     {
-        specificRequest: {
+        specific_request: {
             type: String,
             trim: true,
         },
-        householdSize: {
+        household_size: {
             type: Number,
             required: true,
             trim: true,
         },
-        dietaryRestrictions: {
+        dietary_restrictions: {
             type: String,
             trim: true,
         },
@@ -53,8 +53,15 @@ const requestSchema = new mongoose.Schema(
                 "Picked Up",
             ],
         },
+        user_id: {
+            type: String,
+            trim: true,
+            required: true
+        }
     },
     {
+        createdAt: "created_at",
+        updatedAt: "updated_at",
         timestamps: true,
     }
 );
@@ -67,13 +74,15 @@ requestSchema.method({
         const transformed = {};
         const fields = [
             "id",
-            "specificRequest",
-            "householdSize",
-            "dietaryRestrictions",
+            "specific_request",
+            "household_size",
+            "dietary_restrictions",
             "allergies",
             "address",
             "status",
-            "createdAt",
+            "user_id",
+            "created_at",
+            "updated_at"
         ];
 
         fields.forEach((field) => {
@@ -124,22 +133,24 @@ requestSchema.statics = {
      */
     list({
         page = 1,
-        perPage = 30,
-        specificRequest,
-        householdSize,
-        dietaryRestrictions,
+        perPage = 1000,
+        specific_request,
+        household_size,
+        dietary_restrictions,
         allergies,
         status,
         address,
+        user_id
     }) {
         const options = omitBy(
             {
-                specificRequest,
-                householdSize,
-                dietaryRestrictions,
+                specific_request,
+                household_size,
+                dietary_restrictions,
                 allergies,
                 status,
                 address,
+                user_id
             },
             isNil
         );

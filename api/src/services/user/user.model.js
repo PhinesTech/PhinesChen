@@ -196,7 +196,7 @@ userSchema.statics = {
    * @param {number} limit - Limit number of users to be returned.
    * @returns {Promise<User[]>}
    */
-  list({ page = 1, perPage = 30, name, companyName, email, service, donatedFood, requestedFood, role }) {
+  list({ page = 1, perPage = 200, name, companyName, email, service, donatedFood, requestedFood, role }) {
     const options = omitBy({ name, companyName, email, service, donatedFood, requestedFood, role }, isNil);
 
     return this.find(options)

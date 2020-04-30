@@ -1,6 +1,9 @@
 const httpStatus = require("http-status");
+const Axios = require("axios");
+const mongoose = require("mongoose");
 
 const service = require("./request.service");
+const User = require("../user/user.model");
 const { handler: errorHandler } = require("../../middlewares/error");
 
 /**
@@ -76,8 +79,29 @@ exports.update = async (req, res, next) => {
  */
 exports.list = async (req, res, next) => {
     try {
-        const response = await service.list(req.query);
-        res.json(response);
+        const requestResponse = await service.list(req.query);
+        
+        const userIdMap = await requestResponse.map(({ user_id }) =>
+            mongoose.Types.ObjectId(user_id)
+        );
+
+        const userResponse = await User.find({
+            _id: { $in: userIdMap },
+        }).exec();
+
+        const userMap = userResponse.reduce((accumulator, current) => {
+            accumulator[current._id] = current;
+            return accumulator;
+        }, {});
+
+        const payload = requestResponse.map((element) => {
+            return {
+                ...element,
+                name: userMap[element.user_id].name,
+            };
+        });
+
+        res.json(payload);
     } catch (error) {
         next(error);
     }

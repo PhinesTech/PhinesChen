@@ -146,7 +146,7 @@ donationSchema.statics = {
      */
     list({
         page = 1,
-        perPage = 30,
+        perPage = 1000,
         company_name,
         mailing_address,
         reason_for_donation,

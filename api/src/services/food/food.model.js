@@ -153,7 +153,7 @@ foodSchema.statics = {
    */
   list({
     page = 1,
-    perPage = 30,
+    perPage = 1000,
     product_name,
     product_amount,
     product_group,

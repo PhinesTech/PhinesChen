@@ -4,9 +4,9 @@ module.exports = {
     // GET /v1/request
     listRequest: {
         query: Joi.object({
-            specificRequest: Joi.string(),
-            householdSize: Joi.number(),
-            dietaryRestrictions: Joi.string(),
+            specific_request: Joi.string(),
+            household_size: Joi.number(),
+            dietary_restrictions: Joi.string(),
             allergies: Joi.string(),
             address: Joi.object({
                 street: Joi.string(),
@@ -14,15 +14,16 @@ module.exports = {
                 zip: Joi.number(),
             }),
             status: Joi.string(),
+            user_id: Joi.string(),
         }),
     },
 
     // POST /v1/request
     createRequest: {
         body: Joi.object({
-            specificRequest: Joi.string(),
-            householdSize: Joi.number(),
-            dietaryRestrictions: Joi.string(),
+            specific_request: Joi.string(),
+            household_size: Joi.number(),
+            dietary_restrictions: Joi.string(),
             allergies: Joi.string(),
             address: Joi.object({
                 street: Joi.string(),
@@ -30,15 +31,16 @@ module.exports = {
                 zip: Joi.number(),
             }),
             status: Joi.string(),
+            user_id: Joi.string(),
         }),
     },
 
     // PUT /v1/request/:requestId
     replaceRequest: {
         body: Joi.object({
-            specificRequest: Joi.string(),
-            householdSize: Joi.number(),
-            dietaryRestrictions: Joi.string(),
+            specific_request: Joi.string(),
+            household_size: Joi.number(),
+            dietary_restrictions: Joi.string(),
             allergies: Joi.string(),
             address: Joi.object({
                 street: Joi.string(),
@@ -46,6 +48,7 @@ module.exports = {
                 zip: Joi.number(),
             }),
             status: Joi.string(),
+            user_id: Joi.string(),
         }),
         params: Joi.object({
             requestId: Joi.string()
@@ -57,9 +60,9 @@ module.exports = {
     // PATCH /v1/request/:requestId
     updateRequest: {
         body: Joi.object({
-            specificRequest: Joi.string(),
-            householdSize: Joi.number(),
-            dietaryRestrictions: Joi.string(),
+            specific_request: Joi.string(),
+            household_size: Joi.number(),
+            dietary_restrictions: Joi.string(),
             allergies: Joi.string(),
             address: Joi.object({
                 street: Joi.string(),
@@ -67,6 +70,7 @@ module.exports = {
                 zip: Joi.number(),
             }),
             status: Joi.string(),
+            user_id: Joi.string(),
         }),
         params: Joi.object({
             requestId: Joi.string()
