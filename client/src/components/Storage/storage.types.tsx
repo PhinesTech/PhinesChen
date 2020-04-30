@@ -4,8 +4,8 @@ export type StorageProps = {
 
 export type StorageState = {
   currentStorage: Array<Object>;
-  currentPage: Number;
-  totalPages: Number;
+  currentPage: number;
+  totalPages: number;
 };
 
 export type StorageModel = {

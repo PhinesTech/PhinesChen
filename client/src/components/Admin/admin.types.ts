@@ -1,3 +1,12 @@
+export type AdminState = {
+    currentRequestors: Array<Object>;
+    currentDonators: Array<Object>;
+    currentRequestPage: number;
+    totalRequestPages: number;
+    currentDonationPage: number;
+    totalDonationPages: number;
+}
+
 export type AdminProps = {
   requests: Array<Object>;
   donations: Array<Object>;

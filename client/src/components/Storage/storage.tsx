@@ -96,7 +96,7 @@ class Storage extends Component<StorageProps> {
                             <br />
                             <Pagination
                                 totalRecords={totalItemsInStorage}
-                                pageLimit={100}
+                                pageLimit={30}
                                 pageNeighbours={1}
                                 onPageChanged={this.onPageChanged}
                             />
