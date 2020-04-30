@@ -52,14 +52,17 @@ class Admin extends Component<AdminProps> {
             { donations } = this.props;
 
         donations.forEach((element: any, index: Number) => {
-            let { contactName, productDescription } = element;
+            let { contact_name, company_name, product_name } = element;
 
             donators.push(
                 <div className="ui-card -notification" key={index.toString()}>
                     <img src="http://i.pravatar.cc/100?img=10" alt="avatar" />
                     <div className="ui-content">
-                        <div className="ui-title">{contactName}</div>
-                        <div className="ui-message">Donated: {productDescription}</div>
+                        <div className="ui-title">
+                            {contact_name}
+                            {company_name !== '' ? `@${company_name}` : null}
+                        </div>
+                        <div className="ui-message">Donated: {product_name}</div>
                     </div>
                     <button className="thankyoubutton" type="button">
                         Thank You

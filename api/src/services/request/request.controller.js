@@ -1,5 +1,4 @@
 const httpStatus = require("http-status");
-const Axios = require("axios");
 const mongoose = require("mongoose");
 
 const service = require("./request.service");
@@ -80,7 +79,7 @@ exports.update = async (req, res, next) => {
 exports.list = async (req, res, next) => {
     try {
         const requestResponse = await service.list(req.query);
-        
+
         const userIdMap = await requestResponse.map(({ user_id }) =>
             mongoose.Types.ObjectId(user_id)
         );
