@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+.PAGINATION {
+font-family: 'Roboto', sans-serif;
+font-weight:bold;
+
+
+.pagination {
+   
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.pagination > li {
+    
+    // padding-top:10px;
+    display: inline-block;
+    padding: 10% 10% 10% 10%;
+    
+}
+
+.paginate-ctn{
+    display: flex;
+}
+
+.round-effect {
+  color:black;
+  cursor:pointer;
+/*   border:1px solid red; */
+
+  font-size:26px;
+  text-align:center;
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:9px;
+  border-radius: 50%;
+  height: 30px;
+  width: 50px;
+  margin:5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+}
+
+.round-effect:hover {
+  text-decoration: none;
+  background:darkgreen;
+  color:#FFF;
+}
+
+.round-effect:hover a {
+  text-decoration: none;
+  color:#FFF;
+}
+
+.active{
+  background:darkgreen;
+  color:#FFF;
+}
+
+.round-effect > a:link {
+  text-decoration: none;
+  color:darkgreen;
+ 
+}
+}

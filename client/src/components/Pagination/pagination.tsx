@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 import { PaginationProps } from './pagination.types';
+import './pagination.scss';
 
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';
@@ -128,14 +129,14 @@ class Pagination extends Component<PaginationProps> {
 
         return (
             <Fragment>
-                <nav aria-label="Countries Pagination">
-                    <ul className="pagination">
+                <nav aria-label="Countries Pagination" className="PAGINATION">
+                    <ul className="pagination ">
                         {pages.map((page, index) => {
                             if (page === LEFT_PAGE)
                                 return (
-                                    <li key={index} className="page-item">
+                                    <li key={index} className="page-item round-effect">
                                         <a
-                                            className="page-link"
+                                            className="page-link round-effect"
                                             href="/#"
                                             aria-label="Previous"
                                             onClick={this.handleMoveLeft}
@@ -148,7 +149,7 @@ class Pagination extends Component<PaginationProps> {
 
                             if (page === RIGHT_PAGE)
                                 return (
-                                    <li key={index} className="page-item">
+                                    <li key={index} className="page-item round-effect">
                                         <a
                                             className="page-link"
                                             href="/#"
