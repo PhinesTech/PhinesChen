@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './admin.scss';
-import { AdminProps } from './admin.types';
+import { AdminProps, RequestsModel, DonationModel } from './admin.types';
 import Pagination from '../Pagination/pagination';
 
 class Admin extends Component<AdminProps> {
@@ -24,7 +24,7 @@ class Admin extends Component<AdminProps> {
         let requesters: Array<JSX.Element> = [],
             { currentRequestors } = this.state;
 
-        currentRequestors.forEach((element: any, index: Number) => {
+        currentRequestors.forEach((element: RequestsModel, index: Number) => {
             let { name, specific_request } = element;
 
             requesters.push(
@@ -53,9 +53,9 @@ class Admin extends Component<AdminProps> {
 
     getDonators() {
         let donators: Array<JSX.Element> = [],
-            { donations } = this.props;
+            { currentDonators } = this.state;
 
-        donations.forEach((element: any, index: Number) => {
+        currentDonators.forEach((element: DonationModel, index: Number) => {
             let { contact_name, company_name, product_name } = element;
 
             donators.push(
@@ -72,7 +72,7 @@ class Admin extends Component<AdminProps> {
                         Thank You
                     </button>
                     <button className="messagebutton" type="button">
-                        Message
+                        Promote
                     </button>
                 </div>,
             );
@@ -85,27 +85,30 @@ class Admin extends Component<AdminProps> {
         );
     }
 
-    onPageChanged = (data: {
-        currentRequestPage: number;
-        totalRequestPages: number;
-        currentDonationPage: number;
-        totalDonationPages: number;
-        pageLimit: number;
-    }) => {
-        const { requests, donations } = this.props;
-        const { currentRequestPage, totalRequestPages, currentDonationPage, totalDonationPages, pageLimit } = data;
+    onRequestorsChanged = (data: { currentRequestPage: number; totalRequestPages: number; pageLimit: number }) => {
+        const { requests } = this.props;
+        const { currentRequestPage, totalRequestPages, pageLimit } = data;
 
         const requestOffset = (currentRequestPage - 1) * pageLimit;
-        const donationOffset = (currentDonationPage - 1) * pageLimit;
         const currentRequestors = requests.slice(requestOffset, requestOffset + pageLimit);
-        const currentDonators = donations.slice(donationOffset, donationOffset + pageLimit);
 
         this.setState({
             currentRequestPage,
-            currentDonationPage,
             currentRequestors,
-            currentDonators,
             totalRequestPages,
+        });
+    };
+
+    onDonationsChanged = (data: { currentDonationPage: number; totalDonationPages: number; pageLimit: number }) => {
+        const { donations } = this.props;
+        const { currentDonationPage, totalDonationPages, pageLimit } = data;
+
+        const donationOffset = (currentDonationPage - 1) * pageLimit;
+        const currentDonators = donations.slice(donationOffset, donationOffset + pageLimit);
+
+        this.setState({
+            currentDonationPage,
+            currentDonators,
             totalDonationPages,
         });
     };
@@ -222,9 +225,9 @@ class Admin extends Component<AdminProps> {
                                 <div id="app">
                                     <Pagination
                                         totalRecords={totalItemsInRequestors}
-                                        pageLimit={20}
+                                        pageLimit={10}
                                         pageNeighbours={1}
-                                        onPageChanged={this.onPageChanged}
+                                        onPageChanged={this.onRequestorsChanged}
                                     />
                                     <div className="app-wrapper">{this.getRequesters()}</div>
                                 </div>
@@ -237,9 +240,9 @@ class Admin extends Component<AdminProps> {
                                 <div id="app">
                                     <Pagination
                                         totalRecords={totalItemsInDonators}
-                                        pageLimit={20}
+                                        pageLimit={10}
                                         pageNeighbours={1}
-                                        onPageChanged={this.onPageChanged}
+                                        onPageChanged={this.onDonationsChanged}
                                     />
                                     <div className="app-wrapper">{this.getDonators()}</div>
                                 </div>
