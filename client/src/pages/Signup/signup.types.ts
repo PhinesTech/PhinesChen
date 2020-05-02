@@ -3,9 +3,9 @@ export type SignUpProps = {
 };
 
 export type SignUpState = {
-  email: String;
-  password: String;
-  firstName: String;
-  lastName: String;
-  companyName: String;
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  companyName: string;
 }

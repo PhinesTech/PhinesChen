@@ -40,16 +40,16 @@ const userSchema = new mongoose.Schema(
       index: true,
       trim: true,
     },
-    companyName: {
+    company_name: {
       type: String,
       index: true,
       trim: true,
     },
-    donatedFood: {
+    donated_food: {
       type: Array,
       default: [],
     },
-    requestedFood: {
+    requested_food: {
       type: Array,
       default: [],
     },
@@ -196,7 +196,7 @@ userSchema.statics = {
    * @param {number} limit - Limit number of users to be returned.
    * @returns {Promise<User[]>}
    */
-  list({ page = 1, perPage = 30, name, companyName, email, service, donatedFood, requestedFood, role }) {
+  list({ page = 1, perPage = 200, name, companyName, email, service, donatedFood, requestedFood, role }) {
     const options = omitBy({ name, companyName, email, service, donatedFood, requestedFood, role }, isNil);
 
     return this.find(options)

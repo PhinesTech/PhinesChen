@@ -1,35 +1,36 @@
 export type Token = {
-  tokenType: String;
-  accessToken: String;
-  refreshToken: String;
-  expiresIn: String;
-}
+    tokenType: string;
+    accessToken: string;
+    refreshToken: string;
+    expiresIn: string;
+};
 
 export type User = {
-  id: String;
-  name: String;
-  companyName: String;
-  email: String;
-  donatedFood: Array<String>;
-  requestedFood: Array<String>;
-  role: String;
-}
+    id: string;
+    name: string;
+    companyName: string;
+    email: string;
+    donatedFood: Array<string>;
+    requestedFood: Array<string>;
+    role: string;
+};
 
 type Address = {
-  street: String;
-  city: String;
-  zip: Number;
-}
+    street: string;
+    city: string;
+    zip: Number;
+};
 
 export type RequestFormProps = {
-  token: Token;
-  user: User;
-  location: any;
+    token: Token;
+    user: User;
+    location: any;
 };
 
 export type RequestFormState = {
-  householdSize: Number;
-  dietaryRestrictions: String;
-  allergies: String;
-  address: Address;
+    specificRequest: string;
+    householdSize: Number;
+    dietaryRestrictions: string;
+    allergies: string;
+    address: Address;
 };

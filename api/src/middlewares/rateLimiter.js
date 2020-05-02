@@ -14,7 +14,7 @@ module.exports = () => {
   }
   return new RateLimit({
     windowMs: 5 * 60 * 1000, // 5 minutes
-    max: 3000, // limit each IP to 3000 requests per windowMs
+    max: 30000, // limit each IP to 3000 requests per windowMs
     delayMs: 0,
     handler: error.rateLimitHandler,
   });

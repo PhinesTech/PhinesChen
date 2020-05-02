@@ -9,164 +9,179 @@ const APIError = require("../../utils/APIError");
  * @private
  */
 const donationSchema = new mongoose.Schema(
-  {
-    companyName: {
-      type: String,
-      required: true,
-      trim: true,
+    {
+        company_name: {
+            type: String,
+            trim: true,
+        },
+        mailing_address: {
+            type: Object,
+            street: {
+                type: String,
+                trim: true,
+            },
+            city: {
+                type: String,
+                trim: true,
+            },
+            zip: {
+                type: Number,
+            },
+        },
+        reason_for_donation: {
+            type: String,
+            trim: true,
+        },
+        storage_requirements: {
+            type: String,
+            trim: true,
+        },
+        product_quantity: {
+            type: Number,
+            required: true,
+            trim: true,
+        },
+        contact_name: {
+            type: String,
+            trim: true,
+        },
+        phone_number: {
+            type: String,
+            trim: true,
+        },
+        product_name: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        product_description: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        packaging_details: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        list_of_ingredients: {
+            type: [String],
+            trim: true,
+        },
     },
-    mailingAddress: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    reasonForDonaation: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    storageRequirements: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    quantity: {
-      type: Number,
-      required: true,
-      trim: true,
-    },
-    contactName: {
-      type: String,
-      trim: true,
-    },
-    phoneNumber: {
-      type: String,
-      trim: true,
-    },
-    productDescription: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    packagingDetails: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    listOfIngredients: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-  },
-  {
-    timestamps: true,
-  }
+    {
+        createdAt: "created_at",
+        updatedAt: "updated_at",
+        timestamps: true,
+    }
 );
 
 /**
  * Methods
  */
 donationSchema.method({
-  transform() {
-    const transformed = {};
-    const fields = [
-      "id",
-      "companyName",
-      "mailingAddress",
-      "reasonForDonaation",
-      "storageRequirements",
-      "quantity",
-      "contactName",
-      "phoneNumber",
-      "productDescription",
-      "packagingDetails",
-      "listOfIngredients",
-      "createdAt",
-    ];
+    transform() {
+        const transformed = {};
+        const fields = [
+            "id",
+            "company_name",
+            "mailing_address",
+            "reason_for_donation",
+            "storage_requirements",
+            "product_quantity",
+            "contact_name",
+            "phone_number",
+            "product_name",
+            "product_description",
+            "packaging_details",
+            "list_of_ingredients",
+            "createdAt",
+        ];
 
-    fields.forEach((field) => {
-      transformed[field] = this[field];
-    });
+        fields.forEach((field) => {
+            transformed[field] = this[field];
+        });
 
-    return transformed;
-  },
+        return transformed;
+    },
 });
 
 /**
  * Statics
  */
 donationSchema.statics = {
-  /**
-   * Get donation
-   *
-   * @param {ObjectId} id - The objectId of donation.
-   * @returns {Promise<Food, APIError>}
-   */
-  async get(id) {
-    try {
-      let donation;
+    /**
+     * Get donation
+     *
+     * @param {ObjectId} id - The objectId of donation.
+     * @returns {Promise<Food, APIError>}
+     */
+    async get(id) {
+        try {
+            let donation;
 
-      if (mongoose.Types.ObjectId.isValid(id)) {
-        donation = await this.findById(id).exec();
-      }
+            if (mongoose.Types.ObjectId.isValid(id)) {
+                donation = await this.findById(id).exec();
+            }
 
-      if (donation) {
-        return donation;
-      }
+            if (donation) {
+                return donation;
+            }
 
-      throw new APIError({
-        message: "Donation does not exist",
-        status: httpStatus.NOT_FOUND,
-      });
-    } catch (error) {
-      throw error;
-    }
-  },
+            throw new APIError({
+                message: "Donation does not exist",
+                status: httpStatus.NOT_FOUND,
+            });
+        } catch (error) {
+            throw error;
+        }
+    },
 
-  /**
-   * List donations in descending order of 'createdAt' timestamp.
-   *
-   * @param {number} skip - Number of Donations to be skipped.
-   * @param {number} limit - Limit number of donations to be returned.
-   * @returns {Promise<Donations[]>}
-   */
-  list({
-    page = 1,
-    perPage = 30,
-    companyName,
-    mailingAddress,
-    reasonForDonaation,
-    storageRequirements,
-    quantity,
-    contactName,
-    phoneNumber,
-    productDescription,
-    packagingDetails,
-    listOfIngredients,
-  }) {
-    const options = omitBy(
-      {
-        companyName,
-        mailingAddress,
-        reasonForDonaation,
-        storageRequirements,
-        quantity,
-        contactName,
-        phoneNumber,
-        productDescription,
-        packagingDetails,
-        listOfIngredients,
-      },
-      isNil
-    );
+    /**
+     * List donations in descending order of 'createdAt' timestamp.
+     *
+     * @param {number} skip - Number of Donations to be skipped.
+     * @param {number} limit - Limit number of donations to be returned.
+     * @returns {Promise<Donations[]>}
+     */
+    list({
+        page = 1,
+        perPage = 1000,
+        company_name,
+        mailing_address,
+        reason_for_donation,
+        storage_requirements,
+        product_quantity,
+        contact_name,
+        phone_number,
+        product_name,
+        product_description,
+        packaging_details,
+        list_of_ingredients,
+    }) {
+        const options = omitBy(
+            {
+                company_name,
+                mailing_address,
+                reason_for_donation,
+                storage_requirements,
+                product_quantity,
+                contact_name,
+                phone_number,
+                product_name,
+                product_description,
+                packaging_details,
+                list_of_ingredients,
+            },
+            isNil
+        );
 
-    return this.find(options)
-      .sort({ createdAt: -1 })
-      .skip(perPage * (page - 1))
-      .limit(perPage)
-      .exec();
-  },
+        return this.find(options)
+            .sort({ createdAt: -1 })
+            .skip(perPage * (page - 1))
+            .limit(perPage)
+            .exec();
+    },
 };
 
 /**
