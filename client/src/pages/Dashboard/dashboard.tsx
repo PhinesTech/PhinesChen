@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
-import { DashboardProps, DashboardState } from './dashboard.types';
+import { DashboardProps, DashboardState, RequestsModel, DonationModel } from './dashboard.types';
 import Admin from '../../components/Admin/admin';
 import Storage from '../../components/Storage/storage';
 import DonateForm from '../../components/DonateForm/donateform';
@@ -19,33 +19,35 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
     };
 
     componentDidMount() {
-        const { token } = this.props.location.state;
+        const { token, user } = this.props.location.state;
 
-        Axios.all([
-            Axios.get<Array<Object>>('http://localhost:3001/v1/food', {
-                headers: {
-                    Authorization: `Bearer ${token.accessToken}`,
-                },
-            }),
-            Axios.get<Array<Object>>('http://localhost:3001/v1/request', {
-                headers: {
-                    Authorization: `Bearer ${token.accessToken}`,
-                },
-            }),
-            Axios.get<Array<Object>>('http://localhost:3001/v1/donation', {
-                headers: {
-                    Authorization: `Bearer ${token.accessToken}`,
-                },
-            }),
-        ]).then(
-            Axios.spread((storage, requests, donations) => {
-                this.setState({
-                    storage: storage.data,
-                    requests: requests.data,
-                    donations: donations.data,
-                });
-            }),
-        );
+        if (user.role === 'admin') {
+            Axios.all([
+                Axios.get<Array<Object>>('http://localhost:3001/v1/food', {
+                    headers: {
+                        Authorization: `Bearer ${token.accessToken}`,
+                    },
+                }),
+                Axios.get<Array<RequestsModel>>('http://localhost:3001/v1/request', {
+                    headers: {
+                        Authorization: `Bearer ${token.accessToken}`,
+                    },
+                }),
+                Axios.get<Array<DonationModel>>('http://localhost:3001/v1/donation', {
+                    headers: {
+                        Authorization: `Bearer ${token.accessToken}`,
+                    },
+                }),
+            ]).then(
+                Axios.spread((storage, requests, donations) => {
+                    this.setState({
+                        storage: storage.data,
+                        requests: requests.data,
+                        donations: donations.data,
+                    });
+                }),
+            );
+        }
     }
 
     render() {

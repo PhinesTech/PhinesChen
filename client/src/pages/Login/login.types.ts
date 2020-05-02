@@ -3,6 +3,6 @@ export type LoginProps = {
 };
 
 export type LoginState = {
-  email: String;
-  password: String;
+  email: string;
+  password: string;
 }

@@ -19,13 +19,13 @@ exports.loggedIn = (req, res) => res.json(req.request.transform());
  * @public
  */
 exports.create = async (requestData) => {
-  try {
-    const request = new Request(requestData);
-    const savedRequest = await request.save();
-    return savedRequest.transform();
-  } catch (error) {
-    throw error;
-  }
+    try {
+        const request = new Request(requestData);
+        const savedRequest = await request.save();
+        return savedRequest.transform();
+    } catch (error) {
+        throw error;
+    }
 };
 
 /**
@@ -33,17 +33,20 @@ exports.create = async (requestData) => {
  * @public
  */
 exports.replace = async (request, newRequestData) => {
-  try {
-    const newRequest = new Request(newRequestData);
-    const newRequestObject = omit(newRequest.toObject(), "_id");
+    try {
+        const newRequest = new Request(newRequestData);
+        const newRequestObject = omit(newRequest.toObject(), "_id");
 
-    await request.update(newRequestObject, { override: true, upsert: true });
-    const savedRequest = await Request.findById(request._id);
+        await request.update(newRequestObject, {
+            override: true,
+            upsert: true,
+        });
+        const savedRequest = await Request.findById(request._id);
 
-    return savedRequest.transform();
-  } catch (error) {
-    throw error;
-  }
+        return savedRequest.transform();
+    } catch (error) {
+        throw error;
+    }
 };
 
 /**
@@ -51,12 +54,12 @@ exports.replace = async (request, newRequestData) => {
  * @public
  */
 exports.update = async (request, updatedData) => {
-  try {
-    const savedRequest = await updatedRequest.save();
-    return savedRequest.transform();
-  } catch (error) {
-    throw error;
-  }
+    try {
+        const savedRequest = await updatedRequest.save();
+        return savedRequest.transform();
+    } catch (error) {
+        throw error;
+    }
 };
 
 /**
@@ -64,13 +67,15 @@ exports.update = async (request, updatedData) => {
  * @public
  */
 exports.list = async (params) => {
-  try {
-    const requests = await Request.list(params);
-    const transformedRequests = requests.map((request) => request.transform());
-    return transformedRequests;
-  } catch (error) {
-    throw error;
-  }
+    try {
+        const requests = await Request.list(params);
+        const transformedRequests = requests.map((request) =>
+            request.transform()
+        );
+        return transformedRequests;
+    } catch (error) {
+        throw error;
+    }
 };
 
 /**

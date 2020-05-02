@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
@@ -19,7 +19,7 @@ class Login extends Component<LoginProps, LoginState> {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(event: any) {
+    handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         Axios.post('http://localhost:3001/v1/auth/login', this.state).then(response => {

@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 
 import './admin.scss';
-import { AdminProps } from './admin.types';
+import { AdminProps, RequestsModel, DonationModel } from './admin.types';
+import Pagination from '../Pagination/pagination';
 
 class Admin extends Component<AdminProps> {
+    state = {
+        currentRequestors: [],
+        currentDonators: [],
+        currentRequestPage: 1,
+        totalRequestPages: 1,
+        currentDonationPage: 1,
+        totalDonationPages: 1,
+    };
+
     constructor(props: Readonly<AdminProps>) {
         super(props);
         this.getRequesters = this.getRequesters.bind(this);
@@ -11,18 +21,18 @@ class Admin extends Component<AdminProps> {
     }
 
     getRequesters() {
-        let requesters: Array<any> = [],
-            { donations } = this.props;
+        let requesters: Array<JSX.Element> = [],
+            { currentRequestors } = this.state;
 
-        donations.forEach((element: any, index: Number) => {
-            let { contactName, productDescription } = element;
+        currentRequestors.forEach((element: RequestsModel, index: Number) => {
+            let { name, specific_request } = element;
 
             requesters.push(
                 <div className="ui-card -notification" key={index.toString()}>
                     <img src="http://i.pravatar.cc/100?img=13" alt="avatar" />
                     <div className="ui-content">
-                        <div className="ui-title">{contactName}</div>
-                        <div className="ui-message">Requested: {productDescription}</div>
+                        <div className="ui-title">{name}</div>
+                        <div className="ui-message">Requested: {specific_request}</div>
                     </div>
                     <button className="acceptbutton" type="button">
                         Accept
@@ -42,24 +52,27 @@ class Admin extends Component<AdminProps> {
     }
 
     getDonators() {
-        let donators: Array<any> = [],
-            { donations } = this.props;
+        let donators: Array<JSX.Element> = [],
+            { currentDonators } = this.state;
 
-        donations.forEach((element: any, index: Number) => {
-            let { contactName, productDescription } = element;
+        currentDonators.forEach((element: DonationModel, index: Number) => {
+            let { contact_name, company_name, product_name } = element;
 
             donators.push(
                 <div className="ui-card -notification" key={index.toString()}>
                     <img src="http://i.pravatar.cc/100?img=10" alt="avatar" />
                     <div className="ui-content">
-                        <div className="ui-title">{contactName}</div>
-                        <div className="ui-message">Donated: {productDescription}</div>
+                        <div className="ui-title">
+                            {contact_name}
+                            {company_name !== '' ? ` @${company_name}` : null}
+                        </div>
+                        <div className="ui-message">Donated: {product_name}</div>
                     </div>
                     <button className="thankyoubutton" type="button">
                         Thank You
                     </button>
                     <button className="messagebutton" type="button">
-                        Message
+                        Promote
                     </button>
                 </div>,
             );
@@ -72,7 +85,41 @@ class Admin extends Component<AdminProps> {
         );
     }
 
+    onRequestorsChanged = (data: { currentRequestPage: number; totalRequestPages: number; pageLimit: number }) => {
+        const { requests } = this.props;
+        const { currentRequestPage, totalRequestPages, pageLimit } = data;
+
+        const requestOffset = (currentRequestPage - 1) * pageLimit;
+        const currentRequestors = requests.slice(requestOffset, requestOffset + pageLimit);
+
+        this.setState({
+            currentRequestPage,
+            currentRequestors,
+            totalRequestPages,
+        });
+    };
+
+    onDonationsChanged = (data: { currentDonationPage: number; totalDonationPages: number; pageLimit: number }) => {
+        const { donations } = this.props;
+        const { currentDonationPage, totalDonationPages, pageLimit } = data;
+
+        const donationOffset = (currentDonationPage - 1) * pageLimit;
+        const currentDonators = donations.slice(donationOffset, donationOffset + pageLimit);
+
+        this.setState({
+            currentDonationPage,
+            currentDonators,
+            totalDonationPages,
+        });
+    };
+
     render() {
+        const totalItemsInRequestors = this.props.requests.length;
+        const totalItemsInDonators = this.props.donations.length;
+
+        if (totalItemsInRequestors === 0) return null;
+        if (totalItemsInDonators === 0) return null;
+
         return (
             <section className="ADMIN">
                 <div className="center3">
@@ -176,6 +223,12 @@ class Admin extends Component<AdminProps> {
                             <div className="half">
                                 <div className="sub-title">This Week's Requestors</div>
                                 <div id="app">
+                                    <Pagination
+                                        totalRecords={totalItemsInRequestors}
+                                        pageLimit={10}
+                                        pageNeighbours={1}
+                                        onPageChanged={this.onRequestorsChanged}
+                                    />
                                     <div className="app-wrapper">{this.getRequesters()}</div>
                                 </div>
                             </div>
@@ -185,6 +238,12 @@ class Admin extends Component<AdminProps> {
                             <div className="half">
                                 <div className="sub-title">This Week's Donators</div>
                                 <div id="app">
+                                    <Pagination
+                                        totalRecords={totalItemsInDonators}
+                                        pageLimit={10}
+                                        pageNeighbours={1}
+                                        onPageChanged={this.onDonationsChanged}
+                                    />
                                     <div className="app-wrapper">{this.getDonators()}</div>
                                 </div>
                             </div>

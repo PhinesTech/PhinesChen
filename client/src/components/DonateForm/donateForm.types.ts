@@ -1,18 +1,18 @@
 export type Token = {
-  tokenType: String;
-  accessToken: String;
-  refreshToken: String;
-  expiresIn: String;
+  tokenType: string;
+  accessToken: string;
+  refreshToken: string;
+  expiresIn: string;
 }
 
 export type User = {
-  id: String;
-  name: String;
-  companyName: String;
-  email: String;
-  donatedFood: Array<String>;
-  requestedFood: Array<String>;
-  role: String;
+  id: string;
+  name: string;
+  companyName: string;
+  email: string;
+  donatedFood: Array<string>;
+  requestedFood: Array<string>;
+  role: string;
 }
 
 export type DonateFormProps = {
@@ -22,14 +22,15 @@ export type DonateFormProps = {
 };
 
 export type DonateFormState = {
-  companyName: String;
-  mailingAddress: String;
-  reasonForDonaation: String;
-  storageRequirements: String;
-  quantity: Number;
-  contactName: String;
-  phoneNumber: String;
-  productDescription: String;
-  packagingDetails: String;
-  listOfIngredients: String;
+  company_name: string;
+  mailing_address: string;
+  reason_for_donation: string;
+  storage_requirements: string;
+  product_quantity: Number;
+  contact_name: string;
+  phone_number: string;
+  product_name: string;
+  product_description: string;
+  packaging_details: string;
+  list_of_ingredients: string;
 };

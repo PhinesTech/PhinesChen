@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './storage.scss';
-import { StorageProps } from './storage.types';
+import { StorageProps, StorageModel } from './storage.types';
 import Pagination from '../Pagination/pagination';
 
 class Storage extends Component<StorageProps> {
@@ -17,9 +17,9 @@ class Storage extends Component<StorageProps> {
     }
 
     generateTable() {
-        let table: Array<any> = [];
+        let table: Array<JSX.Element> = [];
 
-        this.state.currentStorage.forEach((element: any) => {
+        this.state.currentStorage.forEach((element: StorageModel) => {
             let {
                 id,
                 product_name,
@@ -63,7 +63,7 @@ class Storage extends Component<StorageProps> {
         );
     }
 
-    onPageChanged = (data: { currentPage: any; totalPages: any; pageLimit: any }) => {
+    onPageChanged = (data: { currentPage: number; totalPages: number; pageLimit: number }) => {
         const { storage } = this.props;
         const { currentPage, totalPages, pageLimit } = data;
 
@@ -84,7 +84,6 @@ class Storage extends Component<StorageProps> {
                     <div className="right">
                         <div className="title">Food Storage</div>
                         <br />
-
                         <div className="container">
                             <div className="row">
                                 <div className="searchtitle">
@@ -97,12 +96,11 @@ class Storage extends Component<StorageProps> {
                             <br />
                             <Pagination
                                 totalRecords={totalItemsInStorage}
-                                pageLimit={100}
+                                pageLimit={10}
                                 pageNeighbours={1}
                                 onPageChanged={this.onPageChanged}
                             />
                         </div>
-
                         <main>
                             {this.generateTable()}
                             <div className="bar">
@@ -115,14 +113,13 @@ class Storage extends Component<StorageProps> {
                         </main>
                     </div>
                 </div>
-
                 <a
-                    className="inspiration "
+                    className="inspiration"
                     href="https://github.com/PhinesTech"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    PhinesTech{' '}
+                    PhinesTech
                 </a>
             </section>
         );

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, FormEvent } from 'react';
 import Axios from 'axios';
 
 import DONATELOGO from '../../assets/images/HmPgIcon-Donate2.png';
@@ -8,16 +8,17 @@ import './donateform.scss';
 
 class DonateForm extends Component<DonateFormProps, DonateFormState> {
     state = {
-        companyName: '',
-        mailingAddress: '',
-        reasonForDonaation: '',
-        storageRequirements: '',
-        quantity: 1,
-        contactName: '',
-        phoneNumber: '',
-        productDescription: '',
-        packagingDetails: '',
-        listOfIngredients: '',
+        company_name: '',
+        mailing_address: '',
+        reason_for_donation: '',
+        storage_requirements: '',
+        product_quantity: 1,
+        contact_name: '',
+        phone_number: '',
+        product_name: '',
+        product_description: '',
+        packaging_details: '',
+        list_of_ingredients: '',
     };
 
     constructor(props: Readonly<DonateFormProps>) {
@@ -25,15 +26,13 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
         this.handleDonateFoodSubmit = this.handleDonateFoodSubmit.bind(this);
     }
 
-    handleDonateFoodSubmit(event: any) {
+    handleDonateFoodSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         Axios.post('http://localhost:3001/v1/donation/', this.state, {
             headers: {
                 Authorization: `Bearer ${this.props.location.state.token.accessToken}`,
             },
-        }).then((response: any) => {
-            console.log(response);
         });
     }
 
@@ -84,10 +83,14 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
                                     <label className="input-group__label">Amount</label>
                                     <input className="input-group__input" type="text" placeholder="  $50.00" />
                                 </div>
-                            <div className="input-group3">
-                                <label className="input-group__label">Address</label>
-                                <input className="input-group__input" type="text" placeholder="Street Address, City, State, Zip Code" />
-                            </div>
+                                <div className="input-group3">
+                                    <label className="input-group__label">Address</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="text"
+                                        placeholder="Street Address, City, State, Zip Code"
+                                    />
+                                </div>
                                 <div className="input-group3">
                                     <label className="input-group__label">Cardholder Name</label>
                                     <input className="input-group__input" type="text" placeholder="  Full Name" />
@@ -131,7 +134,7 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
                                     <input
                                         className="input-group__input"
                                         type="text"
-                                        onChange={event => this.setState({ companyName: event.target.value })}
+                                        onChange={event => this.setState({ company_name: event.target.value })}
                                     />
                                 </div>
                                 <div className="input-group">
@@ -139,7 +142,7 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
                                     <input
                                         className="input-group__input"
                                         type="text"
-                                        onChange={event => this.setState({ mailingAddress: event.target.value })}
+                                        onChange={event => this.setState({ mailing_address: event.target.value })}
                                     />
                                 </div>
                                 <div className="input-group">
@@ -147,7 +150,7 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
                                     <input
                                         className="input-group__input"
                                         type="text"
-                                        onChange={event => this.setState({ reasonForDonaation: event.target.value })}
+                                        onChange={event => this.setState({ reason_for_donation: event.target.value })}
                                     />
                                 </div>
                                 <div className="input-group">
@@ -155,7 +158,7 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
                                     <input
                                         className="input-group__input"
                                         type="text"
-                                        onChange={event => this.setState({ storageRequirements: event.target.value })}
+                                        onChange={event => this.setState({ storage_requirements: event.target.value })}
                                     />
                                 </div>
                                 <div className="input-group">
@@ -163,7 +166,9 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
                                     <input
                                         className="input-group__input"
                                         type="number"
-                                        onChange={event => this.setState({ quantity: Number(event.target.value) })}
+                                        onChange={event =>
+                                            this.setState({ product_quantity: Number(event.target.value) })
+                                        }
                                     />
                                 </div>
                             </div>
@@ -174,7 +179,7 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
                                     <input
                                         className="input-group__input"
                                         type="text"
-                                        onChange={event => this.setState({ contactName: event.target.value })}
+                                        onChange={event => this.setState({ contact_name: event.target.value })}
                                     />
                                 </div>
 
@@ -183,7 +188,15 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
                                     <input
                                         className="input-group__input"
                                         type="text"
-                                        onChange={event => this.setState({ phoneNumber: event.target.value })}
+                                        onChange={event => this.setState({ phone_number: event.target.value })}
+                                    />
+                                </div>
+                                <div className="input-group">
+                                    <label className="input-group__label">Product Name</label>
+                                    <input
+                                        className="input-group__input"
+                                        type="text"
+                                        onChange={event => this.setState({ product_name: event.target.value })}
                                     />
                                 </div>
                                 <div className="input-group">
@@ -191,7 +204,7 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
                                     <input
                                         className="input-group__input"
                                         type="text"
-                                        onChange={event => this.setState({ productDescription: event.target.value })}
+                                        onChange={event => this.setState({ product_description: event.target.value })}
                                     />
                                 </div>
                                 <div className="input-group">
@@ -199,7 +212,7 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
                                     <input
                                         className="input-group__input"
                                         type="text"
-                                        onChange={event => this.setState({ packagingDetails: event.target.value })}
+                                        onChange={event => this.setState({ packaging_details: event.target.value })}
                                     />
                                 </div>
 
@@ -210,7 +223,7 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
                                     <input
                                         className="input-group__input"
                                         type="text"
-                                        onChange={event => this.setState({ listOfIngredients: event.target.value })}
+                                        onChange={event => this.setState({ list_of_ingredients: event.target.value })}
                                     />
                                 </div>
                             </div>
@@ -227,7 +240,7 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    PhinesTech{' '}
+                    PhinesTech
                 </a>
             </section>
         );
