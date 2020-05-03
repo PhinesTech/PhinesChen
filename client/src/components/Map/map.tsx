@@ -2,7 +2,7 @@ import React, { Component, RefObject } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { MapProps } from './map.types';
 
-mapboxgl.accessToken = 'pk.eyJ1IjoibWFuam90OTAiLCJhIjoiY2s5NmVvOWt4MGlzazNlbzV1MjkyYTZxYiJ9.uBWNQNV6y53ItQob-0jbkQ';
+mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhcmlhbiIsImEiOiJjam4zdDd1dTQwamthM3BxZ2p0dHRicjMyIn0.EaQADwzB68lFNnJE6UbG8g';
 
 class Map extends Component<MapProps> {
     mapRef: RefObject<any> = React.createRef();

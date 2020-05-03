@@ -8,6 +8,7 @@ import Storage from '../../components/Storage/storage';
 import DonateForm from '../../components/DonateForm/donateform';
 import RequestForm from '../../components/RequestForm/requestForm';
 import Profile from '../../components/Profile/profile';
+import Track from '../../components/Track/track';
 import './dashboard.scss';
 
 class Dashboard extends Component<DashboardProps, DashboardState> {
@@ -77,6 +78,11 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                                         <button onClick={() => this.setState({ dashboard: '' })}>Profile</button>
                                     </div>
                                 </li>
+                                <li>
+                                    <div className="feedicon">
+                                        <button onClick={() => this.setState({ dashboard: 'track' })}>Track</button>
+                                    </div>
+                                </li>
                                 {user.role === 'admin' ? (
                                     <li>
                                         <div className="contacticon">
@@ -93,6 +99,7 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                                         </div>
                                     </li>
                                 ) : null}
+                               
                                 <li>
                                     <div className="donateicon">
                                         <button onClick={() => this.setState({ dashboard: 'donate' })}>Donate</button>
@@ -116,6 +123,8 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                             return <DonateForm {...this.props} />;
                         case 'request':
                             return <RequestForm {...this.props} />;
+                        case 'track':
+                                return <Track {...this.props} />;
                         case 'admin':
                             return <Admin requests={this.state.requests} donations={this.state.donations} />;
                         case 'storage':

@@ -60,7 +60,7 @@ class Admin extends Component<AdminProps> {
 
             donators.push(
                 <div className="ui-card -notification" key={index.toString()}>
-                    <img src="http://i.pravatar.cc/100?img=10" alt="avatar" />
+                    <img src={`http://i.pravatar.cc/100?img=${Math.floor(Math.random() * 10)}`} alt="avatar" />
                     <div className="ui-content">
                         <div className="ui-title">
                             {contact_name}
@@ -72,7 +72,7 @@ class Admin extends Component<AdminProps> {
                         Thank You
                     </button>
                     <button className="messagebutton" type="button">
-                        Message
+                        Promote
                     </button>
                 </div>,
             );
@@ -222,7 +222,7 @@ class Admin extends Component<AdminProps> {
                                 <div id="app">
                                     <Pagination
                                         totalRecords={totalItemsInRequestors}
-                                        pageLimit={20}
+                                        pageLimit={5}
                                         pageNeighbours={1}
                                         onPageChanged={this.onPageChanged}
                                     />
@@ -237,7 +237,7 @@ class Admin extends Component<AdminProps> {
                                 <div id="app">
                                     <Pagination
                                         totalRecords={totalItemsInDonators}
-                                        pageLimit={20}
+                                        pageLimit={5}
                                         pageNeighbours={1}
                                         onPageChanged={this.onPageChanged}
                                     />

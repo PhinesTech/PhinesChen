@@ -216,7 +216,7 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
                                     />
                                 </div>
 
-                                <div className="input-group">
+                                {/* <div className="input-group">
                                     <label className="input-group__label">
                                         Is the product labeled with a list of ingredients?
                                     </label>
@@ -225,7 +225,7 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
                                         type="text"
                                         onChange={event => this.setState({ list_of_ingredients: event.target.value })}
                                     />
-                                </div>
+                                </div> */}
                             </div>
                             <button className="donatebutton2" type="submit">
                                 Donate
