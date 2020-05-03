@@ -93,22 +93,27 @@ class Storage extends Component<StorageProps> {
                                     <input type="text" className="search" />
                                 </div>
                             </div>
-                            <br />
-                            <Pagination
-                                totalRecords={totalItemsInStorage}
-                                pageLimit={30}
-                                pageNeighbours={1}
-                                onPageChanged={this.onPageChanged}
-                            />
                         </div>
                         <main>
                             {this.generateTable()}
+                            <div className="storagepaging">
+                                <br/>
+                            <Pagination
+                                totalRecords={totalItemsInStorage}
+                                pageLimit={10}
+                                pageNeighbours={1}
+                                onPageChanged={this.onPageChanged}
+                            />
+                            </div>
                             <div className="bar">
+                                
                                 <button className="add-row">Add Row</button>
+                                
                                 <div className="mv-bar mv-ui">
                                     <button className="mv-save">Save</button>
                                     <button className="mv-export mv-button">Export</button>
                                 </div>
+                                
                             </div>
                         </main>
                     </div>

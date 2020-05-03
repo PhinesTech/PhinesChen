@@ -2,17 +2,20 @@ import React from 'react';
 import './about.scss';
 import FOODBANK from '../../assets/images/Day+2+Merced+Food+Bank+(2).jpg';
 import BREAD from '../../assets/images/AK Senior Brown Bags 1.jpg';
+import {AnimatedOnScroll} from "react-animated-css-onscroll";
 
 const About: React.FC = () => {
     return (
         <section className="ABOUT">
             <div className="believe ">
                 <h2>WHAT WE BELIEVE IN</h2>
+                <AnimatedOnScroll animationIn="slideInLeft" isVisible={true}>
                 <h1>
                     Our mission is to improve the health and <br /> well-being of Merced and Mariposa <br /> County
                     residents affected by hunger; <br /> through the acquisition, storage, and distribution
                     <br /> of nutritionous food.
                 </h1>
+                </AnimatedOnScroll>
                 <br />
             </div>
             <hr />

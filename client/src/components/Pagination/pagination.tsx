@@ -8,7 +8,7 @@ const RIGHT_PAGE = 'RIGHT';
 
 const range = (from: number, to: number, step = 1) => {
     let i = from;
-    const range = [];
+    const range: Array<number> = [];
 
     while (i <= to) {
         range.push(i);
@@ -83,7 +83,7 @@ class Pagination extends Component<PaginationProps> {
         const totalBlocks = totalNumbers + 2;
 
         if (totalPages > totalBlocks) {
-            let pages = [];
+            let pages: any = [];
 
             const leftBound = currentPage - pageNeighbours;
             const rightBound = currentPage + pageNeighbours;
@@ -136,7 +136,7 @@ class Pagination extends Component<PaginationProps> {
                                 return (
                                     <li key={index} className="page-item round-effect">
                                         <a
-                                            className="page-link round-effect"
+                                            className="page-link"
                                             href="/#"
                                             aria-label="Previous"
                                             onClick={this.handleMoveLeft}
