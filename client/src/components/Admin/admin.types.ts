@@ -1,10 +1,11 @@
 export type AdminState = {
     currentRequestors: Array<Object>;
-    currentDonators: Array<Object>;
     currentRequestPage: number;
     totalRequestPages: number;
+    currentDonators: Array<Object>;
     currentDonationPage: number;
     totalDonationPages: number;
+    show: boolean;
 }
 
 export type AdminProps = {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import './storage.scss';
-import { StorageProps, StorageModel } from './storage.types';
+import { StorageProps, StorageModel, StorageState } from './storage.types';
 import Pagination from '../Pagination/pagination';
 
-class Storage extends Component<StorageProps> {
+class Storage extends Component<StorageProps, StorageState> {
     state = {
         currentStorage: [],
         currentPage: 1,
@@ -17,9 +17,10 @@ class Storage extends Component<StorageProps> {
     }
 
     generateTable() {
-        let table: Array<JSX.Element> = [];
+        let storageTable: Array<JSX.Element> = [],
+            { currentStorage } = this.state;
 
-        this.state.currentStorage.forEach((element: StorageModel) => {
+        currentStorage.forEach((element: StorageModel) => {
             let {
                 id,
                 product_name,
@@ -30,7 +31,7 @@ class Storage extends Component<StorageProps> {
                 pack_date,
             } = element;
 
-            table.push(
+            storageTable.push(
                 <tr className="tablehover" property="row" mv-multiple="true" key={id}>
                     <td property="date">{`${new Date(pack_date).getMonth()}/${new Date(pack_date).getDate()}/${new Date(
                         pack_date,
@@ -58,7 +59,7 @@ class Storage extends Component<StorageProps> {
                         <th id="product">From </th>
                     </tr>
                 </thead>
-                <tbody>{table}</tbody>
+                <tbody>{storageTable}</tbody>
             </table>
         );
     }
@@ -97,23 +98,21 @@ class Storage extends Component<StorageProps> {
                         <main>
                             {this.generateTable()}
                             <div className="storagepaging">
-                                <br/>
-                            <Pagination
-                                totalRecords={totalItemsInStorage}
-                                pageLimit={10}
-                                pageNeighbours={1}
-                                onPageChanged={this.onPageChanged}
-                            />
+                                <br />
+                                <Pagination
+                                    totalRecords={totalItemsInStorage}
+                                    pageLimit={10}
+                                    pageNeighbours={1}
+                                    onPageChanged={this.onPageChanged}
+                                />
                             </div>
                             <div className="bar">
-                                
                                 <button className="add-row">Add Row</button>
-                                
+
                                 <div className="mv-bar mv-ui">
                                     <button className="mv-save">Save</button>
                                     <button className="mv-export mv-button">Export</button>
                                 </div>
-                                
                             </div>
                         </main>
                     </div>
