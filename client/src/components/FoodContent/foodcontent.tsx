@@ -3,6 +3,8 @@ import React from 'react';
 import Map from '../Map/map';
 import './foodcontent.scss';
 
+const FoodLocationData = require('../../pages/FoodLocator/FoodLocatorData.json');
+
 const FoodContent: React.FC = () => {
     return (
         <section className="FOODCONTENT">
@@ -18,7 +20,13 @@ const FoodContent: React.FC = () => {
                 <h1>Food Distribution Locations</h1>
                 <br />
                 <span className="map">
-                    <Map mapStyle="mapbox://styles/mapbox/streets-v9" lng={-120.483} lat={37.3022} zoom={8} />
+                    <Map
+                        mapStyle="mapbox://styles/adarian/ck9qt77ja2g6t1ipbaxv5o1pu"
+                        lng={-120.483}
+                        lat={37.3022}
+                        zoom={8}
+                        data={FoodLocationData}
+                    />
                 </span>
             </div>
             <div className="maptitle">

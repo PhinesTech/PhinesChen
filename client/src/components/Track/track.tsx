@@ -3,6 +3,8 @@ import React from 'react';
 import Map from '../Map/map';
 import './track.scss';
 
+const FoodLocationData = require('../../pages/FoodLocator/FoodLocatorData.json');
+
 const Track: React.FC = () => {
     return (
         <section className="TRACK">
@@ -16,15 +18,16 @@ const Track: React.FC = () => {
                             lng={-120.483}
                             lat={37.3022}
                             zoom={10}
+                            data={FoodLocationData}
                         />
                     </span>
-                    
+
                     <div className="row">
                             <div className="half">
                                 <div className="sub-title">Your Previous Requests</div>
                                 <div id="app">
                                 <div className="app-wrapper">
-                                    
+
                                     </div>
                             </div>
                         </div>

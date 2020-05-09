@@ -3,6 +3,17 @@
         "type": "Feature",
         "geometry": {
             "type": "Point",
+            "coordinates": [-120.50329438754778, 37.3185086]
+        },
+        "properties": {
+            "title": "Merced County Food Bank",
+            "icon": "triangle"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
             "coordinates": [-120.48134, 37.30034]
         },
         "properties": {
@@ -18,17 +29,6 @@
         },
         "properties": {
             "title": "Merced Salvation",
-            "icon": "triangle"
-        }
-    },
-    {
-        "type": "Feature",
-        "geometry": {
-            "type": "Point",
-            "coordinates": [-120.50329438754778, 37.3185086]
-        },
-        "properties": {
-            "title": "Merced County Food Bank",
             "icon": "triangle"
         }
     },
