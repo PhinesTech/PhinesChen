@@ -12,12 +12,30 @@ class Admin extends Component<AdminProps, AdminState> {
         currentDonators: [],
         currentDonationPage: 1,
         totalDonationPages: 1,
+        show: false,
     };
 
     constructor(props: Readonly<AdminProps>) {
         super(props);
         this.getRequesters = this.getRequesters.bind(this);
         this.getDonators = this.getDonators.bind(this);
+
+    }
+
+    acceptRequest(e: any) {
+        console.log(e);
+    }
+
+    declineRequest(e: any) {
+        console.log(e);
+    }
+
+    thankYouConfirmation(e: any) {
+        console.log(e)
+    }
+
+    socialMediaPromotion(e: any) {
+        console.log(e)
     }
 
     getRequesters() {
@@ -34,10 +52,22 @@ class Admin extends Component<AdminProps, AdminState> {
                         <div className="ui-title">{name}</div>
                         <div className="ui-message">Requested: {specific_request}</div>
                     </div>
-                    <button className="acceptbutton" type="button">
+                    <button
+                        className="acceptbutton"
+                        type="button"
+                        onClick={e => {
+                            this.acceptRequest(e);
+                        }}
+                    >
                         Accept
                     </button>
-                    <button className="declinebutton" type="button">
+                    <button
+                        className="declinebutton"
+                        type="button"
+                        onClick={e => {
+                            this.declineRequest(e);
+                        }}
+                    >
                         Decline
                     </button>
                 </div>,
@@ -68,10 +98,22 @@ class Admin extends Component<AdminProps, AdminState> {
                         </div>
                         <div className="ui-message">Donated: {product_name}</div>
                     </div>
-                    <button className="thankyoubutton" type="button">
+                    <button
+                        className="thankyoubutton"
+                        type="button"
+                        onClick={e => {
+                            this.thankYouConfirmation(e);
+                        }}
+                    >
                         Thank You
                     </button>
-                    <button className="messagebutton" type="button">
+                    <button
+                        className="messagebutton"
+                        type="button"
+                        onClick={e => {
+                            this.socialMediaPromotion(e);
+                        }}
+                    >
                         Promote
                     </button>
                 </div>,

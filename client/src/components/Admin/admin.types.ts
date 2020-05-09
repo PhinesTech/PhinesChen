@@ -5,6 +5,7 @@ export type AdminState = {
     currentDonators: Array<Object>;
     currentDonationPage: number;
     totalDonationPages: number;
+    show: boolean;
 }
 
 export type AdminProps = {
