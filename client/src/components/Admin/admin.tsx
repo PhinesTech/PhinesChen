@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './admin.scss';
 import { AdminProps, AdminState } from './admin.types';
 import Pagination from '../Pagination/pagination';
+import Axios from 'axios';
 
 class Admin extends Component<AdminProps, AdminState> {
     state = {
@@ -19,31 +20,62 @@ class Admin extends Component<AdminProps, AdminState> {
         super(props);
         this.getRequesters = this.getRequesters.bind(this);
         this.getDonators = this.getDonators.bind(this);
-
     }
 
-    acceptRequest(e: any) {
-        console.log(e);
+    acceptRequest(e: any, index: number, id: string) {
+        e.preventDefault();
+
+        const { token } = this.props;
+
+        Axios.patch<Array<Object>>(
+            `http://localhost:3001/v1/request/${id}`,
+            {
+                status: 'Approved',
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token.accessToken}`,
+                },
+            },
+        ).then(_response => {
+            this.props.requests.splice(index, 0);
+        });
     }
 
-    declineRequest(e: any) {
-        console.log(e);
+    declineRequest(e: any, index: number, id: string) {
+        e.preventDefault();
+
+        const { token } = this.props;
+
+        Axios.patch<Array<Object>>(
+            `http://localhost:3001/v1/request/${id}`,
+            {
+                status: 'Declined',
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token.accessToken}`,
+                },
+            },
+        ).then(_response => {
+            this.props.requests.splice(index, 0);
+        });
     }
 
     thankYouConfirmation(e: any) {
-        console.log(e)
+        console.log(e);
     }
 
     socialMediaPromotion(e: any) {
-        console.log(e)
+        console.log(e);
     }
 
     getRequesters() {
         let requesters: Array<JSX.Element> = [],
             { currentRequestors } = this.state;
 
-        currentRequestors.forEach((element: any, index: Number) => {
-            let { name, specific_request } = element;
+        currentRequestors.forEach((element: any, index: number) => {
+            let { name, specific_request, id } = element;
 
             requesters.push(
                 <div className="ui-card -notification" key={index.toString()}>
@@ -56,7 +88,7 @@ class Admin extends Component<AdminProps, AdminState> {
                         className="acceptbutton"
                         type="button"
                         onClick={e => {
-                            this.acceptRequest(e);
+                            this.acceptRequest(e, index, id);
                         }}
                     >
                         Accept
@@ -65,7 +97,7 @@ class Admin extends Component<AdminProps, AdminState> {
                         className="declinebutton"
                         type="button"
                         onClick={e => {
-                            this.declineRequest(e);
+                            this.declineRequest(e, index, id);
                         }}
                     >
                         Decline

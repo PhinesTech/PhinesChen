@@ -1,0 +1,90 @@
+[
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-120.48134, 37.30034]
+        },
+        "properties": {
+            "title": "Catholic Charities Diocese",
+            "icon": "triangle"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-120.853439, 37.058701]
+        },
+        "properties": {
+            "title": "Merced Salvation",
+            "icon": "triangle"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-120.50329438754778, 37.3185086]
+        },
+        "properties": {
+            "title": "Merced County Food Bank",
+            "icon": "triangle"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-120.85054305, 37.06178]
+        },
+        "properties": {
+            "title": "Bethel Community Church",
+            "icon": "triangle"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-120.48218860999472, 37.303889]
+        },
+        "properties": {
+            "title": "Merced Resucue Mission",
+            "icon": "triangle"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-120.5006445013744, 37.3011427]
+        },
+        "properties": {
+            "title": "Salvation Army Center",
+            "icon": "triangle"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-120.47811946200821, 37.29970525]
+        },
+        "properties": {
+            "title": "Saint Vincent De Paul",
+            "icon": "triangle"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-120.496459, 37.297878]
+        },
+        "properties": {
+            "title": "Calvary Assembly of God",
+            "icon": "triangle"
+        }
+    }
+]

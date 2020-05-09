@@ -41,9 +41,13 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                 }),
             ]).then(
                 Axios.spread((storage, requests, donations) => {
+                    let transformedRequestData = requests.data;
+
                     this.setState({
                         storage: storage.data,
-                        requests: requests.data,
+                        requests: transformedRequestData.filter(
+                            (e: any) => e.status !== 'Approved' || e.status !== 'Declined',
+                        ),
                         donations: donations.data,
                     });
                 }),
@@ -54,6 +58,11 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
     render() {
         const { user } = this.props.location.state;
         const { dashboard } = this.state;
+
+        if (!user) {
+            window.location.href = '/login';
+            return null;
+        }
 
         return (
             <section className="DASHBOARD">
@@ -125,7 +134,13 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                         case 'track':
                             return <Track {...this.props} />;
                         case 'admin':
-                            return <Admin requests={this.state.requests} donations={this.state.donations} />;
+                            return (
+                                <Admin
+                                    requests={this.state.requests}
+                                    donations={this.state.donations}
+                                    token={this.props.location.state.token}
+                                />
+                            );
                         case 'storage':
                             return <Storage storage={this.state.storage} />;
                         default:
