@@ -5,4 +5,5 @@ export type MapProps = {
     lng: number;
     lat: number;
     zoom: number;
+    data: GeoJSON.Feature<GeoJSON.Geometry, GeoJSON.GeoJsonProperties>[];
 };

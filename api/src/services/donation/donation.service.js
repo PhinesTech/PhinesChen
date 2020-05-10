@@ -46,7 +46,15 @@ exports.replace = async (donation, newDonationData) => {
  */
 exports.update = async (donation, updatedData) => {
   try {
-    const savedDonation = await donation.save();
+    const savedDonation = await Request.findByIdAndUpdate(
+        donation._id,
+        { ...donation._doc, ...updatedData },
+        {
+            new: true,
+            override: true,
+        }
+    );
+
     return savedDonation.transform();
   } catch (error) {
     throw error;
