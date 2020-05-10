@@ -68,7 +68,7 @@ body::-webkit-scrollbar-track {
     height: 100%;
     background-color: white;
     color: #848697;
-    border-radius: 10px 0 0 3px;
+    border-radius: 10px 0 0 10px;
     // box-shadow: 13px 13px 20px #cbced1,
     // ;
   
@@ -116,6 +116,14 @@ body::-webkit-scrollbar-track {
     border-radius: 5%;
     background-color: #fffef8;
   }
+  .feedicon{
+    width: 55%;
+}
+  .feedicon:hover{
+  box-shadow: 10px 10px 5px grey;
+  border-radius: 5%;
+  background-color: #fffef8;
+}
   .donateicon{
     width: 60%;
   }
@@ -174,6 +182,7 @@ body::-webkit-scrollbar-track {
     overflow-y: auto;
     // box-shadow: 13px 13px 20px #cbced1,
     // ;
+    border-radius:1%;
   }
   .right .title {
     font-size: 25px;
@@ -187,7 +196,7 @@ body::-webkit-scrollbar-track {
   .right .row {
     display: -webkit-box;
     display: flex;
-    margin: 10px 0 40px;
+    margin: 10px 0 20px;
   }
   .right .row:last-child {
     margin: 10px 0 0;

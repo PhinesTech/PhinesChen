@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import { PaginationProps } from './pagination.types';
+import { PaginationProps, PaginationState } from './pagination.types';
 import './pagination.scss';
 
 const LEFT_PAGE = 'LEFT';
@@ -8,7 +8,7 @@ const RIGHT_PAGE = 'RIGHT';
 
 const range = (from: number, to: number, step = 1) => {
     let i = from;
-    const range = [];
+    const range: Array<number> = [];
 
     while (i <= to) {
         range.push(i);
@@ -18,7 +18,7 @@ const range = (from: number, to: number, step = 1) => {
     return range;
 };
 
-class Pagination extends Component<PaginationProps> {
+class Pagination extends Component<PaginationProps, PaginationState> {
     state = {
         pageLimit: 30,
         totalRecords: 0,
@@ -33,9 +33,7 @@ class Pagination extends Component<PaginationProps> {
 
         this.state.pageLimit = typeof pageLimit === 'number' ? pageLimit : 30;
         this.state.totalRecords = typeof totalRecords === 'number' ? totalRecords : 0;
-
         this.state.pageNeighbours = typeof pageNeighbours === 'number' ? Math.max(0, Math.min(pageNeighbours, 2)) : 0;
-
         this.state.totalPages = Math.ceil(this.state.totalRecords / this.state.pageLimit);
     }
 
@@ -83,7 +81,7 @@ class Pagination extends Component<PaginationProps> {
         const totalBlocks = totalNumbers + 2;
 
         if (totalPages > totalBlocks) {
-            let pages = [];
+            let pages: any = [];
 
             const leftBound = currentPage - pageNeighbours;
             const rightBound = currentPage + pageNeighbours;
@@ -136,7 +134,7 @@ class Pagination extends Component<PaginationProps> {
                                 return (
                                     <li key={index} className="page-item round-effect">
                                         <a
-                                            className="page-link round-effect"
+                                            className="page-link"
                                             href="/#"
                                             aria-label="Previous"
                                             onClick={this.handleMoveLeft}

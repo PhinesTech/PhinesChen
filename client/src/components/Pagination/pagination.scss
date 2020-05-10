@@ -10,14 +10,14 @@ font-weight:bold;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
+  margin: 0% 0% 5% 20%;
 }
 
 .pagination > li {
     
     // padding-top:10px;
     display: inline-block;
-    padding: 10% 10% 10% 10%;
+    padding: 3% 5% 3% 5%;
     
 }
 
@@ -35,10 +35,9 @@ font-weight:bold;
   padding-left:10px;
   padding-right:10px;
   padding-top:9px;
-  border-radius: 50%;
-  height: 30px;
-  width: 50px;
-  margin:5px;
+  border-radius: 60%;
+  width: 25px;
+  margin:3% 0% 3% 0%;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
 }
@@ -57,6 +56,7 @@ font-weight:bold;
 .active{
   background:darkgreen;
   color:#FFF;
+  border-radius: 90%;
 }
 
 .round-effect > a:link {

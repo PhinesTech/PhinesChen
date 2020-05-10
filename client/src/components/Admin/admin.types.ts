@@ -1,22 +1,26 @@
+import { Token } from '../../pages/Dashboard/dashboard.types';
+
 export type AdminState = {
     currentRequestors: Array<Object>;
-    currentDonators: Array<Object>;
     currentRequestPage: number;
     totalRequestPages: number;
+    currentDonators: Array<Object>;
     currentDonationPage: number;
     totalDonationPages: number;
-}
+    show: boolean;
+};
 
 export type AdminProps = {
-  requests: Array<Object>;
-  donations: Array<Object>;
-}
+    requests: Array<Object>;
+    donations: Array<Object>;
+    token: Token;
+};
 
 type Address = {
     street: string;
     city: string;
     zip: number;
-}
+};
 
 export type DonationModel = {
     id: string | number | undefined;
@@ -33,7 +37,7 @@ export type DonationModel = {
     list_of_ingredients: string;
     created_at: string;
     updated_at: string;
-}
+};
 
 export type RequestsModel = {
     id: string | number | undefined;
@@ -45,4 +49,4 @@ export type RequestsModel = {
     status: string;
     user_id: string;
     name: string;
-}
+};

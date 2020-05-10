@@ -9,7 +9,7 @@
     "setup": "yarn clean && yarn install",
     "start": "yarn tailwind:css && react-scripts start",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "tailwind:css": "tailwind build src/tailwind.css -c tailwind.config.js -o src/index.scss",
+    "tailwind:css": "tailwind build src/tailwind.css -c tailwind.config.js -o src/tailwind.scss",
     "test": "react-scripts test"
   },
   "browserslist": {
@@ -35,6 +35,9 @@
     "axios": "^0.19.2",
     "mapbox-gl": "^1.9.1",
     "react": "^16.13.1",
+    "react-animated-css": "^1.2.1",
+    "react-animated-css-onscroll": "^1.2.1",
+    "react-animejs": "^0.5.4",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0"

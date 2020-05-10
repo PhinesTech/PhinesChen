@@ -8,6 +8,7 @@ import Storage from '../../components/Storage/storage';
 import DonateForm from '../../components/DonateForm/donateform';
 import RequestForm from '../../components/RequestForm/requestForm';
 import Profile from '../../components/Profile/profile';
+import Track from '../../components/Track/track';
 import './dashboard.scss';
 
 class Dashboard extends Component<DashboardProps, DashboardState> {
@@ -40,9 +41,13 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                 }),
             ]).then(
                 Axios.spread((storage, requests, donations) => {
+                    let transformedRequestData = requests.data;
+
                     this.setState({
                         storage: storage.data,
-                        requests: requests.data,
+                        requests: transformedRequestData.filter(
+                            (e: any) => e.status !== 'Approved' || e.status !== 'Declined',
+                        ),
                         donations: donations.data,
                     });
                 }),
@@ -53,6 +58,11 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
     render() {
         const { user } = this.props.location.state;
         const { dashboard } = this.state;
+
+        if (!user) {
+            window.location.href = '/login';
+            return null;
+        }
 
         return (
             <section className="DASHBOARD">
@@ -75,6 +85,11 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                                 <li>
                                     <div className="contacticon">
                                         <button onClick={() => this.setState({ dashboard: '' })}>Profile</button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="feedicon">
+                                        <button onClick={() => this.setState({ dashboard: 'track' })}>Track</button>
                                     </div>
                                 </li>
                                 {user.role === 'admin' ? (
@@ -116,8 +131,16 @@ class Dashboard extends Component<DashboardProps, DashboardState> {
                             return <DonateForm {...this.props} />;
                         case 'request':
                             return <RequestForm {...this.props} />;
+                        case 'track':
+                            return <Track {...this.props} />;
                         case 'admin':
-                            return <Admin requests={this.state.requests} donations={this.state.donations} />;
+                            return (
+                                <Admin
+                                    requests={this.state.requests}
+                                    donations={this.state.donations}
+                                    token={this.props.location.state.token}
+                                />
+                            );
                         case 'storage':
                             return <Storage storage={this.state.storage} />;
                         default:

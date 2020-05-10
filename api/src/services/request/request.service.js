@@ -37,10 +37,11 @@ exports.replace = async (request, newRequestData) => {
         const newRequest = new Request(newRequestData);
         const newRequestObject = omit(newRequest.toObject(), "_id");
 
-        await request.update(newRequestObject, {
+        await Request.update(newRequestObject, {
             override: true,
             upsert: true,
         });
+
         const savedRequest = await Request.findById(request._id);
 
         return savedRequest.transform();
@@ -55,7 +56,15 @@ exports.replace = async (request, newRequestData) => {
  */
 exports.update = async (request, updatedData) => {
     try {
-        const savedRequest = await updatedRequest.save();
+        const savedRequest = await Request.findByIdAndUpdate(
+            request._id,
+            { ...request._doc, ...updatedData },
+            {
+                new: true,
+                override: true,
+            }
+        );
+
         return savedRequest.transform();
     } catch (error) {
         throw error;
