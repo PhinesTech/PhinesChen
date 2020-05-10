@@ -21,7 +21,7 @@ const FoodContent: React.FC = () => {
                 <br />
                 <span className="map">
                     <Map
-                        mapStyle="mapbox://styles/adarian/ck9qt77ja2g6t1ipbaxv5o1pu"
+                        mapStyle="mapbox://styles/mapbox/streets-v9"
                         lng={-120.483}
                         lat={37.3022}
                         zoom={8}

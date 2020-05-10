@@ -79,7 +79,7 @@ class Admin extends Component<AdminProps, AdminState> {
 
             requesters.push(
                 <div className="ui-card -notification" key={index.toString()}>
-                    <img src="http://i.pravatar.cc/100?img=13" alt="avatar" />
+                    <img src={`http://i.pravatar.cc/100?img=${Math.floor(Math.random() * 10)}`} alt="avatar" />
                     <div className="ui-content">
                         <div className="ui-title">{name}</div>
                         <div className="ui-message">Requested: {specific_request}</div>
@@ -297,13 +297,13 @@ class Admin extends Component<AdminProps, AdminState> {
                             <div className="half">
                                 <div className="sub-title">This Week's Requestors</div>
                                 <div id="app">
+                                    <div className="app-wrapper">{this.getRequesters()}</div>
                                     <Pagination
                                         totalRecords={totalItemsInRequestors}
                                         pageLimit={5}
                                         pageNeighbours={1}
                                         onPageChanged={this.onRequestorPageChanged}
                                     />
-                                    <div className="app-wrapper">{this.getRequesters()}</div>
                                 </div>
                             </div>
                         </div>
@@ -311,13 +311,13 @@ class Admin extends Component<AdminProps, AdminState> {
                             <div className="half">
                                 <div className="sub-title">This Week's Donators</div>
                                 <div id="app">
+                                    <div className="app-wrapper">{this.getDonators()}</div>
                                     <Pagination
                                         totalRecords={totalItemsInDonators}
                                         pageLimit={5}
                                         pageNeighbours={1}
                                         onPageChanged={this.onDonatorPageChanged}
                                     />
-                                    <div className="app-wrapper">{this.getDonators()}</div>
                                 </div>
                             </div>
                         </div>
